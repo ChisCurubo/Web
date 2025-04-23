@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Registro Automotor</title>
+</head>
+<body>
+    <form>
+        <table border="1" width="100%">
+            <tr>
+                <td width="25%">
+                    <table width="100%" border="1">
+                        <tr>
+                            <td colspan="3" align="center"><b>MINISTERIO DE TRANSPORTE</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><img src="logo1.png" width="50"></td>
+                            <td align="center"><img src="logo2.png" width="50"></td>
+                            <td align="center"><img src="logo3.png" width="50"></td>
+                        </tr>
+
+                    </table>
+                </td>
+                <td width="25%" align="center"><b>FORMULARIO DE SOLICITUD DE TRÁMITES DEL REGISTRO NACIONAL AUTOMOTOR</b></td>
+                <td width="25%">
+                    <table width="100%" border="1">
+                        <tr>
+                            <th colspan="3" align="center"><b>1.ORGANISMO DE TRÁNSITO</b></th>
+                        </tr>
+                        <tr>
+                            <td colspan="3"><b>NOMBRE</b> <input type="text" value="Servicios Integrales para la Movilidad - SIM" size="40"></td>
+                        </tr>
+                        <tr>
+                            <th>CIUDAD</th>
+                            <th>CÓDIGO</th>
+                            <th>FECHA DE TRÁMITE</th>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="text" value="Bogotá" size="10"></td>
+                            <td align="center"><input type="text" value="11001" size="10"></td>
+                            <td align="center">
+                                <input type="text" size="2" placeholder="Día"> /
+                                <input type="text" size="2" placeholder="Mes"> /
+                                <input type="text" size="4" placeholder="Año">
+                            </td>
+                        </tr>
+                    </table>
+                <td width="25%">
+                    <table width="100%" border="1">
+                        <tr>
+                            <th colspan="3" align="center"><b>2.PLACA</b></th>
+                        </tr>
+                        <tr>
+                            <th>LETRAS</th>
+                            <th>NUMEROS</th>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="text" value="XXX" size="10"></td>
+                            <td align="center"><input type="text" value="000" size="10"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <table border="1" width="100%">
+            <tr>
+                <td width="50%">
+                    <table border="1" width="100%">
+                        <tr>
+                            <th colspan="6" align="center">3. TRÁMITE SOLICITADO</th>
+                        </tr>
+                        <tr>
+                            <td>1 <label><input type="checkbox" name="tramite[]" value="1"> MATRÍCULA/REGISTRO</label></td>
+                            <td>2 <label><input type="checkbox" name="tramite[]" value="2"> TRASPASO</label></td>
+                            <td>3 <label><input type="checkbox" name="tramite[]" value="3"> TRASLADO MATRÍCULA/REGISTRO</label></td>
+                            <td>4 <label><input type="checkbox" name="tramite[]" value="4"> RADICADO MATRÍCULA/REGISTRO</label></td>
+                            <td>5 <label><input type="checkbox" name="tramite[]" value="5"> CAMBIO DE COLOR</label></td>
+                            <td>6 <label><input type="checkbox" name="tramite[]" value="6"> CAMBIO DE SERVICIO</label></td>
+                        </tr>
+                        <tr>
+                            <td>7 <label><input type="checkbox" name="tramite[]" value="7"> REGRABAR MOTOR</label></td>
+                            <td>8 <label><input type="checkbox" name="tramite[]" value="8"> REGRABAR CHASIS</label></td>
+                            <td>9 <label><input type="checkbox" name="tramite[]" value="9"> TRANSFORMACIÓN</label></td>
+                            <td>10 <label><input type="checkbox" name="tramite[]" value="10"> DUPLICADO LICENCIA TRÁNSITO</label></td>
+                            <td>11 <label><input type="checkbox" name="tramite[]" value="11"> INSCRIP. PRENDA</label></td>
+                            <td>12 <label><input type="checkbox" name="tramite[]" value="12"> LEVANTA PRENDA</label></td>
+                        </tr>
+                        <tr>
+                            <td>13 <label><input type="checkbox" name="tramite[]" value="13"> CANCELACIÓN MATRÍCULA/REGISTRO</label></td>
+                            <td>14 <label><input type="checkbox" name="tramite[]" value="14"> CAMBIO DE PLACAS</label></td>
+                            <td>15 <label><input type="checkbox" name="tramite[]" value="15"> DUPLICADO DE PLACAS</label></td>
+                            <td>16 <label><input type="checkbox" name="tramite[]" value="16"> REMATRÍCULA</label></td>
+                            <td>17 <label><input type="checkbox" name="tramite[]" value="17"> CAMBIO DE CARROCERÍA</label></td>
+                            <td>18 <label><input type="checkbox" name="tramite[]" value="18"> OTROS</label></td>
+                        </tr>
+                    </table>
+                    
+                </td>
+                <td width="50%" align="center">
+                    <table border="1" width="100%">
+                        <tr>
+                            <td width="33%">
+                                <table border="1" width="100%">
+                                    <tr>
+                                        <th colspan="6" align="center"><b>5.MARCA</b></th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"><input type="text"  size="10"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="33%">
+                                <table border="1" width="100%">
+                                    <tr>
+                                        <th colspan="6" align="center"><b>6.LINEA</b></th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center"><input type="text"  size="10"></td>
+                                    </tr>
+                                </table>
+                            </td>
+
+                            <td width="33%">
+                                <table border="1" width="100%">
+                                    <tr>
+                                        <th colspan="8" align="center">7. COMBUSTIBLE</th>
+                                    </tr>
+                                    <tr>
+                                        <td align="center">1.GASOLINA <input type="radio" name="combustible" value="1"> </td>
+                                        <td align="center">2.DIÉSEL <input type="radio" name="combustible" value="2"></td>
+                                        <td align="center">3.GAS <input type="radio" name="combustible" value="3"></td>
+                                        <td align="center">4.MIXTO <input type="radio" name="combustible" value="4"></td>
+                                        <td align="center">5.ELÉCTRICO <input type="radio" name="combustible" value="5"></td>
+                                        <td align="center">6.HIDRÓGENO <input type="radio" name="combustible" value="6"></td>
+                                        <td align="center">7.ETANOL <input type="radio" name="combustible" value="7"></td>
+                                        <td align="center">8.BIODIÉSEL <input type="radio" name="combustible" value="8"></td>
+                                    </tr>
+                                </table>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="33%" align="center"><b>8. COLORES</b></td>
+                            <td width="33%" align="center"><b>9. MODELO</b></td>
+                            <td width="33%" align="center"><b>10. CILINDRADA</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="text" name="colores" size="10"></td>
+                            <td align="center"><input type="text" name="modelo" size="10"></td>
+                            <td align="center"><input type="text" name="cilindrada" size="10"></td>
+                        </tr>
+                        <tr>
+                            <td width="25%" align="center"><b>11. CAPACIDAD</b><sub> Kg/Psj.</sub></td>
+                            <td width="25%" align="center"><b>12. BLINDAJE</b></td>
+                            <td width="25%" align="center"><b>13. DESMONTE BLIND</b></td>
+                            <td width="25%" align="center"><b>14. POTENCIA/HP</b></td>
+                        </tr>
+                        <tr>
+                            <td align="center"><input type="text" name="capacidad" size="10"></td>
+                            <td align="center">
+                                <label><input type="radio" name="blindaje" value="si"> Sí</label>
+                                <label><input type="radio" name="blindaje" value="no"> No</label><br>
+                                <small>Resolución No.</small> 
+                                <input type="text" name="resolucion_blindaje" size="8" placeholder="DD/MM/AÑO">
+                            </td>
+                            <td align="center">
+                                <label><input type="radio" name="desmonte_blind" value="si"> Sí</label>
+                                <label><input type="radio" name="desmonte_blind" value="no"> No</label><br>
+                                <small>Resolución No.</small> 
+                                <input type="text" name="resolucion_desmonte" size="8" placeholder="DD/MM/AÑO">
+                            </td>
+                            <td align="center"><input type="text" name="potencia" size="10"></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <table border="1" width="100%">
+                    <td width="40%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td colspan="8" align="center"><b>4. CLASE DE VEHÍCULO</b></td>
+                            </tr>
+                            <tr>
+                                <td align="center">AUTOMÓVIL <input type="radio" name="clase_vehiculo" value="automovil"></td>
+                                <td align="center">BUS <input type="radio" name="clase_vehiculo" value="bus"></td>
+                                <td align="center">BUSETA <input type="radio" name="clase_vehiculo" value="buseta"></td>
+                                <td align="center">CAMIÓN <input type="radio" name="clase_vehiculo" value="camion"></td>
+                                <td align="center">CAMIONETA <input type="radio" name="clase_vehiculo" value="camioneta"></td>
+                                <td align="center">CAMPERO <input type="radio" name="clase_vehiculo" value="campero"></td>
+                                <td align="center">MICROBÚS <input type="radio" name="clase_vehiculo" value="microbus"></td>
+                            </tr>
+                            <tr>
+                                <td align="center">TRACTOCAMIÓN <input type="radio" name="clase_vehiculo" value="tractocamion"></td>
+                                <td align="center">MOTOCICLETA <input type="radio" name="clase_vehiculo" value="motocicleta"></td>
+                                <td align="center">MOTOCARRO <input type="radio" name="clase_vehiculo" value="motocarro"></td>
+                                <td align="center">MOTOTRICICLO <input type="radio" name="clase_vehiculo" value="mototriciclo"></td>
+                                <td align="center">CUATRIMOTO <input type="radio" name="clase_vehiculo" value="cuatrimoto"></td>
+                                <td align="center">VOLQUETA <input type="radio" name="clase_vehiculo" value="volqueta"></td>
+                                <td align="center">OTRO 
+                                    <input type="radio" name="clase_vehiculo" value="otro">
+                                    <br>
+                                    <input type="text" name="otro_clase_vehiculo" size="10">
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                    <td width="30%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td align="center"><b>15. CARROCERÍA</b></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>CATEGORÍA</b>
+                                    <input type="text" name="categoria" >
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>TIPO</b>
+                                    <input type="text" name="tipo"  >
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td width="30%">
+                        <table border="1" width="100%">
+                            <tr>
+                                <td colspan="2" align="center"><b>16. IDENTIFICACIÓN INTERNA DEL VEHÍCULO</b></td>
+                            </tr>
+                            <tr>
+                                <td >No. DE MOTOR<input type="text" name="nMotor"></td>
+                                <td align="center">REGRABADO <br>
+                                    Sí <input type="checkbox" name="regrabado_motor_si">
+                                    No <input type="checkbox" name="regrabado_motor_no">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>No. DE CHASIS <input type="text" name="nChasis"></td>
+                                <td align="center">REGRABADO <br>
+                                    Sí <input type="checkbox" name="regrabado_chasis_si">
+                                    No <input type="checkbox" name="regrabado_chasis_no">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>No. DE SERIE <input type="text" name="nSerie"> </td>
+                                <td align="center">REGRABADO <br>
+                                    Sí <input type="checkbox" name="regrabado_serie_si">
+                                    No <input type="checkbox" name="regrabado_serie_no">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">No. DE VIN VEHÍCULOS AUTOMOTORES
+                                    <br>
+                                    <textarea name="nVin" placeholder="Ingrese el número de VIN aquí..."></textarea>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                    </tr>
+                    <tr>
+                        <table border="1" width="100%">
+                            <tr>
+                                <td rowspan="2" align="center"><b>21. DATOS DEL PROPIETARIO</b>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td>PRIMER APELLIDO
+                                                <input type="text" name="fApellido" >
+                                            </td>
+                                            <td>SEGUNDO APELLIDO
+                                                <input type="text" name="sApellido" >
+                                            </td>
+                                            <td>NOMBRES
+                                                <input type="text" name="nombre" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <table border="1" width="100%">
+                                                    <tr>
+                                                        <td>C.C. <input type="checkbox" name="documento" value="cc"></td>
+                                                        <td>NIT <input type="checkbox" name="documento" value="nit"></td>
+                                                        <td>N.N <input type="checkbox" name="documento" value="nn"></td>
+                                                        <td>PASAPORTE <input type="checkbox" name="documento" value="pasaporte"></td>
+                                                        <td>C. EXTRANJ. <input type="checkbox" name="documento" value="c_extranj"></td>
+                                                        <td>T. IDENTI. <input type="checkbox" name="documento" value="t_identi"></td>
+                                                        <td>NUIP <input type="checkbox" name="documento" value="nuip"></td>
+                                                        <td>C. DIPLOMÁTICO <input type="checkbox" name="documento" value="c_diplomatico"></td>
+                                                        <td>No. DOCUMENTO <input type="text" name="numero_documento" size="10"></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            
+                                        </tr>
+                                        <tr>
+                                            <td>DIRECCIÓN
+                                                <br>
+                                                <input type="text" name="direccion" >
+                                            </td>
+                                            <td>CIUDAD
+                                                <br>
+                                                <input type="text" name="ciudad" >
+                                            </td>
+                                            <td>TELÉFONO
+                                                <br>
+                                                <input type="text" name="telefono" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">FIRMA DEL PROPIETARIO
+                                                <br>
+                                                <input type="text" name="firmaP" >
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td align="center" ><b>17. IMPORTACIÓN O REMATE</b>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td colspan="2">IMPORTACIÓN
+                                                <table border="1" width="100%">
+                                                    <td>MANIF. O ACTA
+                                                        <input type="radio" name="importacion" value="1">
+                                                    </td>
+                                                    <td>DEC. DE IMPORT.
+                                                        <input type="radio" name="importacion" value="2">
+                                                    </td>
+                                                </table>
+                                            </td>
+                                            <td colspan="4" align="center">REMATE
+                                                <table border="1" width="100%">
+                                                    <td>ACTA
+                                                        <input type="radio" name="remate" value="3">
+                                                    </td>
+                                                    <td>ENTIDAD
+                                                        <input type="radio" name="remate" >
+                                                    </td>
+                                                    <td>LUGAR (CIUDAD)
+                                                        <input type="radio" name="remate" >
+                                                    </td>
+                                                    <td>CÓDIGO
+                                                        <input type="radio" name="remate" >
+                                                        <input type="text" name="codigo" size="10">                                                        
+                                                    </td>
+
+                                                </table>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>No. DOCUMENTO
+                                                <input type="text" name="no_documento" size="10">
+                                            </td>
+                                            <td colspan="5">FECHA: DÍA MES AÑO
+                                                <br>
+                                                <input type="text" name="dia" size="2" placeholder="Día"> /
+                                                <input type="text" name="mes" size="2" placeholder="Mes"> /
+                                                <input type="text" name="año" size="4" placeholder="Año">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td>
+                                    <table border="1" width="100%">
+                                        <th colspan="7"><b>18. TIPO DE SERVICIO</b></th>
+                                        
+                                        <tr>
+                                            <td>1.PARTICULAR
+                                                <input type="radio" name="tipoServicio" aling="center"> 
+                                            </td>
+                                            <td>2.PÚBLICO
+                                                <input type="radio" name="tipoServicio" >
+                                            </td>
+                                            <td>3.DIPLOMAT.
+                                                <input type="radio" name="tipoServicio" >
+                                            </td>
+                                            <td>4.OFICIAL
+                                                <input type="radio" name="tipoServicio" >
+                                            </td>
+                                            <td>5.ESPECIAL
+                                                <input type="radio" name="tipoServicio" >
+                                            </td>
+                                            <td>6.OTROS
+                                                <input type="radio" name="tipoServicio" >
+                                                <input type="text" name="otroTipoServicio" size="10">   
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center"><b>20. DATOS DE ALERTA</b>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td>HURTO
+                                                <input type="radio" name="alerta" value="hurto">
+                                            </td>
+                                            <td>LIM. PROPIEDAD
+                                                <input type="radio" name="alerta" value="lim_propiedad">
+                                            </td>
+                                            <td>EMBARGO
+                                                <input type="radio" name="alerta" value="embargo">
+                                            </td>
+                                            <td>OTRO
+                                                <input type="radio" name="alerta" value="otro">
+                                                <input type="text" name="otroAlerta" size="10">
+                                            </td>
+                                            <td>A FAVOR DE:
+                                                <input type="text" name="aFavorDe" size="10">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td align="center"><b>19. EMPRESA VINCULADORA</b>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td>NOMBRE
+                                                <br>
+                                                <input type="text" name="nombre" >
+                                            </td>
+                                            <td>NIT
+                                                <br>
+                                                <input type="text" name="nit">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="center">
+                                    <b>22. DATOS DEL COMPRADOR (TRASPASO)</b>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td>PRIMER APELLIDO <br>
+                                                <input type="text" name="fApellido" size="8">
+                                            </td>
+                                            <td>SEGUNDO APELLIDO <br>
+                                                <input type="text" name="sApellido" size="8">
+                                            </td>
+                                            <td>NOMBRES <br>
+                                                <input type="text" name="nombre" size="8">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="9" align="center"><b>Tipo de Documento</b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>C.C. <br>
+                                                <input type="radio" name="tipo_documento" value="cc">
+                                            </td>
+                                            <td>NIT <br>
+                                                <input type="radio" name="tipo_documento" value="nit">
+                                            </td>
+                                            <td>N.N <br>
+                                                <input type="radio" name="tipo_documento" value="nn">
+                                            </td>
+                                            <td>PASAPORTE <br>
+                                                <input type="radio" name="tipo_documento" value="pasaporte">
+                                            </td>
+                                            <td>C. EXTRANJ. <br>
+                                                <input type="radio" name="tipo_documento" value="c_extranj">
+                                            </td>
+                                            <td>T. IDENTI. <br>
+                                                <input type="radio" name="tipo_documento" value="t_identi">
+                                            </td>
+                                            <td>NUIP <br>
+                                                <input type="radio" name="tipo_documento" value="nuip">
+                                            </td>
+                                            <td>C. DIPLOMÁTICO <br>
+                                                <input type="radio" name="tipo_documento" value="c_diplomatico">
+                                            </td>
+                                            <td>No. DOCUMENTO <br>
+                                                <input type="text" name="numero_documento" size="8">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <table border="1" width="100%">
+                                        <tr>
+                                            <td>DIRECCIÓN
+                                                <br>
+                                                <input type="text" name="direccionCo" >
+                                            </td>
+                                            <td>CIUDAD
+                                                <br>
+                                                <input type="text" name="ciudadCo" >
+                                            </td>
+                                            <td>TELÉFONO
+                                                <br>
+                                                <input type="text" name="telefonoCo" >
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">FIRMA DEL PROPIETARIO
+                                                <br>
+                                                <input type="text" name="firmaCo" >
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+                                </td>
+                                <td colspan="2" >
+                                    
+                                    <table border="1" width="100%">
+                                        <th>
+                                            <b>23. OBSERVACIONES</b>
+                                        </th>
+                                        <tr>
+                                            <td>
+                                                ESPECIFIQUE LA PALABRA OTRO Y TRANSFORMACIÓN EFECTUADA AL VEHÍCULO, AMPLÍE EL TIPO DE ALERTA O LO QUE ESTIME
+                                                <br>
+                                                <input type="text" name="observaciones_generales" size="80">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <b>OBSERVACIONES (PARA TRASPASO DE VEHÍCULOS AUTOMOTORES ANTES DE RUNT)</b>
+                                                <br>
+                                                <textarea name="observaciones_traspaso" cols="80" rows="3">Si su vehículo automotor ha sido matriculado antes del RUNT, transcriba en este campo el tipo de carrocería y la clase de vehículo que se encuentra registrada en su licencia de tránsito o cualquier otro aspecto que considere necesario para dar exactitud a la información.</textarea>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </tr>
+            </tr>
+        </table>
+    </form>
+
+      
+</body>
+</html>

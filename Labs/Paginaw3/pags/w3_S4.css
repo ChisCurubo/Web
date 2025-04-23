@@ -1,0 +1,119 @@
+
+body {
+    font-family: "Courier New";
+    margin: 0;
+    padding: 20px;
+    background-color: black;
+    
+}
+
+header {
+    color:  #84c754;
+    padding: 5px;
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 0px;
+}
+header p{
+    font-size: 20px;
+    margin-top: 0px;
+}
+.menu {
+    display: flex;
+    flex-wrap: wrap;  
+    align-items: flex-start; 
+    justify-content: flex-start;
+    padding: 20px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.menu ul {
+    flex-direction: column;
+    padding: 0px;
+    display: flex;
+    flex-wrap: wrap;  
+    justify-content: flex-start; 
+    gap: 15px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+
+.buttonStyle {
+    padding: 10px 15px;
+    color: #84c754;
+}
+
+.buttonStyle.active {
+    color:white;
+}
+
+.buttonStyle:hover {
+    color: white;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-items: stretch; 
+    margin: 15px auto;
+    padding: 20px;
+}
+
+
+.content {
+    padding: 20px;
+    color: #84c754;
+
+}
+
+.content a{
+    color: white
+}
+
+.content p a:hover{
+    color: #84c754;
+}
+
+
+.sidebar {
+    border-color: white;
+    border-style: solid;
+    color: white;
+    width: 99%;
+    padding: 10px;
+    text-align: left;
+}
+
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+        border-color: white;
+    border-style: solid;
+    color: white;
+    font-size: 14px;
+}
+
+
+@media (max-width: 480px) {
+    .container {
+        padding-right: 0;
+    }
+    
+    .menu {
+        width: 100%;
+       
+    }
+    
+    .buttonStyle {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+}

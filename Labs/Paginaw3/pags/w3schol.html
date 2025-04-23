@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To My Homepage</title>
+    <link rel="stylesheet" href="/pags/w3_S1.css" id="stylesheet1" disabled>  
+    <link rel="stylesheet" href="/pags/w3_S2.css" id="stylesheet2" disabled> 
+    <link rel="stylesheet" href="/pags/w3_S3.css" id="stylesheet3" disabled> 
+    <link rel="stylesheet" href="/pags/w3_S4.css" id="stylesheet4" disabled>
+    <link rel="stylesheet" href="" id="stylesheet0" disabled>  
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Welcome To My Homepage</h1>
+            <p>Use the menu to select different Stylesheets</p>
+        </nav>
+    </header>
+
+
+
+    <section class="container">
+        <section class="menu">
+            <ul>
+                <li><a  href="#" onclick="html(1); return false" class="buttonStyle ">Stylesheet 1</a></li>
+                <li><a  href="#" onclick="html(2); return false" class="buttonStyle">Stylesheet 2</a></li>
+                <li><a  href="#" onclick="html(3); return false" class="buttonStyle">Stylesheet 3</a></li>
+                <li><a  href="#"  onclick="html(4); return false" class="buttonStyle">Stylesheet 4</a></li>
+                <li><a  href="#" onclick="html(0); return false" class="buttonStyle">No Stylesheet</a></li>
+            </ul>
+        </section>
+    
+        <main class="content">
+            <h1>Same Page Different Stylesheets</h1>
+            <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. 
+                You can change the layout of this page by selecting different stylesheets in the menu, or by selecting one of the following links:
+                <br>   
+                <a  href="#" onclick="html(1); return false">Stylesheet 1</a>,
+                <a  href="#" onclick="html(2); return false">Stylesheet 2</a>, 
+                <a href="#" onclick="html(3); return false">Stylesheet 3</a>,
+                <a href="#" onclick="html(4); return false">Stylesheet 4</a>.
+            </p>
+            
+            <h2>No Styles</h2>
+            <p>This page uses DIV elements to group different sections of the HTML page. Click here to see how the page looks like with no stylesheet:
+                <br>
+                <a href="#">No Stylesheet</a>.
+            </p>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Side-Bar</h3>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</p>
+        </aside>
+    </section>
+
+    
+    <footer>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. 
+            Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
+    </footer>
+</body>
+
+<script>
+const html = (num) => {
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(link => {
+        link.disabled = true;
+    });
+        
+    const styleId = 'stylesheet' + num;
+    const styleElement = document.getElementById(styleId);
+    if (styleElement) {
+        styleElement.disabled = false;
+    }
+
+    const but = document.querySelectorAll('.buttonStyle');
+    but.forEach(button => {
+        button.classList.remove('active');
+    });
+    num = num -1
+    but[num].classList.add('active')
+};
+</script>
+</html>
