@@ -1,3 +1,18 @@
 /node_modules
 /build
 .qodo
+.vscode
+
+# Ignorar archivos comprimidos ZIP
+*.zip
+
+# Ignorar archivos de Draw.io
+*.drawio
+
+# Ignorar archivos de respaldo
+*.bak
+
+# Ignorar archivos de MySQL Workbench
+*.mwb
+
+
