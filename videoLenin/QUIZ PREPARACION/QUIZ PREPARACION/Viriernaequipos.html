@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrina de Equipos 3x3</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 30px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        /* Contenedor grid 3x3 */
+        .vitrina-3x3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Tarjeta de equipo */
+        .card-equipo {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-equipo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Encabezado de la tarjeta */
+        .card-header {
+            padding: 15px;
+            text-align: center;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .liga {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+        
+        .nombre-equipo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .escudo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 10px;
+            object-fit: contain;
+        }
+        
+        /* Cuerpo de la tarjeta */
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+        }
+        
+        .info-equipo {
+            margin-bottom: 15px;
+        }
+        
+        .info-equipo p {
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .info-equipo i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .etiqueta {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-right: 5px;
+        }
+        
+        /* Pie de la tarjeta */
+        .card-footer {
+            padding: 12px;
+            background-color: #f8f9fa;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        
+        /* Colores específicos para cada equipo */
+        .real-madrid { background: linear-gradient(135deg, #00529F, #FFFFFF); color: #000; }
+        .barcelona { background: linear-gradient(135deg, #A50044, #004D98); }
+        .man-city { background: linear-gradient(135deg, #6CADDF, #1C2C5B); }
+        .liverpool { background: linear-gradient(135deg, #C8102E, #00B2A9); }
+        .bayern { background: linear-gradient(135deg, #DC052D, #0066B2); }
+        .psg { background: linear-gradient(135deg, #004170, #DA291C); }
+        .juventus { background: linear-gradient(135deg, #000000, #FFFFFF); color: #000; }
+        .chelsea { background: linear-gradient(135deg, #034694, #6A7AB5); }
+        .inter { background: linear-gradient(135deg, #0068A8, #000000); }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .vitrina-3x3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .vitrina-3x3 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <!-- Iconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <h1>Grandes Equipos de Fútbol Europeo</h1>
+    
+    <div class="vitrina-3x3">
+        <!-- Fila 1 -->
+        <div class="card-equipo">
+            <div class="card-header real-madrid">
+                <img src="https://img.icons8.com/color/96/000000/real-madrid.png" class="escudo" alt="Escudo Real Madrid">
+                <div class="liga">LaLiga Santander</div>
+                <div class="nombre-equipo">Real Madrid</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #00529F;"></i> <span class="etiqueta">Presidente:</span> Florentino Pérez</p>
+                    <p><i class="fas fa-chess" style="color: #00529F;"></i> <span class="etiqueta">Técnico:</span> Carlo Ancelotti</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #00529F;"></i> <span class="etiqueta">Fundación:</span> 1902</p>
+                    <p><i class="fas fa-star" style="color: #00529F;"></i> <span class="etiqueta">Mejor jugador:</span> Vinicius Jr.</p>
+                    <p><i class="fas fa-trophy" style="color: #00529F;"></i> <span class="etiqueta">Champions:</span> 14 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "El Rey de Europa"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header barcelona">
+                <img src="https://img.icons8.com/color/96/000000/fc-barcelona.png" class="escudo" alt="Escudo Barcelona">
+                <div class="liga">LaLiga Santander</div>
+                <div class="nombre-equipo">Barcelona</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #A50044;"></i> <span class="etiqueta">Presidente:</span> Joan Laporta</p>
+                    <p><i class="fas fa-chess" style="color: #A50044;"></i> <span class="etiqueta">Técnico:</span> Xavi Hernández</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #A50044;"></i> <span class="etiqueta">Fundación:</span> 1899</p>
+                    <p><i class="fas fa-star" style="color: #A50044;"></i> <span class="etiqueta">Mejor jugador:</span> Robert Lewandowski</p>
+                    <p><i class="fas fa-trophy" style="color: #A50044;"></i> <span class="etiqueta">Champions:</span> 5 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "Més que un club"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header man-city">
+                <img src="https://img.icons8.com/color/96/000000/manchester-city.png" class="escudo" alt="Escudo Man City">
+                <div class="liga">Premier League</div>
+                <div class="nombre-equipo">Man. City</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #6CADDF;"></i> <span class="etiqueta">Presidente:</span> Khaldoon Al Mubarak</p>
+                    <p><i class="fas fa-chess" style="color: #6CADDF;"></i> <span class="etiqueta">Técnico:</span> Pep Guardiola</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #6CADDF;"></i> <span class="etiqueta">Fundación:</span> 1880</p>
+                    <p><i class="fas fa-star" style="color: #6CADDF;"></i> <span class="etiqueta">Mejor jugador:</span> Erling Haaland</p>
+                    <p><i class="fas fa-trophy" style="color: #6CADDF;"></i> <span class="etiqueta">Champions:</span> 1 título</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "The Citizens"
+            </div>
+        </div>
+        
+        <!-- Fila 2 -->
+        <div class="card-equipo">
+            <div class="card-header liverpool">
+                <img src="https://img.icons8.com/color/96/000000/liverpool-fc.png" class="escudo" alt="Escudo Liverpool">
+                <div class="liga">Premier League</div>
+                <div class="nombre-equipo">Liverpool</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #C8102E;"></i> <span class="etiqueta">Presidente:</span> Tom Werner</p>
+                    <p><i class="fas fa-chess" style="color: #C8102E;"></i> <span class="etiqueta">Técnico:</span> Jürgen Klopp</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #C8102E;"></i> <span class="etiqueta">Fundación:</span> 1892</p>
+                    <p><i class="fas fa-star" style="color: #C8102E;"></i> <span class="etiqueta">Mejor jugador:</span> Mohamed Salah</p>
+                    <p><i class="fas fa-trophy" style="color: #C8102E;"></i> <span class="etiqueta">Champions:</span> 6 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "You'll Never Walk Alone"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header bayern">
+                <img src="https://img.icons8.com/color/96/000000/bayern-munich.png" class="escudo" alt="Escudo Bayern">
+                <div class="liga">Bundesliga</div>
+                <div class="nombre-equipo">Bayern Múnich</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #DC052D;"></i> <span class="etiqueta">Presidente:</span> Herbert Hainer</p>
+                    <p><i class="fas fa-chess" style="color: #DC052D;"></i> <span class="etiqueta">Técnico:</span> Thomas Tuchel</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #DC052D;"></i> <span class="etiqueta">Fundación:</span> 1900</p>
+                    <p><i class="fas fa-star" style="color: #DC052D;"></i> <span class="etiqueta">Mejor jugador:</span> Harry Kane</p>
+                    <p><i class="fas fa-trophy" style="color: #DC052D;"></i> <span class="etiqueta">Champions:</span> 6 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "Mia san mia"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header psg">
+                <img src="https://img.icons8.com/color/96/000000/paris-saint-germain.png" class="escudo" alt="Escudo PSG">
+                <div class="liga">Ligue 1</div>
+                <div class="nombre-equipo">Paris Saint-Germain</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #004170;"></i> <span class="etiqueta">Presidente:</span> Nasser Al-Khelaifi</p>
+                    <p><i class="fas fa-chess" style="color: #004170;"></i> <span class="etiqueta">Técnico:</span> Luis Enrique</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #004170;"></i> <span class="etiqueta">Fundación:</span> 1970</p>
+                    <p><i class="fas fa-star" style="color: #004170;"></i> <span class="etiqueta">Mejor jugador:</span> Kylian Mbappé</p>
+                    <p><i class="fas fa-trophy" style="color: #004170;"></i> <span class="etiqueta">Champions:</span> 0 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "Ici c'est Paris"
+            </div>
+        </div>
+        
+        <!-- Fila 3 -->
+        <div class="card-equipo">
+            <div class="card-header juventus">
+                <img src="https://img.icons8.com/color/96/000000/juventus-fc.png" class="escudo" alt="Escudo Juventus">
+                <div class="liga">Serie A</div>
+                <div class="nombre-equipo">Juventus</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #000;"></i> <span class="etiqueta">Presidente:</span> Gianluca Ferrero</p>
+                    <p><i class="fas fa-chess" style="color: #000;"></i> <span class="etiqueta">Técnico:</span> Massimiliano Allegri</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #000;"></i> <span class="etiqueta">Fundación:</span> 1897</p>
+                    <p><i class="fas fa-star" style="color: #000;"></i> <span class="etiqueta">Mejor jugador:</span> Dusan Vlahovic</p>
+                    <p><i class="fas fa-trophy" style="color: #000;"></i> <span class="etiqueta">Champions:</span> 2 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "La Vecchia Signora"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header chelsea">
+                <img src="https://img.icons8.com/color/96/000000/chelsea-fc.png" class="escudo" alt="Escudo Chelsea">
+                <div class="liga">Premier League</div>
+                <div class="nombre-equipo">Chelsea</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #034694;"></i> <span class="etiqueta">Presidente:</span> Todd Boehly</p>
+                    <p><i class="fas fa-chess" style="color: #034694;"></i> <span class="etiqueta">Técnico:</span> Mauricio Pochettino</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #034694;"></i> <span class="etiqueta">Fundación:</span> 1905</p>
+                    <p><i class="fas fa-star" style="color: #034694;"></i> <span class="etiqueta">Mejor jugador:</span> Enzo Fernández</p>
+                    <p><i class="fas fa-trophy" style="color: #034694;"></i> <span class="etiqueta">Champions:</span> 2 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "The Blues"
+            </div>
+        </div>
+        
+        <div class="card-equipo">
+            <div class="card-header inter">
+                <img src="https://img.icons8.com/color/96/000000/fc-internazionale-milano.png" class="escudo" alt="Escudo Inter">
+                <div class="liga">Serie A</div>
+                <div class="nombre-equipo">Inter de Milán</div>
+            </div>
+            <div class="card-body">
+                <div class="info-equipo">
+                    <p><i class="fas fa-user-tie" style="color: #0068A8;"></i> <span class="etiqueta">Presidente:</span> Steven Zhang</p>
+                    <p><i class="fas fa-chess" style="color: #0068A8;"></i> <span class="etiqueta">Técnico:</span> Simone Inzaghi</p>
+                    <p><i class="fas fa-calendar-alt" style="color: #0068A8;"></i> <span class="etiqueta">Fundación:</span> 1908</p>
+                    <p><i class="fas fa-star" style="color: #0068A8;"></i> <span class="etiqueta">Mejor jugador:</span> Lautaro Martínez</p>
+                    <p><i class="fas fa-trophy" style="color: #0068A8;"></i> <span class="etiqueta">Champions:</span> 3 títulos</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                "Il Biscione"
+            </div>
+        </div>
+    </div>
+</body>
+</html>

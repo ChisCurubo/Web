@@ -1,0 +1,132 @@
+
+body{
+ font-size: 20px;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.encabezado{
+   background-color: #06da8c ;
+border-radius: 10px;
+ color: white;
+padding: 15px;
+}
+
+section{
+    display: grid;
+    grid-template-columns:1fr 2fr 1fr;
+    gap: 10px; 
+    height: 650px;
+}
+
+.BarraChange{
+    list-style: none;
+
+
+    margin-left:  -40px; ;
+  
+
+}
+
+li{
+ margin:5px;
+ font-size: 20px;
+background-color: #d4d4d4;
+
+border: 1px solid  #d4d4d4;
+border-radius: 3px;
+
+ border: 1;
+
+padding: 5px;
+}
+
+
+
+li:hover{
+    background-color: white;
+}
+
+li:first-child{
+
+    background-color: #06da8c ;
+    color: white;
+}
+
+a {
+    color: black;
+
+}
+
+#barraLorem{
+    margin-top: 10px;
+    color: white;
+    background-color: #32a4e7;
+    text-align: justify;
+    
+}
+
+
+#barraLorem p,#barraLorem h2{
+
+    margin-left: 20px;
+    text-align: left;
+
+
+}
+
+footer{
+    margin-top: 10px;
+   text-align: center;
+    background-color: #d4d4d4;
+    padding: 10px;
+    border: 1px solid #d4d4d4;
+    border-radius: 2px;
+}
+
+
+@media (max-width: 1024px) {
+    section {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    #barraLorem {
+        grid-column: span 2;
+    }
+}
+
+
+@media (max-width: 768px) {
+    section {
+        grid-template-columns: 1fr;
+    }
+
+    #Braralateral, #barraLorem {
+        text-align: center;
+    }
+
+    .BarraChange li {
+        font-size: 16px;
+        padding: 8px;
+    }
+
+    main {
+        text-align: center;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        font-size: 18px;
+    }
+
+    .encabezado {
+        padding: 10px;
+    }
+
+    .BarraChange li {
+        font-size: 14px;
+        padding: 7px;
+    }
+
+    footer {
+        padding: 10px;
+    }
+}

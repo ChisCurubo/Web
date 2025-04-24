@@ -1,0 +1,182 @@
+
+body{
+ font-size: 20px;
+ font-family: Verdana, Geneva, Tahoma, sans-serif;
+ color: white;
+background-color: #d14836;
+}
+
+section{
+    display: grid;
+    color: black;
+    gap: 10px; 
+    height: 750px;
+    background-color: white;
+}
+section h2 {
+    color: #d14836;
+ 
+}
+
+main{
+    margin-left: 20px;
+    width: 750px;
+}
+
+footer{
+text-align: center;
+margin-bottom: 20px;
+}
+
+#pheader{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 30px;
+    
+}
+header{
+    margin-left: 20px;
+    font-size: 34px;
+}
+a {
+    color: #d14836;
+
+}
+
+li{
+    margin:5px;
+    font-size: 20px;
+    background-color: #d14836;
+    width: 220px;
+    height: 30px;
+    border: 1px solid  #d14836;
+    border-radius: 20px;
+   
+     border: 1;
+   
+    padding: 5px;
+    text-align: center;
+    color: white;
+
+    margin-top: 25px;
+
+   
+   }
+   
+   li:nth-child(2) {
+
+    background-color: white;
+    color: #d14836;
+   }
+   
+   
+   ul{
+    list-style: none;
+    position: absolute;
+    
+    top: 300px;
+    left: 1100px;
+   }
+
+
+     
+   li:hover {
+
+    background-color: white;
+    color: #d14836;
+   }
+   
+   
+   ul{
+    list-style: none;
+    position: absolute;
+    
+    top: 300px;
+    left: 1300px;
+   }
+
+
+#barraLorem{
+  color: #d14836;
+  
+    background-color: #f6dAD7;
+   }
+
+   #barraLorem h2,  #barraLorem p{
+
+    margin-left: 20px;
+   }
+
+/* Responsividad */
+            @media (max-width: 1800px) {
+                ul {
+                    left: 1300px;
+                }
+            }
+                @media (max-width: 1600px) {
+                ul {
+                    left: 1200px;
+                }
+            }
+        @media (max-width: 1500px) {
+            ul {
+                left: 1100px;
+            }
+        }
+        @media (max-width: 1400px) {
+            ul {
+                left: 1000px;
+            }
+        }
+        @media (max-width: 1300px) {
+            ul {
+                left: 900px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            ul {
+                left: 800px;
+            }
+        }
+        @media (max-width: 1100px) {
+            ul {
+                left: 700px;
+            }
+        }
+        @media (max-width: 1000px) {
+            ul {
+                left: 650px;
+            }
+        }
+        @media (max-width: 992px) {
+            ul {
+                left: 600px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            ul {
+                left: 400px;
+            }
+            main {
+                width: 100%;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            ul {
+                left: 50px;
+                position: relative;
+                text-align: center;
+            }
+            li {
+                width: auto;
+                display: inline-block;
+                margin: 5px;
+            }
+            section {
+                padding: 10px;
+            }
+        }
+   

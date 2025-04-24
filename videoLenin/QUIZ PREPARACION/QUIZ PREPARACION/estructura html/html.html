@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maquetación con Grid</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-areas:
+        "header header"
+        "nav nav"
+        "section aside"
+        "section aside"
+        "footer footer";
+      grid-template-columns: 2fr 1fr;
+      gap: 10px;
+      padding: 10px;
+      min-height: 100vh;
+    }
+
+    header {
+      grid-area: header;
+      background-color: #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav {
+      grid-area: nav;
+      background-color: #ddd;
+      padding: 15px;
+    }
+
+    section {
+      grid-area: section;
+      background-color: #eee;
+      padding: 15px;
+    }
+
+    article {
+      background-color: #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    aside {
+      grid-area: aside;
+      background-color: #bbb;
+      padding: 15px;
+    }
+
+    footer {
+      grid-area: footer;
+      background-color: #ccc;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-container">
+    <header>
+      <h1>Encabezado Principal</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Servicios</a></li>
+        <li><a href="#">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <section>
+      <article>
+        <h2>Artículo 1</h2>
+        <p>Contenido del primer artículo.</p>
+      </article>
+      <article>
+        <h2>Artículo 2</h2>
+        <p>Contenido del segundo artículo.</p>
+      </article>
+    </section>
+
+    <aside>
+      <h2>Aside</h2>
+      <p>Contenido extra.</p>
+    </aside>
+
+    <footer>
+      <p>&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+  </div>
+
+</body>
+</html>

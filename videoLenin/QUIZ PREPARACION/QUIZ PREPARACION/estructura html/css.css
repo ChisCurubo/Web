@@ -1,0 +1,57 @@
+body {
+    margin: 0; /* Elimina el margen por defecto del navegador */
+    font-family: Arial, sans-serif; /* Aplica una fuente limpia y moderna */
+  }
+  
+  .grid-container {
+    display: grid; /* Activa el sistema de cuadrícula (Grid Layout) */
+    grid-template-areas: /* Define las áreas de la cuadrícula */
+      "header header"
+      "nav nav"
+      "section aside"
+      "section aside"
+      "footer footer";
+    grid-template-columns: 2fr 1fr; /* Define dos columnas: la primera más ancha que la segunda */
+    gap: 10px; /* Espacio entre las filas y columnas */
+    padding: 10px; /* Espacio interno en todo el contenedor */
+    min-height: 100vh; /* Altura mínima igual al alto de la pantalla */
+  }
+  
+  header {
+    grid-area: header; /* Asocia este bloque con el área "header" del grid */
+    background-color: #ccc; /* Color de fondo gris claro */
+    padding: 20px; /* Espaciado interno del header */
+    text-align: center; /* Centra el texto horizontalmente */
+  }
+  
+  nav {
+    grid-area: nav; /* Asocia este bloque con el área "nav" */
+    background-color: #ddd; /* Color de fondo un poco más claro */
+    padding: 15px; /* Espaciado interno en el nav */
+  }
+  
+  section {
+    grid-area: section; /* Asocia este bloque con el área "section" */
+    background-color: #eee; /* Color de fondo aún más claro */
+    padding: 15px; /* Espaciado interno en la sección */
+  }
+  
+  article {
+    background-color: #ddd; /* Color de fondo para cada artículo */
+    padding: 10px; /* Espaciado interno en los artículos */
+    margin-bottom: 10px; /* Espacio debajo de cada artículo */
+  }
+  
+  aside {
+    grid-area: aside; /* Asocia este bloque con el área "aside" */
+    background-color: #bbb; /* Color de fondo para el contenido adicional */
+    padding: 15px; /* Espaciado interno en el aside */
+  }
+  
+  footer {
+    grid-area: footer; /* Asocia este bloque con el área "footer" */
+    background-color: #ccc; /* Color de fondo igual al header */
+    padding: 20px; /* Espaciado interno en el footer */
+    text-align: center; /* Centra el texto dentro del footer */
+  }
+  

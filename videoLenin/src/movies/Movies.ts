@@ -21,6 +21,11 @@ export default class Movies {
   readonly getMoviesHTML = (): HTMLElement => {
     return this.view.getMoviesHTML()
   }
+
+  readonly getPaginatorHTML = (): HTMLElement => {
+    return this.view.getPaginatorHTML()
+  }
+
   readonly getMoviesModel = (): MoviesModel => {
     return this.model
   }
@@ -32,7 +37,6 @@ export default class Movies {
   readonly getToPreviousPage = (): void => {
     this.controller.previousPage()
   }
-  
 
   readonly searchMovies = async (search: string): Promise<void> => {
     await this.controller.searchMovies(search)

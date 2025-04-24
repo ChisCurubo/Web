@@ -1,0 +1,82 @@
+[
+    {
+      "id": 1,
+      "nombre": "Real Madrid",
+      "pais": "España",
+      "añoFundacion": 1902,
+      "precio": 6000,
+      "presidente": "Florentino Pérez"
+    },
+    {
+      "id": 2,
+      "nombre": "Manchester United",
+      "pais": "Inglaterra",
+      "añoFundacion": 1878,
+      "precio": 5500,
+      "presidente": "Joel Glazer"
+    },
+    {
+      "id": 3,
+      "nombre": "Bayern Múnich",
+      "pais": "Alemania",
+      "añoFundacion": 1900,
+      "precio": 4300,
+      "presidente": "Herbert Hainer"
+    },
+    {
+      "id": 4,
+      "nombre": "Paris Saint-Germain",
+      "pais": "Francia",
+      "añoFundacion": 1970,
+      "precio": 3800,
+      "presidente": "Nasser Al-Khelaïfi"
+    },
+    {
+      "id": 5,
+      "nombre": "Juventus",
+      "pais": "Italia",
+      "añoFundacion": 1897,
+      "precio": 2500,
+      "presidente": "Gianluca Ferrero"
+    },
+    {
+      "id": 6,
+      "nombre": "Barcelona",
+      "pais": "España",
+      "añoFundacion": 1899,
+      "precio": 5700,
+      "presidente": "Joan Laporta"
+    },
+    {
+      "id": 7,
+      "nombre": "Liverpool",
+      "pais": "Inglaterra",
+      "añoFundacion": 1892,
+      "precio": 4600,
+      "presidente": "Tom Werner"
+    },
+    {
+      "id": 8,
+      "nombre": "Ajax",
+      "pais": "Países Bajos",
+      "añoFundacion": 1900,
+      "precio": 450,
+      "presidente": "Frank Eijken"
+    },
+    {
+      "id": 9,
+      "nombre": "Boca Juniors",
+      "pais": "Argentina",
+      "añoFundacion": 1905,
+      "precio": 400,
+      "presidente": "Juan Román Riquelme"
+    },
+    {
+      "id": 10,
+      "nombre": "Santos",
+      "pais": "Brasil",
+      "añoFundacion": 1912,
+      "precio": 300,
+      "presidente": "Marcelo Teixeira"
+    }
+  ]

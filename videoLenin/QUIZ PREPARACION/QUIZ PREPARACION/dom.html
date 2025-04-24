@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demostración DOM con JavaScript</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .destacado { background-color: yellow; font-weight: bold; }
+        .oculto { display: none; }
+        #contenedor-principal { border: 1px solid #ccc; padding: 15px; margin-top: 10px; }
+        .caja { border: 1px dashed blue; padding: 10px; margin: 5px; }
+        button { margin: 5px; padding: 8px 12px; cursor: pointer; }
+        ul { list-style: circle; }
+        li { margin-bottom: 5px; }
+        img { max-width: 100px; display: block; margin-top: 10px; }
+        form { border: 1px solid green; padding: 10px; margin-top: 15px; }
+        label { margin-right: 5px; }
+        input[type="text"] { margin-right: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>Manipulación del DOM con JavaScript</h1>
+
+    <p id="parrafo-intro" class="texto-normal">
+        Este es un párrafo introductorio. Contiene <strong>texto importante</strong> y un <a href="#" id="enlace-demo">enlace de demostración</a>.
+    </p>
+
+    <div id="contenedor-principal">
+        <h2>Contenedor Principal</h2>
+        <p>Este contenedor tiene varios elementos hijos.</p>
+        <ul id="lista-items">
+            <li class="item">Primer ítem</li>
+            <li class="item destacado">Segundo ítem (destacado)</li>
+            <li class="item">Tercer ítem</li>
+        </ul>
+        <button id="btn-agregar">Agregar Ítem</button>
+        <button id="btn-cambiar-estilo">Cambiar Estilo</button>
+        <div data-info="caja-uno" class="caja">Caja 1 con atributo de datos.</div>
+        <div data-info="caja-dos" class="caja">Caja 2</div>
+    </div>
+
+    <img id="imagen-demo" src="https://via.placeholder.com/100" alt="Imagen de ejemplo">
+
+    <form id="mi-formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre_usuario" value="Valor inicial">
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="salida">
+        </div>
+
+    <script>
+        // -----------------------------------------------------------------------------
+        // INICIO DEL CÓDIGO JAVASCRIPT PARA MANIPULACIÓN DEL DOM
+        // -----------------------------------------------------------------------------
+        console.log("--- Script de Demostración DOM Iniciado ---");
+
+        // Para facilitar la visualización en la página, creamos una función helper
+        function mostrarSalida(mensaje) {
+            const salidaDiv = document.getElementById('salida');
+            if (salidaDiv) {
+                const p = document.createElement('p');
+                p.textContent = mensaje;
+                salidaDiv.appendChild(p);
+                console.log(mensaje); // También en consola
+            } else {
+                console.log("Elemento #salida no encontrado. Mensaje: " + mensaje);
+            }
+        }
+
+        // =============================================================================
+        // SECCIÓN 1: ACCESO AL DOCUMENTO Y PROPIEDADES GLOBALES
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 1: Propiedades Globales del Documento ---");
+
+        // document: Es el objeto principal que representa toda la página HTML cargada en el navegador.
+        // Es el punto de entrada para acceder y manipular cualquier parte del DOM.
+        mostrarSalida(`Tipo de objeto 'document': ${typeof document}`); // object
+
+        // document.documentElement: Representa el elemento raíz del documento HTML (la etiqueta <html>).
+        // Útil para obtener información sobre todo el documento HTML.
+        const rootElement = document.documentElement;
+        mostrarSalida(`Elemento raíz (document.documentElement.tagName): ${rootElement.tagName}`); // HTML
+
+        // document.head: Accede al elemento <head> del documento.
+        // Contiene metadatos, enlaces a CSS, scripts, etc.
+        const headElement = document.head;
+        mostrarSalida(`Elemento <head> (document.head.tagName): ${headElement.tagName}`); // HEAD
+
+        // document.body: Accede al elemento <body> del documento.
+        // Es el contenedor principal del contenido visible de la página.
+        const bodyElement = document.body;
+        mostrarSalida(`Elemento <body> (document.body.tagName): ${bodyElement.tagName}`); // BODY
+
+        // document.title: Permite obtener o establecer el título de la página (el texto en la pestaña del navegador).
+        let tituloActual = document.title;
+        mostrarSalida(`Título actual (document.title): ${tituloActual}`);
+        // Cambiamos el título
+        document.title = "DOM Demo - Título Cambiado";
+        mostrarSalida(`Nuevo título (document.title): ${document.title}`);
+        // Restauramos el título original
+        document.title = tituloActual;
+
+        // document.URL: Devuelve la URL completa de la página actual. Es de solo lectura.
+        const currentURL = document.URL;
+        mostrarSalida(`URL actual (document.URL): ${currentURL}`);
+
+        // document.characterSet: Devuelve la codificación de caracteres utilizada por el documento (ej: "UTF-8").
+        const charSet = document.characterSet;
+        mostrarSalida(`Codificación de caracteres (document.characterSet): ${charSet}`);
+
+        // document.contentType: Devuelve el tipo MIME del documento (ej: "text/html").
+        const contentType = document.contentType;
+        mostrarSalida(`Tipo de contenido (document.contentType): ${contentType}`);
+
+        // document.doctype: Devuelve la Declaración de Tipo de Documento (DTD) asociada con el documento actual.
+        // Puede ser null si no existe.
+        const doctype = document.doctype;
+        if (doctype) {
+            mostrarSalida(`DOCTYPE (document.doctype.name): ${doctype.name}`); // html
+        } else {
+            mostrarSalida("El documento no tiene DOCTYPE definido.");
+        }
+
+        // document.forms: Devuelve una HTMLCollection (similar a un array) de todos los formularios (<form>) en la página.
+        const formsCollection = document.forms;
+        mostrarSalida(`Número de formularios (document.forms.length): ${formsCollection.length}`);
+        if (formsCollection.length > 0) {
+            // Se puede acceder por índice o por id/name del formulario
+            mostrarSalida(`ID del primer formulario (document.forms[0].id): ${formsCollection[0].id}`);
+            mostrarSalida(`ID del formulario por nombre (document.forms['mi-formulario'].id): ${document.forms['mi-formulario'].id}`);
+        }
+
+        // document.images: Devuelve una HTMLCollection de todas las imágenes (<img>) en la página.
+        const imagesCollection = document.images;
+        mostrarSalida(`Número de imágenes (document.images.length): ${imagesCollection.length}`);
+        if (imagesCollection.length > 0) {
+            mostrarSalida(`ID de la primera imagen (document.images[0].id): ${imagesCollection[0].id}`);
+            mostrarSalida(`Fuente (src) de la primera imagen: ${imagesCollection[0].src}`);
+        }
+
+        // document.links: Devuelve una HTMLCollection de todos los enlaces (<a> con atributo href) en la página.
+        const linksCollection = document.links;
+        mostrarSalida(`Número de enlaces (document.links.length): ${linksCollection.length}`);
+        if (linksCollection.length > 0) {
+            mostrarSalida(`Texto del primer enlace (document.links[0].textContent): ${linksCollection[0].textContent}`);
+            mostrarSalida(`Href del primer enlace (document.links[0].href): ${linksCollection[0].href}`);
+        }
+
+        // document.scripts: Devuelve una HTMLCollection de todos los scripts (<script>) en la página.
+        const scriptsCollection = document.scripts;
+        mostrarSalida(`Número de scripts (document.scripts.length): ${scriptsCollection.length}`);
+        if (scriptsCollection.length > 0) {
+            // Acceder al src del script si es externo, o a su contenido si es inline
+             mostrarSalida(`Fuente (src) del primer script (si existe): ${scriptsCollection[0].src || 'Script inline'}`);
+        }
+
+        // document.readyState: Indica el estado de carga del documento. Puede ser:
+        // 'loading': El documento todavía se está cargando.
+        // 'interactive': El documento ha terminado de cargarse y parsearse, pero los sub-recursos (imágenes, CSS) pueden estar cargándose. El DOM está listo.
+        // 'complete': El documento y todos los sub-recursos han terminado de cargarse. El evento 'load' está a punto de dispararse.
+        mostrarSalida(`Estado de carga del documento (document.readyState): ${document.readyState}`);
+
+
+        // =============================================================================
+        // SECCIÓN 2: SELECCIÓN DE ELEMENTOS DEL DOM
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 2: Selección de Elementos ---");
+
+        // -----------------------------------------------------
+        // Selección por ID
+        // -----------------------------------------------------
+        // document.getElementById(id): Devuelve una referencia al *único* elemento que tiene el ID especificado.
+        // Si no se encuentra ningún elemento con ese ID, devuelve null. Los IDs deben ser únicos en la página.
+        const parrafoIntro = document.getElementById('parrafo-intro');
+        if (parrafoIntro) {
+            mostrarSalida(`Elemento por ID 'parrafo-intro' encontrado. TagName: ${parrafoIntro.tagName}`); // P
+        } else {
+            mostrarSalida("Elemento con ID 'parrafo-intro' no encontrado.");
+        }
+
+        const contenedor = document.getElementById('contenedor-principal');
+        if (contenedor) {
+            mostrarSalida(`Elemento por ID 'contenedor-principal' encontrado. TagName: ${contenedor.tagName}`); // DIV
+        } else {
+            mostrarSalida("Elemento con ID 'contenedor-principal' no encontrado.");
+        }
+
+        // Intentar obtener un ID inexistente
+        const idInexistente = document.getElementById('id-que-no-existe');
+        mostrarSalida(`Resultado de buscar ID inexistente: ${idInexistente}`); // null
+
+        // -----------------------------------------------------
+        // Selección por Nombre de Etiqueta (TagName)
+        // -----------------------------------------------------
+        // document.getElementsByTagName(tagName): Devuelve una HTMLCollection (lista viva) de todos los elementos
+        // que coinciden con el nombre de etiqueta especificado.
+        // La colección está "viva", lo que significa que se actualiza automáticamente si se añaden o eliminan elementos del DOM que coincidan.
+        const todosLosParrafos = document.getElementsByTagName('p');
+        mostrarSalida(`Número de elementos <p> encontrados (getElementsByTagName): ${todosLosParrafos.length}`);
+        // Se puede iterar sobre la HTMLCollection
+        for (let i = 0; i < todosLosParrafos.length; i++) {
+            mostrarSalida(`  - Párrafo ${i + 1}: Primeras palabras: ${todosLosParrafos[i].textContent.substring(0, 20)}...`);
+        }
+
+        const todosLosLi = document.getElementsByTagName('li');
+        mostrarSalida(`Número de elementos <li> encontrados (getElementsByTagName): ${todosLosLi.length}`);
+
+        // Se puede aplicar también desde un elemento padre para buscar dentro de él
+        if (contenedor) {
+            const parrafosDentroContenedor = contenedor.getElementsByTagName('p');
+            mostrarSalida(`Número de <p> dentro de #contenedor-principal: ${parrafosDentroContenedor.length}`);
+        }
+
+        // -----------------------------------------------------
+        // Selección por Nombre de Clase (ClassName)
+        // -----------------------------------------------------
+        // document.getElementsByClassName(className): Devuelve una HTMLCollection (lista viva) de todos los elementos
+        // que tienen la clase especificada. Se pueden especificar múltiples clases separadas por espacios,
+        // pero buscará elementos que tengan *todas* esas clases.
+        const itemsDeLista = document.getElementsByClassName('item');
+        mostrarSalida(`Número de elementos con clase 'item' (getElementsByClassName): ${itemsDeLista.length}`);
+        for (let i = 0; i < itemsDeLista.length; i++) {
+            mostrarSalida(`  - Item ${i + 1} (clase 'item'): ${itemsDeLista[i].textContent}`);
+        }
+
+        const itemsDestacados = document.getElementsByClassName('destacado');
+        mostrarSalida(`Número de elementos con clase 'destacado': ${itemsDestacados.length}`);
+        if (itemsDestacados.length > 0) {
+            mostrarSalida(`   Texto del primer destacado: ${itemsDestacados[0].textContent}`);
+        }
+
+        // Buscar elementos con múltiples clases (ej: 'item' y 'destacado')
+        // Nota: getElementsByClassName busca intersección si se pasan varias clases separadas por espacio.
+        const itemsDestacadosConClaseItem = document.getElementsByClassName('item destacado');
+        mostrarSalida(`Número de elementos con clases 'item' y 'destacado': ${itemsDestacadosConClaseItem.length}`);
+
+        // También se puede aplicar desde un elemento padre
+        if (contenedor) {
+            const cajasDentroContenedor = contenedor.getElementsByClassName('caja');
+            mostrarSalida(`Número de elementos con clase 'caja' dentro de #contenedor-principal: ${cajasDentroContenedor.length}`);
+        }
+
+        // -----------------------------------------------------
+        // Selección por Selector CSS (querySelector y querySelectorAll)
+        // -----------------------------------------------------
+        // document.querySelector(selector): Devuelve el *primer* elemento del documento que coincide
+        // con el selector CSS especificado. Si no hay coincidencias, devuelve null. Es muy potente.
+        const primerItem = document.querySelector('li.item'); // Primer <li> con clase 'item'
+        if (primerItem) {
+            mostrarSalida(`Primer elemento encontrado con querySelector('li.item'): ${primerItem.textContent}`);
+        }
+
+        const enlaceDemo = document.querySelector('#parrafo-intro a'); // Enlace dentro de #parrafo-intro
+        if (enlaceDemo) {
+            mostrarSalida(`Enlace encontrado con querySelector('#parrafo-intro a'): ID=${enlaceDemo.id}, Texto=${enlaceDemo.textContent}`);
+        }
+
+        // Buscar un elemento por atributo data
+        const cajaUno = document.querySelector('div[data-info="caja-uno"]');
+        if (cajaUno) {
+            mostrarSalida(`Elemento encontrado por atributo data con querySelector: ${cajaUno.textContent}`);
+        }
+
+        // querySelector también se puede llamar desde un elemento
+        if (contenedor) {
+            const primerCajaEnContenedor = contenedor.querySelector('.caja');
+            mostrarSalida(`Primera .caja dentro de #contenedor-principal (querySelector): ${primerCajaEnContenedor.textContent}`);
+        }
+
+        // document.querySelectorAll(selector): Devuelve una NodeList (lista estática) de *todos* los elementos
+        // que coinciden con el selector CSS especificado. Si no hay coincidencias, devuelve una NodeList vacía.
+        // A diferencia de HTMLCollection, NodeList no siempre es "viva" (depende de cómo se obtuvo, pero la de querySelectorAll es estática).
+        // NodeList tiene métodos útiles como forEach.
+        const todosLosItemsNodeList = document.querySelectorAll('#lista-items li.item');
+        mostrarSalida(`Número de elementos encontrados con querySelectorAll('#lista-items li.item'): ${todosLosItemsNodeList.length}`);
+
+        // Iterar usando forEach (más moderno que el bucle for con índice)
+        mostrarSalida("Iterando NodeList con forEach:");
+        todosLosItemsNodeList.forEach((item, index) => {
+            mostrarSalida(`  - Item ${index + 1}: ${item.textContent}`);
+        });
+
+        // Seleccionar todos los elementos con clase 'caja' dentro del contenedor principal
+        if (contenedor) {
+            const todasLasCajasNodeList = contenedor.querySelectorAll('.caja');
+            mostrarSalida(`Número de .caja dentro de #contenedor-principal (querySelectorAll): ${todasLasCajasNodeList.length}`);
+            todasLasCajasNodeList.forEach((caja, i) => {
+                 mostrarSalida(`  - Caja ${i+1} Texto: ${caja.textContent}`);
+            });
+        }
+
+
+        // =============================================================================
+        // SECCIÓN 3: NAVEGACIÓN POR EL ÁRBOL DOM
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 3: Navegación por el Árbol DOM ---");
+
+        const listaItems = document.getElementById('lista-items'); // Nuestro <ul> de referencia
+
+        if (listaItems) {
+            // -----------------------------------------------------
+            // Propiedades de Padre (Parent)
+            // -----------------------------------------------------
+            // element.parentNode: Devuelve el nodo padre directo de un elemento.
+            // Puede ser otro elemento, el document, o un documentFragment.
+            const padreDeLista = listaItems.parentNode;
+            mostrarSalida(`Nodo padre de #lista-items (parentNode): ID=${padreDeLista.id}, TagName=${padreDeLista.tagName}`); // #contenedor-principal, DIV
+
+            // element.parentElement: Similar a parentNode, pero *siempre* devuelve un elemento HTML padre.
+            // Devuelve null si el padre no es un elemento (ej: si el padre es `document`).
+            // En la mayoría de los casos prácticos, parentNode y parentElement dan el mismo resultado.
+            const elementoPadreDeLista = listaItems.parentElement;
+            mostrarSalida(`Elemento padre de #lista-items (parentElement): ID=${elementoPadreDeLista.id}, TagName=${elementoPadreDeLista.tagName}`); // #contenedor-principal, DIV
+
+            // Ejemplo diferencia: document.documentElement.parentNode es #document
+            mostrarSalida(`parentNode de <html>: ${document.documentElement.parentNode.nodeName}`); // #document
+            // Ejemplo diferencia: document.documentElement.parentElement es null porque #document no es un elemento
+            mostrarSalida(`parentElement de <html>: ${document.documentElement.parentElement}`); // null
+
+            // -----------------------------------------------------
+            // Propiedades de Hijos (Children/ChildNodes)
+            // -----------------------------------------------------
+            // element.childNodes: Devuelve una NodeList (viva) de *todos* los nodos hijos directos,
+            // incluyendo nodos de texto (espacios en blanco, saltos de línea) y nodos de comentario.
+            const todosLosNodosHijos = listaItems.childNodes;
+            mostrarSalida(`Número de nodos hijos de #lista-items (childNodes): ${todosLosNodosHijos.length}`);
+            mostrarSalida("Listando childNodes (incluye texto y comentarios):");
+            todosLosNodosHijos.forEach((nodo, index) => {
+                let tipoNodo = "";
+                if (nodo.nodeType === Node.ELEMENT_NODE) tipoNodo = "Elemento"; // 1
+                else if (nodo.nodeType === Node.TEXT_NODE) tipoNodo = "Texto";   // 3
+                else if (nodo.nodeType === Node.COMMENT_NODE) tipoNodo = "Comentario"; // 8
+                else tipoNodo = `Otro (${nodo.nodeType})`;
+                // Trim para visualizar mejor los nodos de texto vacíos
+                mostrarSalida(`  - Nodo ${index}: Tipo=${tipoNodo}, Nombre=${nodo.nodeName}, Contenido (aprox)=${(nodo.textContent || '').trim()}`);
+            });
+            // Nota: Los espacios y saltos de línea entre etiquetas <li> cuentan como nodos de texto.
+
+            // element.children: Devuelve una HTMLCollection (viva) que contiene *solo* los nodos hijos que son elementos HTML.
+            // Es generalmente más útil que childNodes cuando solo interesan las etiquetas HTML hijas.
+            const elementosHijos = listaItems.children;
+            mostrarSalida(`Número de elementos hijos de #lista-items (children): ${elementosHijos.length}`);
+            mostrarSalida("Listando children (solo elementos):");
+            // Iteramos la HTMLCollection con un bucle for normal
+            for (let i = 0; i < elementosHijos.length; i++) {
+                mostrarSalida(`  - Elemento ${i}: TagName=${elementosHijos[i].tagName}, Texto=${elementosHijos[i].textContent}`);
+            }
+
+            // element.firstChild: Devuelve el *primer nodo hijo* (puede ser texto, comentario o elemento).
+            const primerNodoHijo = listaItems.firstChild;
+             mostrarSalida(`Primer nodo hijo (firstChild): Tipo=${primerNodoHijo.nodeType}, Nombre=${primerNodoHijo.nodeName}, Contenido=${(primerNodoHijo.textContent || '').trim()}`); // Probablemente un nodo de texto
+
+            // element.lastChild: Devuelve el *último nodo hijo* (puede ser texto, comentario o elemento).
+            const ultimoNodoHijo = listaItems.lastChild;
+            mostrarSalida(`Último nodo hijo (lastChild): Tipo=${ultimoNodoHijo.nodeType}, Nombre=${ultimoNodoHijo.nodeName}, Contenido=${(ultimoNodoHijo.textContent || '').trim()}`); // Probablemente un nodo de texto
+
+            // element.firstElementChild: Devuelve el *primer hijo que es un elemento HTML*. Null si no hay hijos elementos.
+            const primerElementoHijo = listaItems.firstElementChild;
+            if (primerElementoHijo) {
+                mostrarSalida(`Primer elemento hijo (firstElementChild): TagName=${primerElementoHijo.tagName}, Texto=${primerElementoHijo.textContent}`); // El primer <li>
+            }
+
+            // element.lastElementChild: Devuelve el *último hijo que es un elemento HTML*. Null si no hay hijos elementos.
+            const ultimoElementoHijo = listaItems.lastElementChild;
+            if (ultimoElementoHijo) {
+                mostrarSalida(`Último elemento hijo (lastElementChild): TagName=${ultimoElementoHijo.tagName}, Texto=${ultimoElementoHijo.textContent}`); // El último <li>
+            }
+
+            // element.hasChildNodes(): Devuelve true si el elemento tiene algún nodo hijo (incluyendo texto/comentarios), false si no.
+            mostrarSalida(`¿#lista-items tiene nodos hijos? (hasChildNodes): ${listaItems.hasChildNodes()}`); // true
+
+
+            // -----------------------------------------------------
+            // Propiedades de Hermanos (Siblings)
+            // -----------------------------------------------------
+            const segundoItem = document.querySelector('li.destacado'); // Nuestro <li> destacado
+
+            if (segundoItem) {
+                // element.previousSibling: Devuelve el nodo hermano *anterior* inmediato (puede ser texto, comentario o elemento).
+                const hermanoAnteriorNodo = segundoItem.previousSibling;
+                mostrarSalida(`Nodo hermano anterior a 'Segundo ítem' (previousSibling): Tipo=${hermanoAnteriorNodo.nodeType}, Nombre=${hermanoAnteriorNodo.nodeName}, Contenido=${(hermanoAnteriorNodo.textContent || '').trim()}`); // Probablemente un nodo de texto
+
+                // element.nextSibling: Devuelve el nodo hermano *siguiente* inmediato (puede ser texto, comentario o elemento).
+                const hermanoSiguienteNodo = segundoItem.nextSibling;
+                 mostrarSalida(`Nodo hermano siguiente a 'Segundo ítem' (nextSibling): Tipo=${hermanoSiguienteNodo.nodeType}, Nombre=${hermanoSiguienteNodo.nodeName}, Contenido=${(hermanoSiguienteNodo.textContent || '').trim()}`); // Probablemente un nodo de texto (o comentario si está justo después)
+
+                // element.previousElementSibling: Devuelve el elemento hermano *anterior* inmediato. Null si no existe.
+                const hermanoAnteriorElemento = segundoItem.previousElementSibling;
+                if (hermanoAnteriorElemento) {
+                    mostrarSalida(`Elemento hermano anterior (previousElementSibling): TagName=${hermanoAnteriorElemento.tagName}, Texto=${hermanoAnteriorElemento.textContent}`); // El primer <li>
+                } else {
+                    mostrarSalida("'Segundo ítem' no tiene elemento hermano anterior.");
+                }
+
+                // element.nextElementSibling: Devuelve el elemento hermano *siguiente* inmediato. Null si no existe.
+                const hermanoSiguienteElemento = segundoItem.nextElementSibling;
+                 if (hermanoSiguienteElemento) {
+                    // ¡Ojo! El siguiente nodo podría ser el comentario HTML. nextElementSibling lo saltará.
+                     mostrarSalida(`Elemento hermano siguiente (nextElementSibling): TagName=${hermanoSiguienteElemento.tagName}, Texto=${hermanoSiguienteElemento.textContent}`); // El tercer <li>
+                 } else {
+                     mostrarSalida("'Segundo ítem' no tiene elemento hermano siguiente.");
+                 }
+            }
+        } else {
+             mostrarSalida("Elemento #lista-items no encontrado para pruebas de navegación.");
+        }
+
+
+        // =============================================================================
+        // SECCIÓN 4: MANIPULACIÓN DE CONTENIDO Y ATRIBUTOS
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 4: Manipulación de Contenido y Atributos ---");
+
+        const parrafo = document.getElementById('parrafo-intro');
+        const enlace = document.getElementById('enlace-demo');
+        const imagen = document.getElementById('imagen-demo');
+        const cajaData = document.querySelector('.caja[data-info="caja-uno"]');
+
+        if (parrafo && enlace && imagen && cajaData) {
+            // -----------------------------------------------------
+            // Manipulación de Contenido de Texto y HTML
+            // -----------------------------------------------------
+            // element.innerHTML: Obtiene o establece el contenido HTML *interno* de un elemento.
+            // ¡Cuidado! Usar innerHTML con contenido de usuario no confiable puede generar vulnerabilidades XSS.
+            // Es útil para insertar bloques complejos de HTML.
+            let contenidoHTMLParrafo = parrafo.innerHTML;
+            mostrarSalida(`Contenido HTML de #parrafo-intro (innerHTML):\n${contenidoHTMLParrafo}`);
+            // Cambiar el innerHTML (ejemplo simple)
+            // parrafo.innerHTML = "Este párrafo ha sido <strong>completamente reemplazado</strong>.";
+            // mostrarSalida(`Contenido HTML modificado: ${parrafo.innerHTML}`);
+            // Restaurar (mejor recargar la página para ver efecto original)
+
+            // element.textContent: Obtiene o establece el contenido de *texto* de un elemento y todos sus descendientes.
+            // Ignora las etiquetas HTML y devuelve solo el texto plano. Es más seguro y a menudo más rápido que innerHTML para texto.
+            let contenidoTextoParrafo = parrafo.textContent;
+            mostrarSalida(`Contenido de Texto de #parrafo-intro (textContent): ${contenidoTextoParrafo}`);
+            // Cambiar el textContent
+            // enlace.textContent = "Nuevo Texto del Enlace";
+            // mostrarSalida(`Nuevo texto del enlace (textContent): ${enlace.textContent}`);
+            // Restaurar
+
+            // element.innerText: Similar a textContent, pero con algunas diferencias importantes:
+            // 1. Tiene en cuenta el estilo CSS (no devolverá texto de elementos ocultos con display:none).
+            // 2. Intenta respetar los saltos de línea visuales.
+            // 3. Puede ser más costoso computacionalmente porque requiere calcular el layout.
+            // textContent es generalmente preferido a menos que necesites específicamente el comportamiento de innerText.
+            let contenidoInnerTextParrafo = parrafo.innerText;
+             mostrarSalida(`Contenido de Texto (visible) de #parrafo-intro (innerText): ${contenidoInnerTextParrafo}`);
+             // Ocultemos el enlace temporalmente para ver la diferencia
+             // enlace.style.display = 'none';
+             // mostrarSalida(`innerText después de ocultar enlace: ${parrafo.innerText}`); // El texto del enlace no debería aparecer
+             // mostrarSalida(`textContent después de ocultar enlace: ${parrafo.textContent}`); // El texto del enlace SÍ aparece
+             // enlace.style.display = ''; // Restaurar visibilidad
+
+            // element.outerHTML: Obtiene o establece el HTML del elemento *incluyendo* el propio elemento.
+            // Si se establece, reemplaza el elemento completo en el DOM.
+            let outerHTMLParrafo = parrafo.outerHTML;
+            mostrarSalida(`HTML externo de #parrafo-intro (outerHTML):\n${outerHTMLParrafo.substring(0, 100)}...`); // Muestra el inicio
+            // Si hiciéramos: parrafo.outerHTML = '<div>Reemplazo total</div>'; el párrafo desaparecería.
+
+            // -----------------------------------------------------
+            // Manipulación de Atributos Estándar
+            // -----------------------------------------------------
+            // element.getAttribute(attributeName): Devuelve el valor del atributo especificado como una cadena.
+            // Devuelve null o una cadena vacía si el atributo no existe.
+            const hrefEnlace = enlace.getAttribute('href');
+            mostrarSalida(`Valor del atributo 'href' del enlace (getAttribute): ${hrefEnlace}`); // #
+            const altImagen = imagen.getAttribute('alt');
+            mostrarSalida(`Valor del atributo 'alt' de la imagen (getAttribute): ${altImagen}`);
+            const idParrafo = parrafo.getAttribute('id');
+            mostrarSalida(`Valor del atributo 'id' del párrafo (getAttribute): ${idParrafo}`); // parrafo-intro
+            // Atributo inexistente
+            const atributoInexistente = parrafo.getAttribute('data-inexistente');
+            mostrarSalida(`Valor de 'data-inexistente' (getAttribute): ${atributoInexistente}`); // null
+
+            // element.setAttribute(attributeName, value): Establece el valor de un atributo en un elemento.
+            // Si el atributo ya existe, su valor se actualiza. Si no existe, se crea.
+            enlace.setAttribute('href', 'https://www.ejemplo.com');
+            enlace.setAttribute('target', '_blank'); // Añade un nuevo atributo
+            mostrarSalida(`Nuevo 'href' del enlace (setAttribute): ${enlace.getAttribute('href')}`);
+            mostrarSalida(`Nuevo 'target' del enlace (setAttribute): ${enlace.getAttribute('target')}`);
+
+            // element.removeAttribute(attributeName): Elimina un atributo de un elemento.
+            enlace.removeAttribute('target');
+            mostrarSalida(`¿El enlace tiene atributo 'target' después de removeAttribute? ${enlace.hasAttribute('target')}`); // false
+
+            // element.hasAttribute(attributeName): Devuelve true si el elemento tiene el atributo especificado, false si no.
+            mostrarSalida(`¿El párrafo tiene atributo 'id'? (hasAttribute): ${parrafo.hasAttribute('id')}`); // true
+            mostrarSalida(`¿El párrafo tiene atributo 'style'? (hasAttribute): ${parrafo.hasAttribute('style')}`); // false (inicialmente)
+
+            // Acceso directo a atributos comunes (propiedades):
+            // Muchos atributos comunes (id, className, src, href, alt, title, value, etc.)
+            // tienen propiedades correspondientes directamente en el objeto elemento.
+            // A menudo es más conveniente que usar get/setAttribute.
+            mostrarSalida(`Acceso directo a ID: ${parrafo.id}`); // parrafo-intro
+            mostrarSalida(`Acceso directo a className: ${parrafo.className}`); // texto-normal
+            mostrarSalida(`Acceso directo a src imagen: ${imagen.src}`);
+            mostrarSalida(`Acceso directo a href enlace: ${enlace.href}`); // Devuelve la URL absoluta resuelta
+
+            // Modificar mediante propiedad directa:
+            imagen.alt = "Nueva descripción de imagen";
+            mostrarSalida(`Nuevo 'alt' de imagen por propiedad: ${imagen.alt}`);
+            parrafo.className = 'texto-normal modificado'; // Reemplaza todas las clases
+            mostrarSalida(`Nuevas clases del párrafo por propiedad 'className': ${parrafo.className}`);
+            parrafo.className = 'texto-normal'; // Restaurar
+
+            // -----------------------------------------------------
+            // Manipulación de Atributos de Datos (data-*)
+            // -----------------------------------------------------
+            // Los atributos data-* permiten almacenar información personalizada privada en elementos HTML.
+            // Se accede a ellos a través de la propiedad `dataset`.
+            // element.dataset: Devuelve un objeto DOMStringMap con los atributos data-* del elemento.
+            // Los nombres de los atributos se convierten a camelCase (ej: data-info -> info).
+            const dataAttributesCaja = cajaData.dataset;
+            mostrarSalida(`Objeto dataset de la caja: ${JSON.stringify(dataAttributesCaja)}`); // {"info": "caja-uno"}
+            mostrarSalida(`Valor de data-info accedido por dataset: ${cajaData.dataset.info}`); // caja-uno
+
+            // Añadir o modificar atributos data-*
+            cajaData.dataset.nuevoAtributo = "Valor Nuevo";
+            cajaData.dataset.info = "Información Actualizada";
+            mostrarSalida(`Dataset actualizado: ${JSON.stringify(cajaData.dataset)}`);
+            mostrarSalida(`Verificando con getAttribute('data-nuevo-atributo'): ${cajaData.getAttribute('data-nuevo-atributo')}`); // Valor Nuevo
+
+            // Eliminar atributos data-*
+            delete cajaData.dataset.nuevoAtributo;
+            mostrarSalida(`Dataset después de eliminar 'nuevoAtributo': ${JSON.stringify(cajaData.dataset)}`);
+            mostrarSalida(`¿Tiene data-nuevo-atributo ahora? ${cajaData.hasAttribute('data-nuevo-atributo')}`); // false
+
+        } else {
+            mostrarSalida("Faltan elementos necesarios para pruebas de contenido/atributos.");
+        }
+
+
+        // =============================================================================
+        // SECCIÓN 5: MANIPULACIÓN DE CLASES CSS
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 5: Manipulación de Clases CSS ---");
+
+        const itemDestacado = document.querySelector('li.destacado');
+
+        if (itemDestacado) {
+            // element.classList: Es la forma moderna y preferida para manipular las clases de un elemento.
+            // Devuelve un objeto DOMTokenList con métodos útiles.
+            const listaDeClases = itemDestacado.classList;
+            mostrarSalida(`classList del item destacado: [${Array.from(listaDeClases).join(', ')}]`); // [item, destacado]
+
+            // classList.add(className1, className2, ...): Añade una o más clases al elemento.
+            // Si la clase ya existe, no hace nada.
+            itemDestacado.classList.add('nueva-clase', 'otra-clase');
+            mostrarSalida(`classList después de add(): [${Array.from(itemDestacado.classList).join(', ')}]`);
+
+            // classList.remove(className1, className2, ...): Elimina una o más clases del elemento.
+            // Si la clase no existe, no hace nada.
+            itemDestacado.classList.remove('otra-clase');
+            mostrarSalida(`classList después de remove('otra-clase'): [${Array.from(itemDestacado.classList).join(', ')}]`);
+
+            // classList.toggle(className, force?): Añade la clase si no existe, y la elimina si existe.
+            // Devuelve true si la clase fue añadida, false si fue eliminada.
+            // El segundo argumento opcional 'force' (booleano) fuerza añadir (true) o remover (false).
+            let resultadoToggle = itemDestacado.classList.toggle('clase-temporal'); // La añade
+            mostrarSalida(`classList después de toggle('clase-temporal') (añadida=${resultadoToggle}): [${Array.from(itemDestacado.classList).join(', ')}]`);
+            resultadoToggle = itemDestacado.classList.toggle('clase-temporal'); // La elimina
+            mostrarSalida(`classList después de segundo toggle (añadida=${resultadoToggle}): [${Array.from(itemDestacado.classList).join(', ')}]`);
+            // Forzar añadir con toggle
+            itemDestacado.classList.toggle('importante', true);
+            mostrarSalida(`classList después de toggle('importante', true): [${Array.from(itemDestacado.classList).join(', ')}]`);
+             // Forzar eliminar con toggle
+            itemDestacado.classList.toggle('nueva-clase', false);
+            mostrarSalida(`classList después de toggle('nueva-clase', false): [${Array.from(itemDestacado.classList).join(', ')}]`);
+
+
+            // classList.contains(className): Devuelve true si el elemento tiene la clase especificada, false si no.
+            mostrarSalida(`¿El item tiene la clase 'destacado'? (contains): ${itemDestacado.classList.contains('destacado')}`); // true
+            mostrarSalida(`¿El item tiene la clase 'clase-inexistente'? (contains): ${itemDestacado.classList.contains('clase-inexistente')}`); // false
+
+            // classList.replace(oldClass, newClass): Reemplaza una clase existente por una nueva.
+            // Devuelve true si el reemplazo tuvo éxito (oldClass existía), false si no.
+            let resultadoReplace = itemDestacado.classList.replace('destacado', 'resaltado');
+            mostrarSalida(`classList después de replace('destacado', 'resaltado') (éxito=${resultadoReplace}): [${Array.from(itemDestacado.classList).join(', ')}]`);
+            resultadoReplace = itemDestacado.classList.replace('clase-que-no-esta', 'otra-nueva'); // No hará nada
+             mostrarSalida(`Resultado de replace clase inexistente (éxito=${resultadoReplace}): [${Array.from(itemDestacado.classList).join(', ')}]`);
+
+            // classList.length: Devuelve el número de clases que tiene el elemento.
+            mostrarSalida(`Número de clases actual (length): ${itemDestacado.classList.length}`);
+
+            // classList.item(index): Devuelve la clase en el índice especificado (como un array).
+            mostrarSalida(`Clase en índice 0 (item(0)): ${itemDestacado.classList.item(0)}`); // Probablemente 'item'
+
+            // Restaurar clases originales (aproximado)
+            itemDestacado.className = 'item destacado'; // Usando className para resetear
+            mostrarSalida(`Clases restauradas usando className: ${itemDestacado.className}`);
+
+        } else {
+            mostrarSalida("Elemento li.destacado no encontrado para pruebas de classList.");
+        }
+
+        // =============================================================================
+        // SECCIÓN 6: MANIPULACIÓN DE ESTILOS CSS EN LÍNEA
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 6: Manipulación de Estilos CSS en Línea ---");
+
+        const tituloH1 = document.querySelector('h1');
+
+        if (tituloH1) {
+            // element.style: Permite acceder y modificar los estilos CSS *en línea* (inline) del elemento.
+            // Los nombres de propiedades CSS con guiones se convierten a camelCase (ej: background-color -> backgroundColor).
+            // Los valores deben ser cadenas.
+
+            // Obtener un estilo en línea (si existe)
+            // Nota: element.style solo lee estilos definidos directamente en el atributo 'style' del HTML
+            // o establecidos previamente mediante JavaScript con element.style. NO lee estilos de hojas CSS externas o internas.
+            let colorInicial = tituloH1.style.color;
+            mostrarSalida(`Color inicial (leído de style): '${colorInicial}'`); // Probablemente vacío si no hay style inline
+
+            // Establecer estilos en línea
+            tituloH1.style.color = 'blue';
+            tituloH1.style.backgroundColor = 'lightgray'; // background-color -> backgroundColor
+            tituloH1.style.padding = '10px';
+            tituloH1.style.borderBottom = '2px solid darkblue'; // border-bottom -> borderBottom
+
+            mostrarSalida(`Color después de setear style.color: ${tituloH1.style.color}`); // blue
+            mostrarSalida(`Background-color después de setear style.backgroundColor: ${tituloH1.style.backgroundColor}`); // lightgray
+            mostrarSalida(`Padding después de setear style.padding: ${tituloH1.style.padding}`); // 10px
+
+            // Para *leer* el estilo computado final (incluyendo estilos de CSS), se usa window.getComputedStyle()
+            const estilosComputados = window.getComputedStyle(tituloH1);
+            mostrarSalida(`Color computado (getComputedStyle): ${estilosComputados.color}`); // rgb(0, 0, 255) o similar
+            mostrarSalida(`Padding computado (getComputedStyle): ${estilosComputados.padding}`); // 10px (o como lo interprete el navegador)
+            mostrarSalida(`Font-family computado (getComputedStyle): ${estilosComputados.fontFamily}`); // El que aplique de CSS o navegador
+
+            // Eliminar un estilo en línea: asignar una cadena vacía '' o null.
+            tituloH1.style.backgroundColor = ''; // Elimina el fondo gris
+            mostrarSalida(`Background-color después de asignar '': '${tituloH1.style.backgroundColor}'`); // Vacío
+
+            // Otra forma es usando setProperty y removeProperty directamente en style
+            tituloH1.style.setProperty('font-style', 'italic'); // Establece font-style
+            mostrarSalida(`Font-style con setProperty: ${tituloH1.style.fontStyle}`); // italic
+            tituloH1.style.removeProperty('border-bottom'); // Elimina el borde inferior
+            mostrarSalida(`Border-bottom después de removeProperty: '${tituloH1.style.borderBottom}'`); // Vacío
+
+            // Restaurar (aproximado, eliminando todos los estilos inline)
+            tituloH1.removeAttribute('style');
+            mostrarSalida("Estilos en línea eliminados con removeAttribute('style').");
+
+        } else {
+            mostrarSalida("Elemento H1 no encontrado para pruebas de estilo.");
+        }
+
+
+        // =============================================================================
+        // SECCIÓN 7: CREACIÓN Y MANIPULACIÓN DE NODOS (Añadir/Eliminar)
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 7: Creación y Manipulación de Nodos ---");
+
+        const lista = document.getElementById('lista-items'); // ul#lista-items
+        const contenedorCajas = document.getElementById('contenedor-principal'); // div#contenedor-principal
+
+        if (lista && contenedorCajas) {
+            // -----------------------------------------------------
+            // Creación de Elementos y Nodos de Texto
+            // -----------------------------------------------------
+            // document.createElement(tagName): Crea un nuevo elemento HTML con el nombre de etiqueta especificado.
+            // El elemento se crea en memoria, pero no se añade al DOM todavía.
+            const nuevoLi = document.createElement('li');
+            mostrarSalida(`Nuevo elemento creado: ${nuevoLi.tagName}`); // LI
+
+            // Una vez creado, puedes manipular sus propiedades como cualquier otro elemento
+            nuevoLi.textContent = "Nuevo Ítem Añadido Dinámicamente";
+            nuevoLi.classList.add('item', 'dinamico');
+            nuevoLi.id = 'item-nuevo';
+            nuevoLi.style.color = 'green';
+            mostrarSalida(`Contenido del nuevo <li>: ${nuevoLi.textContent}`);
+            mostrarSalida(`Clases del nuevo <li>: ${nuevoLi.className}`);
+
+            // document.createTextNode(text): Crea un nuevo nodo de texto con el contenido especificado.
+            const textoParaSpan = document.createTextNode(" (info extra)");
+            const nuevoSpan = document.createElement('span');
+            nuevoSpan.style.fontSize = 'smaller';
+            nuevoSpan.appendChild(textoParaSpan); // Añadimos el texto al span
+
+            // Añadimos el span al final del contenido del nuevoLi
+            nuevoLi.appendChild(nuevoSpan);
+            mostrarSalida(`HTML interno del nuevo <li> después de añadir span: ${nuevoLi.innerHTML}`);
+
+
+            // -----------------------------------------------------
+            // Añadir Nodos al DOM
+            // -----------------------------------------------------
+            // parentNode.appendChild(newNode): Añade el newNode como el *último hijo* del parentNode.
+            // Si newNode ya existe en el DOM, primero se elimina de su posición actual y luego se añade aquí.
+            // Devuelve el nodo añadido.
+            lista.appendChild(nuevoLi);
+            mostrarSalida("Nuevo <li> añadido al final de la lista con appendChild.");
+            // Verificar que ahora es el lastElementChild
+            mostrarSalida(`¿El nuevo Li es el último elemento hijo? ${lista.lastElementChild === nuevoLi}`); // true
+
+            // parentNode.insertBefore(newNode, referenceNode): Inserta newNode en el parentNode *antes* de referenceNode.
+            // Si referenceNode es null, newNode se inserta al final (igual que appendChild).
+            // referenceNode debe ser un hijo directo de parentNode.
+            const otroLi = document.createElement('li');
+            otroLi.textContent = "Ítem insertado antes del segundo";
+            otroLi.classList.add('item');
+            const segundoItemOriginal = lista.children[1]; // El segundo <li> original
+            if (segundoItemOriginal) {
+                lista.insertBefore(otroLi, segundoItemOriginal);
+                mostrarSalida("Nuevo <li> insertado antes del segundo ítem original usando insertBefore.");
+            }
+
+            // Métodos modernos (más flexibles): prepend, append, before, after
+            // parentElement.append(node1, node2, ...): Añade nodos o texto al *final* de los hijos del parentElement.
+            // Puede añadir múltiples nodos y también cadenas de texto directamente. No devuelve valor.
+            const liAppend1 = document.createElement('li');
+            liAppend1.textContent = "Item con append 1";
+            const liAppend2 = document.createElement('li');
+            liAppend2.textContent = "Item con append 2";
+            lista.append(liAppend1, " (texto directo) ", liAppend2);
+            mostrarSalida("Nodos añadidos con append() al final de la lista.");
+
+            // parentElement.prepend(node1, node2, ...): Añade nodos o texto al *principio* de los hijos del parentElement.
+            // Similar a append pero al inicio. No devuelve valor.
+            const liPrepend = document.createElement('li');
+            liPrepend.textContent = "Item con prepend";
+            lista.prepend(liPrepend, " (inicio) ");
+             mostrarSalida("Nodos añadidos con prepend() al inicio de la lista.");
+
+            // element.before(node1, node2, ...): Inserta nodos o texto *antes* del propio element (como hermano).
+            // No devuelve valor.
+            const pAntesLista = document.createElement('p');
+            pAntesLista.textContent = "Párrafo insertado antes de la lista con before().";
+            lista.before(pAntesLista, " --Separador-- ");
+            mostrarSalida("Nodos insertados antes de la lista con before().");
+
+            // element.after(node1, node2, ...): Inserta nodos o texto *después* del propio element (como hermano).
+            // No devuelve valor.
+            const pDespuesLista = document.createElement('p');
+            pDespuesLista.textContent = "Párrafo insertado después de la lista con after().";
+            lista.after(pDespuesLista);
+            mostrarSalida("Nodo insertado después de la lista con after().");
+
+
+            // -----------------------------------------------------
+            // Reemplazar y Eliminar Nodos
+            // -----------------------------------------------------
+            // parentNode.replaceChild(newNode, oldNode): Reemplaza el nodo hijo oldNode con newNode.
+            // oldNode debe ser un hijo directo de parentNode. Devuelve el nodo reemplazado (oldNode).
+            const liAReemplazar = lista.querySelector('.destacado'); // El <li> que tenía la clase destacado
+            if (liAReemplazar) {
+                const liReemplazo = document.createElement('li');
+                liReemplazo.textContent = "Ítem Reemplazado";
+                liReemplazo.style.fontWeight = 'bold';
+                const nodoReemplazado = lista.replaceChild(liReemplazo, liAReemplazar);
+                mostrarSalida(`Nodo reemplazado con replaceChild: ${nodoReemplazado.textContent}`);
+            }
+
+            // element.replaceWith(node1, node2, ...): Reemplaza el propio element con los nodos o texto dados.
+            // Es más moderno que replaceChild. No devuelve valor.
+            const cajaDos = contenedorCajas.querySelector('[data-info="caja-dos"]');
+            if (cajaDos) {
+                 const nuevoDiv = document.createElement('div');
+                 nuevoDiv.className = 'caja reemplazo';
+                 nuevoDiv.textContent = 'Esta caja reemplazó a la Caja 2 usando replaceWith.';
+                 cajaDos.replaceWith(nuevoDiv, " (Texto después del reemplazo) ");
+                 mostrarSalida("Caja 2 reemplazada usando replaceWith().");
+            }
+
+
+            // parentNode.removeChild(childNode): Elimina el nodo hijo childNode del parentNode.
+            // childNode debe ser un hijo directo. Devuelve el nodo eliminado.
+            const primerItem = lista.firstElementChild; // El primer <li> actual
+            if (primerItem) {
+                const nodoEliminado = lista.removeChild(primerItem);
+                 mostrarSalida(`Nodo eliminado con removeChild: ${nodoEliminado.textContent}`);
+            }
+
+            // element.remove(): Elimina el propio element del DOM.
+            // Es la forma más simple y moderna de eliminar un elemento. No devuelve valor.
+            const itemDinamico = document.getElementById('item-nuevo');
+            if (itemDinamico) {
+                itemDinamico.remove();
+                mostrarSalida("Elemento #item-nuevo eliminado con remove().");
+            }
+
+            // Clonar Nodos
+            // element.cloneNode(deep): Crea una copia del nodo.
+            // Si deep es true, clona también todos los descendientes (copia profunda).
+            // Si deep es false (o se omite), clona solo el nodo en sí, sin hijos (copia superficial).
+            const listaOriginal = document.getElementById('lista-items');
+            if (listaOriginal) {
+                const listaClonadaProfunda = listaOriginal.cloneNode(true); // Clona con todos los <li>
+                listaClonadaProfunda.id = 'lista-clonada'; // Cambiar ID para evitar duplicados
+                listaClonadaProfunda.style.border = '2px dotted red';
+                listaClonadaProfunda.prepend("--- COPIA CLONADA (PROFUNDA) ---");
+
+                const listaClonadaSuperficial = listaOriginal.cloneNode(false); // Clona solo el <ul> vacío
+                listaClonadaSuperficial.id = 'lista-clonada-superficial';
+                listaClonadaSuperficial.style.border = '2px dotted green';
+                listaClonadaSuperficial.textContent = "--- COPIA CLONADA (SUPERFICIAL) ---"; // Añadir texto para verla
+
+                // Añadir los clones al final del contenedor principal para verlos
+                contenedorCajas.append(listaClonadaProfunda, listaClonadaSuperficial);
+                mostrarSalida("Listas clonadas (profunda y superficial) añadidas al DOM.");
+            }
+
+        } else {
+            mostrarSalida("Faltan #lista-items o #contenedor-principal para pruebas de creación/manipulación.");
+        }
+
+
+        // =============================================================================
+        // SECCIÓN 8: MANEJO DE EVENTOS
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 8: Manejo de Eventos ---");
+
+        const btnAgregar = document.getElementById('btn-agregar');
+        const btnCambiarEstilo = document.getElementById('btn-cambiar-estilo');
+        const formulario = document.getElementById('mi-formulario');
+        const enlaceEv = document.getElementById('enlace-demo');
+
+        if (btnAgregar && btnCambiarEstilo && formulario && enlaceEv) {
+            // -----------------------------------------------------
+            // Añadir Event Listeners
+            // -----------------------------------------------------
+            // element.addEventListener(type, listener, options/useCapture): Registra una función (listener)
+            // para que se ejecute cuando ocurra un evento específico (type) en el elemento.
+            // 'type': El nombre del evento (ej: 'click', 'mouseover', 'submit', 'keydown').
+            // 'listener': La función que manejará el evento. Recibe un objeto Event como argumento.
+            // 'options/useCapture': Un objeto de opciones (ej: { once: true, capture: false }) o un booleano para 'useCapture'.
+            //      - capture: Si es true, el listener se ejecuta en la fase de captura (de fuera hacia adentro). Por defecto es false (fase de burbujeo, de adentro hacia afuera).
+            //      - once: Si es true, el listener se elimina automáticamente después de ejecutarse una vez.
+            //      - passive: Si es true, indica que el listener no llamará a preventDefault(). Puede mejorar el rendimiento en eventos como 'scroll'.
+
+            // Ejemplo 1: Evento 'click' en un botón
+            function manejarClickAgregar() {
+                mostrarSalida("¡Botón 'Agregar Ítem' clickeado!");
+                const nuevoItem = document.createElement('li');
+                nuevoItem.textContent = `Ítem #${lista.children.length + 1}`; // Usa la lista original
+                nuevoItem.classList.add('item');
+                if (lista) lista.appendChild(nuevoItem);
+            }
+            btnAgregar.addEventListener('click', manejarClickAgregar);
+            mostrarSalida("Listener para 'click' añadido a #btn-agregar.");
+
+            // Ejemplo 2: Evento 'mouseover' y 'mouseout'
+            function resaltarAlEntrar(event) {
+                // event.target: Es el elemento que disparó el evento originalmente.
+                // event.currentTarget: Es el elemento al que se añadió el listener (en este caso, el botón).
+                 mostrarSalida(`Mouse entró en ${event.currentTarget.id}`);
+                event.currentTarget.style.backgroundColor = 'lightblue';
+            }
+            function quitarResaltadoAlSalir(event) {
+                mostrarSalida(`Mouse salió de ${event.currentTarget.id}`);
+                event.currentTarget.style.backgroundColor = ''; // Quita el estilo inline
+            }
+            btnCambiarEstilo.addEventListener('mouseover', resaltarAlEntrar);
+            btnCambiarEstilo.addEventListener('mouseout', quitarResaltadoAlSalir);
+            mostrarSalida("Listeners para 'mouseover' y 'mouseout' añadidos a #btn-cambiar-estilo.");
+
+            // Ejemplo 3: Prevenir comportamiento por defecto ('submit' en formulario)
+            function manejarSubmitFormulario(event) {
+                // event.preventDefault(): Cancela la acción por defecto asociada al evento.
+                // En un 'submit', previene que el navegador envíe el formulario y recargue la página.
+                event.preventDefault();
+                mostrarSalida("Evento 'submit' del formulario capturado. Envío prevenido.");
+                const inputNombre = document.getElementById('nombre');
+                if (inputNombre) {
+                     mostrarSalida(`Valor del campo nombre: ${inputNombre.value}`);
+                     // Aquí normalmente enviarías los datos con AJAX (fetch)
+                }
+            }
+            formulario.addEventListener('submit', manejarSubmitFormulario);
+            mostrarSalida("Listener para 'submit' añadido a #mi-formulario (con preventDefault).");
+
+            // Ejemplo 4: Listener que se ejecuta solo una vez
+             function clickUnaVez(event) {
+                 mostrarSalida("¡Este mensaje solo aparecerá una vez al hacer clic en el enlace!");
+                 event.target.style.color = 'purple';
+                 event.preventDefault(); // Prevenir navegación si href="#"
+             }
+             enlaceEv.addEventListener('click', clickUnaVez, { once: true });
+             mostrarSalida("Listener para 'click' con { once: true } añadido a #enlace-demo.");
+
+            // Ejemplo 5: Usando una función anónima como listener
+            btnCambiarEstilo.addEventListener('click', function(event) {
+                mostrarSalida("Botón 'Cambiar Estilo' clickeado (listener anónimo).");
+                const contenedorPpal = document.getElementById('contenedor-principal');
+                if (contenedorPpal) {
+                    // toggle para la clase 'destacado' en el contenedor
+                    contenedorPpal.classList.toggle('destacado');
+                     mostrarSalida(`Clase 'destacado' ${contenedorPpal.classList.contains('destacado') ? 'añadida' : 'eliminada'} en #contenedor-principal.`);
+                }
+                // event.stopPropagation(): Detiene la propagación del evento hacia elementos padre (burbujeo) o hijos (captura).
+                // Útil para evitar que listeners en elementos ancestros se disparen.
+                // event.stopPropagation();
+                // mostrarSalida("Propagación del evento detenida.");
+            });
+            mostrarSalida("Listener anónimo para 'click' añadido a #btn-cambiar-estilo.");
+
+             // El objeto 'event' tiene muchas propiedades útiles:
+             document.body.addEventListener('mousemove', function(e) {
+                 // Usar un flag para no inundar la consola
+                 if (!window.loggedMouseMove) {
+                    // e.type: 'mousemove'
+                    // e.target: El elemento sobre el que está el cursor
+                    // e.currentTarget: document.body (donde está el listener)
+                    // e.clientX, e.clientY: Coordenadas relativas al viewport
+                    // e.pageX, e.pageY: Coordenadas relativas al documento completo
+                    // e.key (en keydown/keyup), e.code: Información de teclas
+                    // e.button (en mousedown/up): Botón del ratón presionado
+                    // etc.
+                    console.log(`MouseMove detectado en body: clientX=${e.clientX}, clientY=${e.clientY}, target=${e.target.tagName}`);
+                    window.loggedMouseMove = true; // Log solo una vez
+                    setTimeout(() => { window.loggedMouseMove = false; }, 2000); // Resetear flag después de 2s
+                 }
+             });
+
+
+            // -----------------------------------------------------
+            // Eliminar Event Listeners
+            // -----------------------------------------------------
+            // element.removeEventListener(type, listener, options/useCapture): Elimina un listener previamente añadido.
+            // Es *crucial* que los argumentos 'type', 'listener' y 'options/useCapture' sean *exactamente los mismos*
+            // que se usaron en addEventListener. Por esto, no se pueden eliminar fácilmente listeners definidos como funciones anónimas inline.
+            // Es buena práctica eliminar listeners cuando ya no se necesitan (ej: al destruir un componente) para evitar memory leaks.
+
+            // Para poder eliminar 'manejarClickAgregar', necesitamos la referencia a la función.
+            // Imaginemos que después de 5 clicks, queremos quitar el listener:
+            let contadorClicks = 0;
+            function manejarClickAgregarConLimite(event) {
+                 contadorClicks++;
+                 mostrarSalida(`¡Botón 'Agregar Ítem' clickeado! (Click #${contadorClicks})`);
+                 const nuevoItem = document.createElement('li');
+                 nuevoItem.textContent = `Ítem #${lista.children.length + 1} (con límite)`;
+                 nuevoItem.classList.add('item');
+                 if (lista) lista.appendChild(nuevoItem);
+
+                 if (contadorClicks >= 3) {
+                     mostrarSalida("Límite de clicks alcanzado. Eliminando listener...");
+                     // ¡Importante! Usar la misma referencia de función
+                     event.currentTarget.removeEventListener('click', manejarClickAgregarConLimite);
+                     mostrarSalida("Listener de click limitado eliminado.");
+                     // Deshabilitar botón para claridad
+                     event.currentTarget.disabled = true;
+                     event.currentTarget.textContent = "Listener Eliminado";
+                 }
+            }
+
+            // Primero removemos el listener original si existe (btnAgregar ya tiene uno)
+            btnAgregar.removeEventListener('click', manejarClickAgregar);
+            mostrarSalida("Listener original de #btn-agregar eliminado.");
+            // Añadimos el nuevo listener con límite
+            btnAgregar.addEventListener('click', manejarClickAgregarConLimite);
+            mostrarSalida("Nuevo listener con límite de clicks añadido a #btn-agregar.");
+
+        } else {
+             mostrarSalida("Faltan elementos (botones, formulario, enlace) para pruebas de eventos.");
+        }
+
+        // =============================================================================
+        // SECCIÓN 9: OTRAS PROPIEDADES Y MÉTODOS ÚTILES DE NODOS/ELEMENTOS
+        // =============================================================================
+        mostrarSalida("--- SECCIÓN 9: Otras Propiedades y Métodos Útiles ---");
+
+        const primerLi = lista ? lista.firstElementChild : null;
+        const imagenDemo = document.getElementById('imagen-demo');
+        const form = document.getElementById('mi-formulario');
+
+        if (primerLi) {
+            // node.nodeType: Devuelve un número que representa el tipo de nodo. Constantes útiles:
+            // Node.ELEMENT_NODE (1), Node.ATTRIBUTE_NODE (2), Node.TEXT_NODE (3), Node.COMMENT_NODE (8), Node.DOCUMENT_NODE (9), etc.
+            mostrarSalida(`Tipo de nodo del primer <li> (nodeType): ${primerLi.nodeType} (ELEMENT_NODE=${Node.ELEMENT_NODE})`);
+            const primerNodoTexto = parrafoIntro.firstChild; // "Este es un párrafo..."
+            if (primerNodoTexto) mostrarSalida(`Tipo de nodo del primer texto del párrafo (nodeType): ${primerNodoTexto.nodeType} (TEXT_NODE=${Node.TEXT_NODE})`);
+
+            // node.nodeName: Devuelve el nombre del nodo.
+            // Para elementos HTML, es el nombre de la etiqueta en mayúsculas (ej: "LI", "DIV").
+            // Para nodos de texto, es "#text".
+            // Para nodos de comentario, es "#comment".
+            // Para atributos, es el nombre del atributo.
+            // Para el documento, es "#document".
+            mostrarSalida(`Nombre del nodo del primer <li> (nodeName): ${primerLi.nodeName}`); // LI
+            if (primerNodoTexto) mostrarSalida(`Nombre del nodo de texto (nodeName): ${primerNodoTexto.nodeName}`); // #text
+            mostrarSalida(`Nombre del nodo documento (nodeName): ${document.nodeName}`); // #document
+
+            // node.nodeValue: Devuelve o establece el valor del nodo actual.
+            // Para nodos de texto y comentario, es su contenido.
+            // Para atributos, es el valor del atributo.
+            // Para elementos y el documento, es null.
+            mostrarSalida(`Valor del nodo del primer <li> (nodeValue): ${primerLi.nodeValue}`); // null
+            if (primerNodoTexto) mostrarSalida(`Valor del nodo de texto (nodeValue): ${primerNodoTexto.nodeValue}`); // "Este es un párrafo..."
+            // Se puede modificar el contenido de un nodo de texto así:
+            // if (primerNodoTexto) primerNodoTexto.nodeValue = "Texto inicial modificado.";
+
+
+            // element.id: Obtiene o establece el valor del atributo 'id'.
+            mostrarSalida(`ID del primer <li> (id): ${primerLi.id || 'No tiene ID'}`); // No tiene ID
+
+            // element.tagName: Devuelve el nombre de la etiqueta del elemento en mayúsculas (igual que nodeName para elementos).
+             mostrarSalida(`Nombre de etiqueta del primer <li> (tagName): ${primerLi.tagName}`); // LI
+
+            // element.attributes: Devuelve una NamedNodeMap (similar a un objeto) con todos los atributos del elemento.
+            const atributosImagen = imagenDemo.attributes;
+            mostrarSalida(`Número de atributos de la imagen: ${atributosImagen.length}`);
+            for (let i = 0; i < atributosImagen.length; i++) {
+                const attr = atributosImagen[i];
+                // attr.name: Nombre del atributo
+                // attr.value: Valor del atributo
+                mostrarSalida(`  - Atributo ${i}: ${attr.name} = "${attr.value}"`);
+            }
+             // Se puede acceder por nombre:
+             mostrarSalida(`Valor de 'src' desde attributes: ${atributosImagen.src.value}`);
+             // o: mostrarSalida(`Valor de 'src' desde attributes: ${atributosImagen.getNamedItem('src').value}`);
+
+            // element.getBoundingClientRect(): Devuelve un objeto DOMRect con el tamaño y la posición del elemento
+            // relativos al viewport (área visible de la ventana).
+            // Propiedades: top, bottom, left, right, width, height, x, y.
+            const rect = primerLi.getBoundingClientRect();
+            mostrarSalida(`Posición/tamaño del primer <li> (getBoundingClientRect):`);
+            mostrarSalida(`  - top: ${rect.top.toFixed(2)}px (distancia desde borde superior viewport)`);
+            mostrarSalida(`  - left: ${rect.left.toFixed(2)}px (distancia desde borde izquierdo viewport)`);
+            mostrarSalida(`  - width: ${rect.width.toFixed(2)}px`);
+            mostrarSalida(`  - height: ${rect.height.toFixed(2)}px`);
+
+             // element.matches(selectorCSS): Devuelve true si el elemento coincide con el selector CSS dado, false si no.
+             mostrarSalida(`¿El primer <li> tiene clase 'item'? (matches): ${primerLi.matches('.item')}`); // true
+             mostrarSalida(`¿El primer <li> tiene id 'parrafo-intro'? (matches): ${primerLi.matches('#parrafo-intro')}`); // false
+
+             // element.closest(selectorCSS): Busca hacia arriba en el árbol DOM (incluyendo el propio elemento)
+             // y devuelve el ancestro más cercano que coincide con el selector CSS. Null si no encuentra.
+             const contenedorAncestro = primerLi.closest('#contenedor-principal');
+             if (contenedorAncestro) mostrarSalida(`Ancestro más cercano #contenedor-principal encontrado con closest(): ID=${contenedorAncestro.id}`);
+             const bodyAncestro = primerLi.closest('body');
+             if (bodyAncestro) mostrarSalida(`Ancestro más cercano <body> encontrado con closest(): TagName=${bodyAncestro.tagName}`);
+             const liAncestro = primerLi.closest('li'); // El propio elemento coincide
+             if (liAncestro === primerLi) mostrarSalida(`closest('li') devuelve el propio elemento.`);
+
+
+             // Propiedades de formularios y sus elementos
+             if (form) {
+                 // form.elements: HTMLFormControlsCollection con todos los controles del formulario (input, button, select, etc.).
+                 mostrarSalida(`Número de elementos en el formulario (form.elements.length): ${form.elements.length}`);
+                 // Se puede acceder por índice o por name/id del control
+                 const inputNombreForm = form.elements['nombre_usuario']; // Acceso por name
+                 // const inputNombreForm = form.elements.nombre; // También funciona si no hay colisión
+                 if (inputNombreForm) mostrarSalida(`Valor del input 'nombre_usuario' accedido por form.elements: ${inputNombreForm.value}`);
+
+                 // inputElement.value: Obtiene o establece el valor actual del control (input, textarea, select).
+                 const nombreInput = document.getElementById('nombre');
+                 mostrarSalida(`Valor actual del input #nombre (value): ${nombreInput.value}`);
+                 // nombreInput.value = "Nuevo valor desde JS"; // Cambiar el valor
+
+                 // inputElement.type: Tipo del input (text, password, checkbox, radio, submit, etc.).
+                 mostrarSalida(`Tipo del input #nombre (type): ${nombreInput.type}`); // text
+
+                 // inputElement.name: Valor del atributo 'name'.
+                 mostrarSalida(`Nombre del input #nombre (name): ${nombreInput.name}`); // nombre_usuario
+
+                 // inputElement.disabled: Booleano, indica si el control está deshabilitado.
+                 mostrarSalida(`¿Input #nombre deshabilitado? (disabled): ${nombreInput.disabled}`); // false
+                 // nombreInput.disabled = true; // Deshabilitarlo
+
+                 // inputElement.readOnly: Booleano, indica si el control es de solo lectura.
+                 mostrarSalida(`¿Input #nombre solo lectura? (readOnly): ${nombreInput.readOnly}`); // false
+                 // nombreInput.readOnly = true; // Hacerlo solo lectura
+
+                 // inputElement.checked (para checkbox/radio): Booleano, indica si está marcado.
+                 // selectElement.selectedIndex: Índice de la opción seleccionada.
+                 // selectElement.options: Colección de las opciones (<option>).
+                 // optionElement.selected: Booleano, indica si la opción está seleccionada.
+                 // optionElement.text: Texto visible de la opción.
+                 // optionElement.value: Valor del atributo 'value' de la opción.
+             }
+
+        } else {
+            mostrarSalida("Falta el primer <li> para pruebas de propiedades de nodo/elemento.");
+        }
+
+        console.log("--- Script de Demostración DOM Finalizado ---");
+
+    </script>
+
+</body>
+</html>

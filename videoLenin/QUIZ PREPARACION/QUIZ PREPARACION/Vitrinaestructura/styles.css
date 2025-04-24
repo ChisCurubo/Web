@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.vitrina {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan en varias líneas */
+    width: 350px; /* Ancho total de 3 columnas de 100px + 2 gaps de 10px */
+    gap: 10px; /* Espacio entre las cards */
+}
+
+.card {
+    background-color: black;
+    border: 2px solid gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px; /* Ancho de cada card */
+    height: 100px; /* Alto de cada card */
+    color: white;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}

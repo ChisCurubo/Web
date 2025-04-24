@@ -1,0 +1,181 @@
+/* ==========================================================
+   Archivo CSS de Ejemplo con Propiedades Comunes y Explicaciones
+   ==========================================================
+
+   Nota: Esta no es una lista exhaustiva de TODAS las propiedades CSS existentes,
+   sino una selección de las más comunes y útiles agrupadas por categoría.
+   Los valores asignados son solo ejemplos. Consulta la documentación
+   (como MDN Web Docs) para ver todos los valores posibles y detalles.
+*/
+
+/* Selector de ejemplo para aplicar los estilos */
+.elemento-ejemplo {
+
+    /* --- Propiedades de Texto y Fuente --- */
+    color: #333333;          /* Define el color del texto. */
+    font-family: Arial, sans-serif; /* Especifica la familia de fuentes (tipografía). Se listan alternativas. */
+    font-size: 16px;         /* Establece el tamaño de la fuente. */
+    font-weight: bold;       /* Define el grosor de la fuente (normal, bold, 100-900). */
+    font-style: italic;      /* Establece el estilo de la fuente (normal, italic, oblique). */
+    text-align: left;        /* Alinea el texto horizontalmente (left, right, center, justify). */
+    text-decoration: none;   /* Añade decoración al texto (none, underline, overline, line-through). */
+    line-height: 1.5;        /* Define la altura de línea (espacio vertical entre líneas de texto). Puede ser un número (multiplica font-size), px, em, etc. */
+    letter-spacing: 1px;     /* Ajusta el espacio entre caracteres. */
+    word-spacing: 4px;       /* Ajusta el espacio entre palabras. */
+    text-transform: uppercase;/* Transforma el texto (none, capitalize, uppercase, lowercase). */
+    text-shadow: 2px 2px 5px grey; /* Aplica una sombra al texto (offset-x offset-y blur-radius color). */
+    font-variant: small-caps; /* Controla variantes de la fuente como versalitas (normal, small-caps). */
+    direction: ltr;          /* Establece la dirección del texto (ltr: izquierda a derecha, rtl: derecha a izquierda). */
+    unicode-bidi: normal;    /* Usado junto con 'direction' para soportar texto bidireccional. */
+  
+    /* --- Propiedades de Color y Fondo --- */
+    background-color: #f0f0f0; /* Establece el color de fondo del elemento. */
+    background-image: url('imagen.jpg'); /* Establece una imagen como fondo. */
+    background-repeat: no-repeat; /* Controla si la imagen de fondo se repite (repeat, repeat-x, repeat-y, no-repeat). */
+    background-position: center center; /* Define la posición inicial de la imagen de fondo. */
+    background-size: cover;   /* Define el tamaño de la imagen de fondo (auto, cover, contain, <length>, <percentage>). */
+    background-attachment: fixed; /* Fija la imagen de fondo respecto al viewport (scroll, fixed, local). */
+    opacity: 0.9;             /* Define el nivel de opacidad del elemento (0.0 transparente a 1.0 opaco). */
+  
+    /* --- Propiedades del Modelo de Caja (Dimensiones, Relleno, Borde, Margen) --- */
+    width: 300px;            /* Define el ancho del área de contenido del elemento. */
+    height: 150px;           /* Define la altura del área de contenido del elemento. */
+    min-width: 100px;        /* Establece el ancho mínimo del elemento. */
+    max-width: 600px;        /* Establece el ancho máximo del elemento. */
+    min-height: 50px;        /* Establece la altura mínima del elemento. */
+    max-height: 400px;       /* Establece la altura máxima del elemento. */
+  
+    padding: 15px;           /* Espacio de relleno interno entre el contenido y el borde (shorthand para top, right, bottom, left). */
+    padding-top: 10px;       /* Relleno superior específico. */
+    padding-right: 20px;      /* Relleno derecho específico. */
+    padding-bottom: 10px;     /* Relleno inferior específico. */
+    padding-left: 20px;       /* Relleno izquierdo específico. */
+  
+    border: 1px solid #cccccc; /* Define el borde alrededor del elemento (shorthand para width, style, color). */
+    border-width: 2px;       /* Grosor del borde. */
+    border-style: dashed;    /* Estilo del borde (solid, dashed, dotted, double, none, etc.). */
+    border-color: #999999;   /* Color del borde. */
+    border-top: 1px solid red; /* Define el borde superior específicamente. */
+    border-right: 2px dotted blue; /* Define el borde derecho específicamente. */
+    border-bottom: 1px solid green;/* Define el borde inferior específicamente. */
+    border-left: 2px dotted orange;/* Define el borde izquierdo específicamente. */
+    border-radius: 8px;      /* Redondea las esquinas del borde. */
+  
+    margin: 10px;            /* Espacio de margen externo alrededor del elemento (shorthand). */
+    margin-top: 5px;         /* Margen superior específico. */
+    margin-right: 15px;       /* Margen derecho específico. */
+    margin-bottom: 5px;        /* Margen inferior específico. */
+    margin-left: 15px;        /* Margen izquierdo específico. */
+  
+    box-sizing: border-box;  /* Controla cómo se calculan el ancho y alto total (content-box, border-box). border-box incluye padding y border en el width/height. */
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.2); /* Aplica una sombra a la caja del elemento (offset-x offset-y blur-radius spread-radius color inset). */
+  
+    /* --- Propiedades de Posicionamiento y Layout --- */
+    display: block;          /* Define cómo se muestra un elemento (block, inline, inline-block, none, flex, grid, table, etc.). */
+    position: relative;      /* Define el método de posicionamiento (static, relative, absolute, fixed, sticky). */
+    top: 10px;               /* Desplazamiento desde la parte superior (para position: relative, absolute, fixed, sticky). */
+    right: 20px;              /* Desplazamiento desde la derecha. */
+    bottom: 10px;             /* Desplazamiento desde la parte inferior. */
+    left: 20px;               /* Desplazamiento desde la izquierda. */
+    z-index: 10;             /* Define el orden de apilamiento de elementos posicionados (número mayor = más al frente). */
+    float: left;             /* Hace que un elemento flote a la izquierda o derecha, permitiendo que el texto lo rodee (left, right, none). Obsoleto en favor de Flexbox/Grid para layout. */
+    clear: both;             /* Evita que un elemento flote junto a elementos flotantes anteriores (left, right, both, none). */
+    overflow: auto;          /* Controla qué sucede si el contenido excede las dimensiones del elemento (visible, hidden, scroll, auto). */
+    overflow-x: scroll;      /* Controla el desbordamiento horizontal específicamente. */
+    overflow-y: hidden;      /* Controla el desbordamiento vertical específicamente. */
+    visibility: visible;     /* Controla la visibilidad del elemento (visible, hidden, collapse). 'hidden' ocupa espacio, a diferencia de 'display: none'. */
+  
+    /* --- Propiedades de Flexbox (para contenedores con display: flex) --- */
+    /* Aplicar al contenedor flex: */
+    display: flex;           /* Convierte el elemento en un contenedor flex. */
+    flex-direction: row;     /* Define la dirección del eje principal (row, row-reverse, column, column-reverse). */
+    justify-content: center; /* Alinea los ítems a lo largo del eje principal (flex-start, flex-end, center, space-between, space-around, space-evenly). */
+    align-items: center;     /* Alinea los ítems a lo largo del eje transversal (stretch, flex-start, flex-end, center, baseline). */
+    flex-wrap: wrap;         /* Controla si los ítems flex deben envolverse en múltiples líneas (nowrap, wrap, wrap-reverse). */
+    gap: 10px;               /* Define el espacio entre ítems flex/grid. */
+  
+    /* Aplicar a los ítems flex (hijos del contenedor): */
+    flex-grow: 1;            /* Define cuánto puede crecer un ítem flex en relación a los demás. */
+    flex-shrink: 1;          /* Define cuánto puede encogerse un ítem flex en relación a los demás. */
+    flex-basis: auto;        /* Define el tamaño inicial de un ítem flex antes de distribuir el espacio restante. */
+    order: 0;                /* Controla el orden visual de los ítems flex. */
+    align-self: flex-start;  /* Permite sobrescribir 'align-items' para un ítem flex individual. */
+  
+    /* --- Propiedades de Grid Layout (para contenedores con display: grid) --- */
+    /* Aplicar al contenedor grid: */
+    display: grid;                  /* Convierte el elemento en un contenedor grid. */
+    grid-template-columns: 1fr 1fr 2fr; /* Define las columnas de la cuadrícula (usando fr, px, %, auto, etc.). */
+    grid-template-rows: auto 100px;  /* Define las filas de la cuadrícula. */
+    grid-gap: 15px;                 /* Shorthand para row-gap y column-gap (espacio entre celdas). */
+    row-gap: 10px;                  /* Espacio entre filas. */
+    column-gap: 20px;               /* Espacio entre columnas. */
+    justify-items: center;          /* Alinea el contenido de los ítems a lo largo del eje de fila (start, end, center, stretch). */
+    align-items: center;            /* Alinea el contenido de los ítems a lo largo del eje de columna (start, end, center, stretch). */
+  
+    /* Aplicar a los ítems grid (hijos del contenedor): */
+    grid-column-start: 1;           /* Define en qué línea de columna empieza el ítem. */
+    grid-column-end: 3;             /* Define en qué línea de columna termina el ítem (ocupa de la 1 a la 2). */
+    grid-row-start: 1;              /* Define en qué línea de fila empieza el ítem. */
+    grid-row-end: 2;                /* Define en qué línea de fila termina el ítem. */
+    /* Shorthands: */
+    grid-column: 1 / 3;             /* Equivalente a grid-column-start y grid-column-end. */
+    grid-row: 1 / span 2;           /* Equivalente a grid-row-start y especifica cuántas filas ocupa. */
+    justify-self: start;            /* Permite sobrescribir 'justify-items' para un ítem grid individual. */
+    align-self: end;                /* Permite sobrescribir 'align-items' para un ítem grid individual. */
+  
+    /* --- Propiedades de Listas --- */
+    list-style-type: square;     /* Define el tipo de marcador para ítems de lista (disc, circle, square, decimal, lower-roman, none, etc.). */
+    list-style-position: inside; /* Define si el marcador está dentro o fuera del flujo del texto (inside, outside). */
+    list-style-image: url('marcador.png'); /* Usa una imagen como marcador de lista. */
+    list-style: none;            /* Shorthand para las propiedades list-style-*. */
+  
+    /* --- Propiedades de Tablas --- */
+    border-collapse: collapse;   /* Controla si los bordes de las celdas de la tabla se fusionan o están separados (collapse, separate). */
+    border-spacing: 5px;         /* Define el espacio entre bordes de celdas (solo si border-collapse: separate). */
+    caption-side: bottom;        /* Define la posición del caption de la tabla (top, bottom). */
+    empty-cells: show;         /* Controla si se muestran los bordes y fondos de celdas vacías (show, hide). */
+    table-layout: fixed;       /* Algoritmo para definir el layout de la tabla (auto, fixed). 'fixed' suele ser más rápido. */
+  
+    /* --- Propiedades de Transiciones y Animaciones --- */
+    transition-property: background-color, transform; /* Especifica qué propiedades deben transicionar. */
+    transition-duration: 0.3s;      /* Duración de la transición. */
+    transition-timing-function: ease-in-out; /* Curva de aceleración de la transición (linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier). */
+    transition-delay: 0.1s;         /* Retraso antes de que comience la transición. */
+    transition: all 0.5s ease;      /* Shorthand para las propiedades de transición. */
+  
+    animation-name: miAnimacion;    /* Nombre de la animación definida con @keyframes. */
+    animation-duration: 2s;         /* Duración de un ciclo de la animación. */
+    animation-timing-function: linear;/* Curva de aceleración de la animación. */
+    animation-delay: 0.5s;        /* Retraso antes de que comience la animación. */
+    animation-iteration-count: infinite; /* Número de veces que se repite la animación (número, infinite). */
+    animation-direction: alternate; /* Dirección de la animación en ciclos sucesivos (normal, reverse, alternate, alternate-reverse). */
+    animation-fill-mode: forwards;  /* Define qué estilos aplica la animación antes/después de ejecutarse (none, forwards, backwards, both). */
+    animation-play-state: running;  /* Permite pausar o reanudar la animación (paused, running). */
+    animation: miAnimacion 2s linear 0.5s infinite alternate forwards; /* Shorthand para animación. */
+  
+    transform: rotate(10deg) scale(1.1); /* Aplica transformaciones 2D/3D (translate, rotate, scale, skew, matrix). */
+    transform-origin: center bottom; /* Define el punto de origen para las transformaciones. */
+  
+    /* --- Otras Propiedades Útiles --- */
+    cursor: pointer;         /* Define el tipo de cursor que se muestra al pasar sobre el elemento (auto, default, pointer, text, wait, help, etc.). */
+    outline: 2px solid blue; /* Dibuja un contorno alrededor del elemento (similar a border pero no ocupa espacio). Útil para accesibilidad (foco). */
+    outline-offset: 3px;     /* Separa el outline del borde del elemento. */
+    resize: both;            /* Permite al usuario redimensionar el elemento (none, both, horizontal, vertical). Requiere overflow != visible. */
+    user-select: none;       /* Controla si el usuario puede seleccionar el texto del elemento (auto, none, text, all). */
+    appearance: none;        /* Permite quitar los estilos nativos del navegador para ciertos elementos (como botones o selects) para personalizarlos completamente. */
+    pointer-events: none;    /* Controla si el elemento puede ser el objetivo de eventos del puntero (auto, none). 'none' lo hace "intransitable". */
+    filter: grayscale(50%);  /* Aplica efectos gráficos como desenfoque, brillo, contraste, escala de grises, etc. (blur(), brightness(), contrast(), grayscale(), etc.). */
+  
+  }
+  
+  /* Ejemplo de @keyframes para usar con la propiedad 'animation' */
+  @keyframes miAnimacion {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }

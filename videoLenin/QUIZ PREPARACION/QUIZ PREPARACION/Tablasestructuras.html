@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Tablas HTML y CSS</title>
+
+    <style>
+        /* ==========================================================================
+           VARIABLES CSS GLOBALES PARA TABLAS (Personalizables)
+           ========================================================================== */
+
+        :root {
+          /* Colores Base */
+          --tabla-color-texto: #212529; /* Texto oscuro para mejor legibilidad */
+          --tabla-color-fondo: #fff;
+          --tabla-color-borde: #dee2e6; /* Un gris suave estándar */
+          --tabla-color-cabecera-texto: #fff;
+          --tabla-color-cabecera-fondo: #343a40; /* Gris oscuro */
+          --tabla-color-fila-alterna: rgba(0, 0, 0, 0.05); /* Negro translúcido para alternar */
+          --tabla-color-fila-hover: rgba(0, 0, 0, 0.075); /* Negro translúcido más oscuro para hover */
+
+          /* Colores Semánticos (Bootstrap-like) */
+          --tabla-color-primario: #0d6efd;
+          --tabla-color-primario-contraste: #fff;
+          --tabla-color-secundario: #6c757d;
+          --tabla-color-secundario-contraste: #fff;
+          --tabla-color-exito: #198754;
+          --tabla-color-exito-contraste: #fff;
+          --tabla-color-peligro: #dc3545;
+          --tabla-color-peligro-contraste: #fff;
+          --tabla-color-advertencia: #ffc107;
+          --tabla-color-advertencia-contraste: #000; /* Texto negro para amarillo */
+          --tabla-color-info: #0dcaf0;
+          --tabla-color-info-contraste: #000; /* Texto negro para cyan claro */
+          --tabla-color-claro: #f8f9fa;
+          --tabla-color-claro-contraste: #000;
+          --tabla-color-oscuro: #212529;
+          --tabla-color-oscuro-contraste: #fff;
+
+          /* Espaciado */
+          --tabla-padding-vertical: 0.5rem;   /* 8px si 1rem = 16px */
+          --tabla-padding-horizontal: 0.5rem;
+          --tabla-padding-vertical-condensado: 0.25rem; /* 4px aprox */
+          --tabla-padding-horizontal-condensado: 0.4rem; /* 6px aprox */
+
+          /* Bordes */
+          --tabla-ancho-borde: 1px;
+          --tabla-radio-borde: 0.25rem; /* Para bordes redondeados */
+        }
+
+        /* Estilos generales para la página (opcional, para mejor visualización) */
+        body {
+          font-family: sans-serif;
+          padding: 20px;
+          line-height: 1.5;
+          background-color: #f8f9fa; /* Fondo claro para la página */
+        }
+        h1, h2, h3 {
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            color: #343a40;
+        }
+        h1 { text-align: center; }
+        code {
+            background-color: #e9ecef;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+
+        /* ==========================================================================
+           ESTILOS BASE PARA TODAS LAS TABLAS
+           ========================================================================== */
+
+        table {
+          width: 100%; /* Por defecto ocupan todo el ancho disponible */
+          margin-bottom: 1rem; /* Espacio debajo de la tabla */
+          color: var(--tabla-color-texto);
+          vertical-align: top; /* Alinea el contenido de las celdas arriba */
+          border-color: var(--tabla-color-borde);
+          border-collapse: collapse; /* Fundamental para que los bordes se unan */
+          caption-side: bottom; /* Posición del caption */
+          background-color: var(--tabla-color-fondo); /* Fondo blanco por defecto */
+        }
+
+        caption {
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+          color: #6c757d; /* Un gris para el caption */
+          text-align: left;
+        }
+
+        th,
+        td {
+          padding: var(--tabla-padding-vertical) var(--tabla-padding-horizontal);
+          border-bottom: var(--tabla-ancho-borde) solid var(--tabla-color-borde); /* Borde inferior por defecto */
+          text-align: inherit; /* Hereda la alineación del padre (izquierda por defecto) */
+          vertical-align: middle; /* Centrado vertical por defecto */
+        }
+
+        th {
+          font-weight: bold;
+          text-align: left; /* Alineación izquierda por defecto para cabeceras */
+          /* El borde inferior ya está aplicado por la regla de 'th, td' */
+        }
+
+        tbody, thead, tfoot {
+          vertical-align: inherit; /* Hereda de la tabla */
+        }
+
+        thead {
+            border-color: inherit;
+            border-style: solid;
+            border-width: 0;
+            border-bottom-width: calc(var(--tabla-ancho-borde) * 2); /* Borde inferior más grueso en cabecera */
+        }
+
+        /* Quitar borde inferior de la última fila del cuerpo si hay tfoot */
+        tbody tr:last-child td {
+            /* border-bottom: 0; */ /* Descomentar si se quiere quitar el borde */
+        }
+        /* Quitar borde inferior de la última fila si no hay tfoot */
+        table > :not(caption) > :last-child > tr:last-child > * {
+             border-bottom-width: 0;
+        }
+
+
+        /* ==========================================================================
+           MODIFICADORES DE ESTILO (CLASES)
+           ========================================================================== */
+
+        /* --- Estilos de Bordes --- */
+
+        /* Tabla con todos los bordes (añade bordes laterales) */
+        .tabla-bordes-completos th,
+        .tabla-bordes-completos td {
+          border: var(--tabla-ancho-borde) solid var(--tabla-color-borde);
+        }
+        /* Ajuste para que el borde grueso de thead se mantenga */
+        .tabla-bordes-completos thead {
+            border-bottom-width: calc(var(--tabla-ancho-borde) * 2);
+        }
+         /* Asegura que la última fila no tenga borde inferior si es bordes completos */
+         .tabla-bordes-completos > :not(caption) > :last-child > tr:last-child > * {
+             border-bottom-width: var(--tabla-ancho-borde);
+        }
+
+        /* Tabla sin ningún borde */
+        .tabla-sin-bordes th,
+        .tabla-sin-bordes td,
+        .tabla-sin-bordes thead {
+          border: 0;
+        }
+        /* Asegurar que la última fila tampoco tenga borde si se quitan todos */
+        .tabla-sin-bordes > :not(caption) > :last-child > tr:last-child > * {
+             border-bottom-width: 0;
+        }
+
+        /* Tabla con bordes solo exteriores */
+        .tabla-borde-exterior {
+            border: var(--tabla-ancho-borde) solid var(--tabla-color-borde);
+        }
+        .tabla-borde-exterior th,
+        .tabla-borde-exterior td {
+            border-width: 0; /* Quita bordes internos */
+        }
+        .tabla-borde-exterior thead {
+             border-bottom: var(--tabla-ancho-borde) solid var(--tabla-color-borde); /* Restaura borde inferior cabecera */
+        }
+        /* En este caso, la última fila SÍ necesita borde inferior si es parte del borde exterior */
+         .tabla-borde-exterior > :not(caption) > :last-child > tr:last-child > * {
+             border-bottom-width: 0; /* Quitar el interno */
+        }
+
+
+        /* --- Estilos de Filas --- */
+
+        /* Tabla con filas alternas (rayada o zebra) */
+        .tabla-rayada > tbody > tr:nth-of-type(odd) > * { /* Aplicar a celdas para compatibilidad */
+          background-color: var(--tabla-color-fila-alterna);
+          color: var(--tabla-color-texto);
+        }
+
+        /* Tabla con efecto hover en las filas del tbody */
+        .tabla-hover > tbody > tr:hover > * { /* Aplicar a celdas para compatibilidad */
+          background-color: var(--tabla-color-fila-hover);
+          color: var(--tabla-color-texto);
+          cursor: pointer;
+        }
+
+        /* Combinación: Rayada con hover (el hover debe sobrescribir el rayado) */
+        .tabla-rayada.tabla-hover > tbody > tr:hover > * {
+             background-color: var(--tabla-color-fila-hover);
+        }
+
+        /* --- Estilos de Cabecera --- */
+
+        /* Cabecera con fondo oscuro (por defecto en variables) */
+        .tabla-cabecera-oscura > thead {
+          background-color: var(--tabla-color-cabecera-fondo);
+          color: var(--tabla-color-cabecera-texto);
+          border-color: darken(var(--tabla-color-cabecera-fondo), 10%); /* Requiere JS o valor fijo si no hay preprocesador */
+          border-color: #1d2124; /* Valor fijo un poco más oscuro que #343a40 */
+        }
+
+        /* Cabecera con fondo claro */
+        .tabla-cabecera-clara > thead {
+          background-color: var(--tabla-color-claro);
+          color: var(--tabla-color-claro-contraste);
+          border-color: var(--tabla-color-borde);
+        }
+
+        /* --- Modificadores de Tamaño y Espaciado --- */
+
+        /* Tabla condensada (menos padding) */
+        .tabla-condensada th,
+        .tabla-condensada td {
+          padding: var(--tabla-padding-vertical-condensado) var(--tabla-padding-horizontal-condensado);
+        }
+
+        /* --- Temas de Color para Cabecera (Aplicar a la <table>) --- */
+        .tabla-tema-primario > thead { background-color: var(--tabla-color-primario); color: var(--tabla-color-primario-contraste); border-color: var(--tabla-color-primario); }
+        .tabla-tema-secundario > thead { background-color: var(--tabla-color-secundario); color: var(--tabla-color-secundario-contraste); border-color: var(--tabla-color-secundario); }
+        .tabla-tema-exito > thead { background-color: var(--tabla-color-exito); color: var(--tabla-color-exito-contraste); border-color: var(--tabla-color-exito); }
+        .tabla-tema-peligro > thead { background-color: var(--tabla-color-peligro); color: var(--tabla-color-peligro-contraste); border-color: var(--tabla-color-peligro); }
+        .tabla-tema-advertencia > thead { background-color: var(--tabla-color-advertencia); color: var(--tabla-color-advertencia-contraste); border-color: var(--tabla-color-advertencia); }
+        .tabla-tema-info > thead { background-color: var(--tabla-color-info); color: var(--tabla-color-info-contraste); border-color: var(--tabla-color-info); }
+        .tabla-tema-claro > thead { background-color: var(--tabla-color-claro); color: var(--tabla-color-claro-contraste); border-color: var(--tabla-color-claro); }
+        .tabla-tema-oscuro > thead { background-color: var(--tabla-color-oscuro); color: var(--tabla-color-oscuro-contraste); border-color: var(--tabla-color-oscuro); }
+
+        /* Clases para colorear filas enteras (aplicar a <tr>) */
+        .fila-activa > * { background-color: rgba(0, 0, 0, 0.075); } /* Ejemplo sutil */
+        .fila-primario > *, .fila-primario { background-color: #cfe2ff; color: #052c65; }
+        .fila-secundario > *, .fila-secundario { background-color: #e2e3e5; color: #2b2f32; }
+        .fila-exito > *, .fila-exito { background-color: #d1e7dd; color: #0a3622; }
+        .fila-peligro > *, .fila-peligro { background-color: #f8d7da; color: #58151c; }
+        .fila-advertencia > *, .fila-advertencia { background-color: #fff3cd; color: #664d03; }
+        .fila-info > *, .fila-info { background-color: #cff4fc; color: #055160; }
+        .fila-claro > *, .fila-claro { background-color: #f8f9fa; color: #000; }
+        .fila-oscuro > *, .fila-oscuro { background-color: #adb5bd; color: #000; } /* Ajustado para legibilidad */
+
+        /* --- Contenedor para Tablas Responsivas (Scroll Horizontal) --- */
+        .tabla-responsiva-contenedor {
+          overflow-x: auto; /* Habilita scroll horizontal si el contenido excede */
+          -webkit-overflow-scrolling: touch; /* Scroll más suave en iOS */
+          margin-bottom: 1rem; /* Espacio debajo del contenedor */
+          width: 100%;
+          /* Opcional: añadir un borde o sombra para indicar que hay scroll */
+          /* border: 1px solid var(--tabla-color-borde); */
+        }
+        /* Quitar margen inferior de la tabla DENTRO del contenedor */
+        .tabla-responsiva-contenedor > table {
+          margin-bottom: 0;
+          min-width: 600px; /* Ancho mínimo antes de que aparezca el scroll (ajustar según necesidad) */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Ejemplos de Estilos de Tablas CSS</h1>
+    <p>A continuación se muestran diferentes tablas HTML utilizando las clases CSS definidas en la sección <code>&lt;style&gt;</code> de este documento.</p>
+
+    <h2>Tabla Básica (Estilos por defecto)</h2>
+    <p>Solo con los estilos base (bordes inferiores, padding, etc.). Clase: ninguna específica requerida.</p>
+    <table>
+        <caption>Tabla con estilos base</caption>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Usuario</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>1</th>
+                <td>Ana</td>
+                <td>García</td>
+                <td>@anagarcia</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td>Luis</td>
+                <td>Martínez</td>
+                <td>@luismart</td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td>Elena</td>
+                <td>Rodríguez</td>
+                <td>@elena_r</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Tabla con Bordes Completos</h2>
+    <p>Clase: <code>.tabla-bordes-completos</code></p>
+    <table class="tabla-bordes-completos">
+        <caption>Tabla con todos los bordes</caption>
+         <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Laptop Modelo X</td>
+                <td>$1200</td>
+                <td>15</td>
+            </tr>
+            <tr>
+                <td>Teclado Mecánico</td>
+                <td>$85</td>
+                <td>40</td>
+            </tr>
+            <tr>
+                <td>Monitor 27"</td>
+                <td>$300</td>
+                <td>22</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Tabla Rayada (Zebra) y con Hover</h2>
+    <p>Clases: <code>.tabla-rayada .tabla-hover</code></p>
+    <table class="tabla-rayada tabla-hover">
+        <caption>Usuarios registrados (Pasa el ratón por encima)</caption>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Fecha Registro</th>
+                <th>País</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>101</td>
+                <td>juan.perez@email.com</td>
+                <td>2024-01-15</td>
+                <td>México</td>
+            </tr>
+            <tr>
+                <td>102</td>
+                <td>maria.lopez@email.com</td>
+                <td>2024-02-20</td>
+                <td>España</td>
+            </tr>
+            <tr>
+                <td>103</td>
+                <td>carlos.gomez@email.com</td>
+                <td>2024-03-10</td>
+                <td>Argentina</td>
+            </tr>
+             <tr>
+                <td>104</td>
+                <td>sofia.castro@email.com</td>
+                <td>2024-04-01</td>
+                <td>Colombia</td>
+            </tr>
+        </tbody>
+    </table>
+
+     <hr>
+
+    <h2>Tabla Condensada y Sin Bordes</h2>
+    <p>Clases: <code>.tabla-condensada .tabla-sin-bordes</code></p>
+    <table class="tabla-condensada tabla-sin-bordes">
+        <caption>Lista rápida de tareas</caption>
+        <thead>
+            <tr>
+                <th>Tarea</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Diseñar Landing Page</td>
+                <td>En Progreso</td>
+            </tr>
+            <tr>
+                <td>Reunión Equipo</td>
+                <td>Completada</td>
+            </tr>
+            <tr>
+                <td>Enviar reporte semanal</td>
+                <td>Pendiente</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>Tabla con Cabecera Oscura</h2>
+    <p>Clase: <code>.tabla-cabecera-oscura</code> (y <code>.tabla-bordes-completos</code> para mejor visualización)</p>
+    <table class="tabla-cabecera-oscura tabla-bordes-completos">
+        <caption>Inventario de Almacén</caption>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Artículo</th>
+                <th>Cantidad</th>
+                <th>Ubicación</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>SKU-001</td>
+                <td>Cajas de Cartón</td>
+                <td>500</td>
+                <td>Pasillo A</td>
+            </tr>
+            <tr>
+                <td>SKU-002</td>
+                <td>Cinta Adhesiva</td>
+                <td>250</td>
+                <td>Pasillo B</td>
+            </tr>
+            <tr>
+                <td>SKU-003</td>
+                <td>Plástico Burbuja</td>
+                <td>100m</td>
+                <td>Pasillo A</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+     <h2>Tabla con Tema de Color (Advertencia) y Hover</h2>
+     <p>Clases: <code>.tabla-tema-advertencia .tabla-hover</code></p>
+     <table class="tabla-tema-advertencia tabla-hover">
+        <caption>Niveles de Alerta</caption>
+        <thead>
+            <tr>
+                <th>Sensor</th>
+                <th>Última Lectura</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Temperatura CPU</td>
+                <td>55°C</td>
+                <td>Normal</td>
+            </tr>
+            <tr class="fila-advertencia"> <td>Humedad Sala Servidores</td>
+                <td>75%</td>
+                <td>Alto</td>
+            </tr>
+            <tr>
+                <td>Presión Agua</td>
+                <td>3 bar</td>
+                <td>Normal</td>
+            </tr>
+             <tr class="fila-peligro"> <td>Detector de Humo</td>
+                <td>Activado</td>
+                <td>¡ALARMA!</td>
+            </tr>
+        </tbody>
+     </table>
+
+     <hr>
+
+     <h2>Tabla Responsiva con Scroll Horizontal</h2>
+     <p>Necesita un contenedor con la clase <code>.tabla-responsiva-contenedor</code>. La tabla interior puede tener cualquier otro estilo.</p>
+     <p>Reduce el ancho de la ventana del navegador para ver el efecto.</p>
+     <div class="tabla-responsiva-contenedor">
+         <table class="tabla-rayada tabla-hover tabla-bordes-completos tabla-cabecera-oscura">
+             <caption>Datos Financieros Trimestrales (Muchos Campos)</caption>
+             <thead>
+                 <tr>
+                     <th>Mes</th>
+                     <th>Ingresos Venta Directa</th>
+                     <th>Ingresos Afiliados</th>
+                     <th>Costos Marketing</th>
+                     <th>Costos Operativos</th>
+                     <th>Beneficio Bruto</th>
+                     <th>Impuestos</th>
+                     <th>Beneficio Neto</th>
+                     <th>Margen (%)</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <td>Enero</td>
+                     <td>$15,000</td>
+                     <td>$2,500</td>
+                     <td>$3,000</td>
+                     <td>$4,000</td>
+                     <td>$10,500</td>
+                     <td>$2,100</td>
+                     <td>$8,400</td>
+                     <td>48.0%</td>
+                 </tr>
+                 <tr>
+                     <td>Febrero</td>
+                     <td>$18,000</td>
+                     <td>$3,100</td>
+                     <td>$3,500</td>
+                     <td>$4,200</td>
+                     <td>$13,400</td>
+                     <td>$2,680</td>
+                     <td>$10,720</td>
+                     <td>50.8%</td>
+                 </tr>
+                 <tr>
+                     <td>Marzo</td>
+                     <td>$22,000</td>
+                     <td>$3,800</td>
+                     <td>$4,000</td>
+                     <td>$4,500</td>
+                     <td>$17,300</td>
+                     <td>$3,460</td>
+                     <td>$13,840</td>
+                     <td>53.6%</td>
+                 </tr>
+                  <tr>
+                     <td>Abril</td>
+                     <td>$19,500</td>
+                     <td>$3,300</td>
+                     <td>$3,800</td>
+                     <td>$4,300</td>
+                     <td>$14,700</td>
+                     <td>$2,940</td>
+                     <td>$11,760</td>
+                     <td>51.6%</td>
+                 </tr>
+             </tbody>
+             <tfoot>
+                 <tr>
+                     <td>Total Q1+Abr</td>
+                     <td>$74,500</td>
+                     <td>$12,700</td>
+                     <td>$14,300</td>
+                     <td>$17,000</td>
+                     <td>$55,900</td>
+                     <td>$11,180</td>
+                     <td>$44,720</td>
+                     <td>-</td>
+                 </tr>
+             </tfoot>
+         </table>
+     </div>
+
+     <hr>
+
+     <p style="text-align: center; margin-top: 2em; color: #6c757d;">-- Fin de los ejemplos --</p>
+
+</body>
+</html>

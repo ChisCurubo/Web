@@ -1,0 +1,27 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.vitrina {
+    display: grid;
+    grid-template-columns: 100px 100px 100px; /* Definición manual de 3 columnas */
+    grid-template-rows: 100px 100px 100px; /* Definición manual de 3 filas */
+    gap: 10px;
+}
+
+.card {
+    background-color: black;
+    border: 2px solid gold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-family: Arial, sans-serif;
+}

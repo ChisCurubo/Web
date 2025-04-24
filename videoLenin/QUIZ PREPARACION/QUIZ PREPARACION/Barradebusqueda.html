@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Barra de Navegación Reutilizable</title>
+    <style>
+        /* ESTILOS REUTILIZABLES (Puedes copiar este CSS a un archivo aparte) */
+        
+        /* Barra de Navegación */
+        #barra-navegacion {
+            background-color: #2c3e50;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 100%;
+        }
+        
+        #contenedor-barra {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        #lista-enlaces {
+            display: flex;
+            list-style: none;
+        }
+        
+        #lista-enlaces li {
+            margin-right: 20px;
+        }
+        
+        #lista-enlaces a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        #lista-enlaces a:hover {
+            background-color: #34495e;
+        }
+        
+        /* Barra de Búsqueda */
+        #contenedor-busqueda {
+            display: flex;
+            align-items: center;
+        }
+        
+        #campo-busqueda {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            outline: none;
+            width: 200px;
+            background-color: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        #boton-busqueda {
+            padding: 8px 15px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #boton-busqueda:hover {
+            background-color: #c0392b;
+        }
+        
+        /* Estilos generales (opcional) */
+        body {
+            background-color: #f5f5f5;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        #contenido-principal {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- BARRA DE NAVEGACIÓN REUTILIZABLE -->
+    <nav id="barra-navegacion">
+        <div id="contenedor-barra">
+            <ul id="lista-enlaces">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            
+            <div id="contenedor-busqueda">
+                <input type="text" id="campo-busqueda" placeholder="Buscar...">
+                <button type="submit" id="boton-busqueda">Buscar</button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- CONTENIDO DE LA PÁGINA (esto cambia en cada HTML) -->
+    <main id="contenido-principal">
+        <h1>Ejemplo de Barra Reutilizable</h1>
+        <p>Esta barra de navegación con búsqueda tiene IDs específicos en español para que puedas copiarla fácilmente a otros proyectos.</p>
+        <p>Simplemente copia el código HTML de la barra y el CSS correspondiente.</p>
+    </main>
+</body>
+</html>

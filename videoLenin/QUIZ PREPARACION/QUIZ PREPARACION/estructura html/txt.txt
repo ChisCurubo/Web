@@ -1,0 +1,151 @@
+1. Estructura Principal
+
+<!DOCTYPE html>: Define el tipo de documento como HTML5.
+
+<html>: Raíz de un documento HTML.
+
+<head>: Contiene metadatos, enlaces a CSS, scripts, etc.
+
+<meta>: Define metadatos (charset, viewport, SEO).
+
+<title>: Define el título de la página.
+
+<body>: Contiene el contenido visible del documento.
+
+2. Texto y Encabezados
+
+<h1> a <h6>: Encabezados de mayor a menor importancia.
+
+<p>: Define un párrafo.
+
+<br>: Salto de línea.
+
+<hr>: Línea horizontal divisoria.
+
+<strong>: Texto en negrita semántica.
+
+<b>: Texto en negrita (solo estética).
+
+<em>: Texto enfatizado (generalmente en cursiva).
+
+<i>: Texto en cursiva (solo estética).
+
+<blockquote>: Cita textual.
+
+<q>: Cita corta.
+
+<abbr>: Abreviatura.
+
+<cite>: Cita de una fuente.
+
+3. Listas
+
+<ul>: Lista no ordenada.
+
+<ol>: Lista ordenada.
+
+<li>: Elemento de una lista.
+
+<dl>: Lista de definiciones.
+
+<dt>: Término de definición.
+
+<dd>: Descripción del término.
+
+4. Hipervínculos y Multimedia
+
+<a>: Define un enlace.
+
+<img>: Inserta una imagen.
+
+<figure>: Agrupa contenido multimedia.
+
+<figcaption>: Texto descriptivo para <figure>.
+
+<audio>: Inserta audio.
+
+<video>: Inserta video.
+
+<source>: Define múltiples fuentes de multimedia.
+
+<iframe>: Inserta otro documento o contenido externo.
+
+5. Formularios
+
+<form>: Define un formulario.
+
+<input>: Campo de entrada.
+
+<textarea>: Área de texto multilínea.
+
+<button>: Botón interactivo.
+
+<select>: Menú desplegable.
+
+<option>: Opcion de <select>.
+
+<label>: Etiqueta descriptiva para un campo de formulario.
+
+<fieldset>: Agrupa elementos relacionados.
+
+<legend>: Título para un <fieldset>.
+
+6. Tablas
+
+<table>: Define una tabla.
+
+<thead>: Cabecera de la tabla.
+
+<tbody>: Cuerpo de la tabla.
+
+<tfoot>: Pie de la tabla.
+
+<tr>: Fila de la tabla.
+
+<td>: Celda normal.
+
+<th>: Celda de encabezado.
+
+7. Estructura Semántica Moderna
+
+<header>: Encabezado de sección o página.
+
+<nav>: Navegación.
+
+<main>: Contenido principal.
+
+<section>: Sección de contenido.
+
+<article>: Contenido independiente.
+
+<aside>: Contenido relacionado o adicional.
+
+<footer>: Pie de página o sección.
+
+8. Otros Elementos
+
+<div>: Contenedor genérico.
+
+<span>: Contenedor en línea genérico.
+
+<script>: Inserta o enlaza código JavaScript.
+
+<link>: Vincula recursos externos como CSS.
+
+<style>: Inserta CSS interno.
+
+<noscript>: Contenido alternativo si JavaScript está deshabilitado.
+
+9. Accesibilidad y SEO
+
+alt (en <img>): Texto alternativo.
+
+aria-*: Atributos para accesibilidad mejorada.
+
+role: Define el rol de un elemento para accesibilidad.
+
+Notas:
+
+Las etiquetas que no tienen cierre, como <br>, <img>, o <input>, son "autocontenidas".
+
+Es buena práctica usar la semántica correcta para mejor accesibilidad y SEO.

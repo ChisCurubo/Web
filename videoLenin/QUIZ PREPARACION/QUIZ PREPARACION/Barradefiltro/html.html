@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrina de Equipos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Vitrina de Equipos</h1>
+        <div class="filters">
+            <input type="text" id="filterNombre" placeholder="Filtrar por nombre...">
+            <input type="text" id="filterPais" placeholder="Filtrar por país...">
+            <input type="number" id="filterAnio" placeholder="Filtrar por año...">
+            <div class="range-filter">
+                <label for="filterPrecioMin">Precio mínimo:</label>
+                <input type="number" id="filterPrecioMin" placeholder="Mínimo">
+                <label for="filterPrecioMax">Precio máximo:</label>
+                <input type="number" id="filterPrecioMax" placeholder="Máximo">
+            </div>
+        </div>
+        <div class="equipos-grid" id="equiposGrid">
+            <!-- Aquí se cargarán los equipos dinámicamente -->
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

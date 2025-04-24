@@ -1,0 +1,101 @@
+body{
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+   }
+
+h2, h1{
+    color: rgb(29, 218, 29);
+}
+
+.BarraChange{
+    list-style: none;
+    
+    
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+  
+}
+
+#Braralateral{
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+ margin-left: -50px;
+}
+li{
+
+ background-color: rgb(83, 76, 76);
+padding: 5px;
+width: 150px;
+text-align: center;
+color: white;
+margin: 5px;
+
+}
+li:nth-child(3) {
+
+    background-color: #06da8c;
+    color: white;
+   }
+ li:hover{
+    background-color: black;
+
+
+
+   }
+   
+a {
+    color: black;
+
+}
+
+
+#barraLorem{
+    margin-top: 20px;
+    color: #070707;
+    border: 1px solid #e4dddd ;
+      background-color: #e4dddd;
+      padding: 10px;
+     }
+  
+     #barraLorem h2,  #barraLorem p{
+  
+      margin-left: 10px;
+     }
+
+
+     footer{
+        line-height: 14px;
+        margin-top: 10px;
+       text-align: center;
+        font-size: medium;
+    }
+
+
+ 
+@media (max-width: 700px) {
+    .BarraChange {
+        grid-template-columns: repeat(3, 1fr);
+        height: 120px;
+        width: 350px;
+    }
+    
+    li {
+        width: auto;
+        margin: 5px 5px;
+    }
+}
+
+@media (max-width: 600px) {
+    .BarraChange {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .BarraChange {
+        grid-template-columns: 1fr;
+    }
+    
+    #Braralateral {
+        margin-left: 0;
+    }}

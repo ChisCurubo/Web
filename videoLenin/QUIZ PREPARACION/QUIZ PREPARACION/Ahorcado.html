@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .hangman-container {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            margin-bottom: 20px;
+        }
+
+        .hangman-part {
+            position: absolute;
+            background-color: #333;
+            display: none;
+        }
+
+        /* Base */
+        #base {
+            width: 120px;
+            height: 10px;
+            bottom: 0;
+            left: 40px;
+            display: block;
+        }
+
+        /* Poste */
+        #post {
+            width: 10px;
+            height: 200px;
+            bottom: 10px;
+            left: 40px;
+            display: block;
+        }
+
+        /* Travesaño superior */
+        #top-bar {
+            width: 100px;
+            height: 10px;
+            top: 0;
+            left: 50px;
+        }
+
+        /* Cuerda */
+        #rope {
+            width: 5px;
+            height: 30px;
+            top: 10px;
+            left: 140px;
+            background-color: #8B4513;
+        }
+
+        /* Cabeza */
+        #head {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            top: 40px;
+            left: 125px;
+        }
+
+        /* Cuerpo */
+        #body {
+            width: 10px;
+            height: 80px;
+            top: 80px;
+            left: 145px;
+        }
+
+        /* Brazo izquierdo */
+        #left-arm {
+            width: 50px;
+            height: 10px;
+            top: 100px;
+            left: 95px;
+            transform: rotate(30deg);
+        }
+
+        /* Brazo derecho */
+        #right-arm {
+            width: 50px;
+            height: 10px;
+            top: 100px;
+            left: 150px;
+            transform: rotate(-30deg);
+        }
+
+        /* Pierna izquierda */
+        #left-leg {
+            width: 50px;
+            height: 10px;
+            top: 160px;
+            left: 105px;
+            transform: rotate(-30deg);
+        }
+
+        /* Pierna derecha */
+        #right-leg {
+            width: 50px;
+            height: 10px;
+            top: 160px;
+            left: 140px;
+            transform: rotate(30deg);
+        }
+
+        .word-display {
+            font-size: 2rem;
+            letter-spacing: 10px;
+            margin: 20px 0;
+            min-height: 50px;
+        }
+
+        .keyboard {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .key {
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .key:hover {
+            background-color: #45a049;
+        }
+
+        .key.used {
+            background-color: #f44336;
+            cursor: not-allowed;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin: 10px 0;
+            min-height: 30px;
+            font-weight: bold;
+        }
+
+        .reset-btn {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .reset-btn:hover {
+            background-color: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <h1>Juego del Ahorcado</h1>
+    <div class="game-container">
+        <div class="hangman-container">
+            <div class="hangman-part" id="base"></div>
+            <div class="hangman-part" id="post"></div>
+            <div class="hangman-part" id="top-bar"></div>
+            <div class="hangman-part" id="rope"></div>
+            <div class="hangman-part" id="head"></div>
+            <div class="hangman-part" id="body"></div>
+            <div class="hangman-part" id="left-arm"></div>
+            <div class="hangman-part" id="right-arm"></div>
+            <div class="hangman-part" id="left-leg"></div>
+            <div class="hangman-part" id="right-leg"></div>
+        </div>
+
+        <div class="word-display" id="word-display"></div>
+
+        <div class="message" id="message"></div>
+
+        <div class="keyboard" id="keyboard">
+            <!-- Las teclas se generarán con JavaScript -->
+        </div>
+
+        <button class="reset-btn" id="reset-btn">Nuevo Juego</button>
+    </div>
+
+    <script>
+        // Palabras para el juego
+        const words = ['AHORCADO', 'COMPUTADORA', 'JAVASCRIPT', 'PROGRAMACION', 'HTML', 'CSS', 'DESARROLLO', 'INTERNET'];
+        
+        // Variables del juego
+        let selectedWord = '';
+        let guessedLetters = [];
+        let errorCount = 0;
+        const maxErrors = 6;
+        
+        // Elementos del DOM
+        const wordDisplay = document.getElementById('word-display');
+        const messageEl = document.getElementById('message');
+        const keyboardEl = document.getElementById('keyboard');
+        const resetBtn = document.getElementById('reset-btn');
+        const hangmanParts = document.querySelectorAll('.hangman-part');
+        
+        // Inicializar el juego
+        function initGame() {
+            // Seleccionar palabra aleatoria
+            selectedWord = words[Math.floor(Math.random() * words.length)];
+            guessedLetters = [];
+            errorCount = 0;
+            
+            // Mostrar la palabra oculta
+            displayWord();
+            
+            // Crear teclado
+            createKeyboard();
+            
+            // Ocultar partes del ahorcado (excepto base y poste)
+            for (let i = 2; i < hangmanParts.length; i++) {
+                hangmanParts[i].style.display = 'none';
+            }
+            
+            // Limpiar mensajes
+            messageEl.textContent = '';
+        }
+        
+        // Mostrar la palabra con letras adivinadas
+        function displayWord() {
+            const wordArray = selectedWord.split('');
+            const display = wordArray.map(letter => 
+                guessedLetters.includes(letter) ? letter : '_'
+            ).join(' ');
+            
+            wordDisplay.textContent = display;
+            
+            // Verificar si ganó
+            if (!display.includes('_')) {
+                messageEl.textContent = '¡Ganaste!';
+                disableKeyboard();
+            }
+        }
+        
+        // Crear teclado de letras
+        function createKeyboard() {
+            keyboardEl.innerHTML = '';
+            
+            for (let i = 65; i <= 90; i++) {
+                const letter = String.fromCharCode(i);
+                const key = document.createElement('button');
+                key.className = 'key';
+                key.textContent = letter;
+                key.dataset.letter = letter;
+                key.addEventListener('click', handleGuess);
+                keyboardEl.appendChild(key);
+            }
+        }
+        
+        // Manejar el intento de adivinar una letra
+        function handleGuess(e) {
+            const letter = e.target.dataset.letter;
+            e.target.classList.add('used');
+            e.target.disabled = true;
+            
+            if (selectedWord.includes(letter)) {
+                guessedLetters.push(letter);
+                displayWord();
+            } else {
+                errorCount++;
+                showHangmanPart();
+                
+                if (errorCount >= maxErrors) {
+                    messageEl.textContent = `¡Perdiste! La palabra era: ${selectedWord}`;
+                    disableKeyboard();
+                }
+            }
+        }
+        
+        // Mostrar parte del ahorcado según errores
+        function showHangmanPart() {
+            if (errorCount > 0 && errorCount <= hangmanParts.length - 2) {
+                hangmanParts[errorCount + 1].style.display = 'block';
+            }
+        }
+        
+        // Deshabilitar teclado
+        function disableKeyboard() {
+            const keys = document.querySelectorAll('.key');
+            keys.forEach(key => {
+                key.disabled = true;
+            });
+        }
+        
+        // Evento para nuevo juego
+        resetBtn.addEventListener('click', initGame);
+        
+        // Iniciar el juego al cargar la página
+        window.addEventListener('DOMContentLoaded', initGame);
+    </script>
+</body>
+</html>

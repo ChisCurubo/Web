@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!-- 
+  #############################################################
+  # ARCHIVO MAESTRO HTML - TODAS LAS ETIQUETAS COMENTADAS     #
+  # Incluye elementos HTML5, obsoletos y de SVG/MathML        #
+  # Cada etiqueta tiene su explicación en línea               #
+  #############################################################
+-->
+
+<html lang="es">
+<!-- 
+  Raíz del documento HTML 
+  - lang: Define el idioma principal del documento
+-->
+
+<head>
+<!-- 
+  Contenedor de metadatos y enlaces a recursos externos 
+  - No se muestra visualmente
+  - Contiene información para navegadores y motores de búsqueda
+-->
+  
+  <meta charset="UTF-8">
+  <!-- 
+    Especifica la codificación de caracteres (UTF-8 recomendado) 
+    - Debe aparecer en los primeros 1024 bytes del documento
+  -->
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    Configuración para responsive design 
+    - width=device-width: Ancho igual al dispositivo
+    - initial-scale=1.0: Zoom inicial al 100%
+  -->
+  
+  <title>Documento Maestro HTML</title>
+  <!-- 
+    Título del documento (aparece en pestañas/favoritos) 
+    - Importante para SEO y accesibilidad
+  -->
+  
+  <base href="https://ejemplo.com/" target="_blank">
+  <!-- 
+    URL base para enlaces relativos 
+    - target="_blank": Abre enlaces en nueva pestaña por defecto
+  -->
+  
+  <link rel="stylesheet" href="estilos.css">
+  <!-- 
+    Enlace a hoja de estilos externa 
+    - rel: Define la relación (stylesheet = hoja de estilos)
+  -->
+  
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <!-- 
+    Favicon del sitio 
+    - Aparece en pestañas/favoritos
+    - Formatos comunes: .ico, .png, .svg
+  -->
+  
+  <style>
+    /* Estilos CSS internos */
+    body { font-family: Arial, sans-serif; }
+  </style>
+  <!-- 
+    Estilos CSS embebidos 
+    - Alternativa a archivos externos para estilos específicos
+  -->
+  
+  <script>
+    // Código JavaScript interno
+    console.log("Script interno cargado");
+  </script>
+  <!-- 
+    Script JavaScript embebido 
+    - Se ejecuta inmediatamente al encontrar el elemento
+  -->
+  
+  <noscript>
+    <p>Tu navegador no soporta JavaScript o está deshabilitado.</p>
+  </noscript>
+  <!-- 
+    Contenido alternativo cuando JS está deshabilitado 
+    - Importante para accesibilidad y funcionalidad básica
+  -->
+</head>
+
+<body>
+<!-- 
+  Contenido visible de la página 
+  - Todo lo que se muestra al usuario va aquí
+-->
+
+  <!-- ========= SECCIONES SEMÁNTICAS ========= -->
+  <header>
+    <!-- 
+      Cabecera de documento/sección 
+      - Suele contener logo, menú de navegación, buscador
+    -->
+    <h1>Encabezado Principal</h1>
+    <!-- 
+      Título principal (solo uno por página) 
+      - Jerarquía h1-h6 importante para SEO y accesibilidad
+    -->
+  </header>
+
+  <nav>
+    <!-- 
+      Bloque de navegación principal 
+      - Contiene enlaces a secciones principales
+    -->
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- 
+      Contenido principal único del documento 
+      - No debe repetirse ni estar dentro de article, aside, etc.
+    -->
+    
+    <article>
+      <!-- 
+        Contenido autónomo que tiene sentido por sí mismo 
+        - Ej: Post de blog, artículo de noticia
+      -->
+      <h2>Título del Artículo</h2>
+      <p>Contenido del artículo...</p>
+    </article>
+
+    <section>
+      <!-- 
+        Sección temática del documento 
+        - Diferente a article: no es necesariamente autónomo
+      -->
+      <h2>Sección Importante</h2>
+      <p>Contenido de la sección...</p>
+    </section>
+
+    <aside>
+      <!-- 
+        Contenido relacionado pero no esencial 
+        - Ej: Barra lateral, bloques relacionados
+      -->
+      <h3>Información Adicional</h3>
+      <p>Contenido tangencial...</p>
+    </aside>
+  </main>
+
+  <footer>
+    <!-- 
+      Pie de página o sección 
+      - Suele contener info de contacto, copyright, enlaces legales
+    -->
+    <p>&copy; 2023 Mi Sitio Web</p>
+  </footer>
+
+  <!-- ========= TEXTO Y FORMATO ========= -->
+  <p>Este es un párrafo normal.</p>
+  <!-- 
+    Párrafo básico 
+    - Se ajusta automáticamente al ancho disponible
+  -->
+
+  <p>Texto con <em>énfasis</em> y <strong>importancia fuerte</strong>.</p>
+  <!-- 
+    em: Énfasis semántico (cursiva por defecto)
+    strong: Importancia fuerte (negrita por defecto)
+  -->
+
+  <p><small>Texto pequeño</small>, <mark>resaltado</mark>, <del>eliminado</del>, <ins>insertado</ins>.</p>
+  <!-- 
+    small: Texto secundario/legal
+    mark: Resaltado relevante
+    del: Texto eliminado (tachado)
+    ins: Texto insertado (subrayado)
+  -->
+
+  <blockquote cite="https://ejemplo.com">
+    <p>Cita textual importante de otra fuente.</p>
+  </blockquote>
+  <!-- 
+    Cita extensa con atributo cite para URL de origen
+    - Suele tener sangría por defecto
+  -->
+
+  <pre>
+    Texto preformateado
+    Conserva espacios y
+      saltos de línea
+  </pre>
+  <!-- 
+    Texto con formato predefinido 
+    - Usado comúnmente para código
+    - Usa fuente monoespaciada
+  -->
+
+  <code>console.log("Código de ejemplo");</code>
+  <!-- 
+    Fragmento de código inline 
+    - Usa fuente monoespaciada como pre
+  -->
+
+  <!-- ========= LISTAS ========= -->
+  <ul>
+    <li>Item no ordenado 1</li>
+    <li>Item no ordenado 2</li>
+  </ul>
+  <!-- 
+    Lista no ordenada (viñetas por defecto)
+    - li: List item (elemento de lista)
+  -->
+
+  <ol>
+    <li>Primer item</li>
+    <li>Segundo item</li>
+  </ol>
+  <!-- 
+    Lista ordenada (números por defecto)
+    - Atributos útiles: start, reversed, type
+  -->
+
+  <dl>
+    <dt>Término</dt>
+    <dd>Definición</dd>
+    <dt>HTML</dt>
+    <dd>Lenguaje de marcado para la web</dd>
+  </dl>
+  <!-- 
+    Lista de definiciones 
+    - dt: Término a definir
+    - dd: Definición del término
+  -->
+
+  <!-- ========= TABLAS ========= -->
+  <table>
+    <caption>Resumen de datos</caption>
+    <!-- 
+      Título descriptivo de la tabla 
+      - Importante para accesibilidad
+    -->
+    <thead>
+      <tr>
+        <th>Encabezado 1</th>
+        <th>Encabezado 2</th>
+      </tr>
+    </thead>
+    <!-- 
+      Cabecera de tabla 
+      - th: Celda de encabezado (negrita y centrada por defecto)
+    -->
+    <tbody>
+      <tr>
+        <td>Dato 1</td>
+        <td>Dato 2</td>
+      </tr>
+    </tbody>
+    <!-- 
+      Cuerpo principal de la tabla 
+      - tr: Table row (fila)
+      - td: Table data (celda normal)
+    -->
+    <tfoot>
+      <tr>
+        <td>Total</td>
+        <td>100</td>
+      </tr>
+    </tfoot>
+    <!-- 
+      Pie de tabla 
+      - Para resúmenes o totales
+    -->
+  </table>
+
+  <!-- ========= FORMULARIOS ========= -->
+  <form action="/procesar" method="post">
+    <!-- 
+      Contenedor de controles de formulario 
+      - action: URL que procesa el formulario
+      - method: HTTP method (get/post)
+    -->
+    <fieldset>
+      <legend>Información Personal</legend>
+      <!-- 
+        fieldset: Agrupa controles relacionados
+        legend: Título descriptivo del grupo
+      -->
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      <!-- 
+        label: Etiqueta descriptiva para un control
+        input: Campo de entrada de datos
+          - type="text": Campo de texto
+          - required: Campo obligatorio
+      -->
+    </fieldset>
+
+    <label>
+      Email:
+      <input type="email" name="email" placeholder="usuario@ejemplo.com">
+    </label>
+    <!-- 
+      type="email": Valida formato de email
+      placeholder: Texto de ejemplo
+    -->
+
+    <label>
+      Contraseña:
+      <input type="password" name="password" minlength="8">
+    </label>
+    <!-- 
+      type="password": Oculta caracteres
+      minlength: Longitud mínima requerida
+    -->
+
+    <label>
+      Edad:
+      <input type="number" name="edad" min="18" max="99">
+    </label>
+    <!-- 
+      type="number": Selector numérico
+      min/max: Rango de valores permitidos
+    -->
+
+    <label>
+      Fecha:
+      <input type="date" name="fecha">
+    </label>
+    <!-- 
+      type="date": Selector de fecha
+      - Depende de soporte del navegador
+    -->
+
+    <label>
+      Color favorito:
+      <input type="color" name="color">
+    </label>
+    <!-- 
+      type="color": Selector de color
+      - Devuelve valor hexadecimal
+    -->
+
+    <label>
+      Archivo:
+      <input type="file" name="archivo" accept=".pdf,.jpg">
+    </label>
+    <!-- 
+      type="file": Selector de archivos
+      accept: Tipos de archivo permitidos
+    -->
+
+    <label>
+      <input type="checkbox" name="terminos" required>
+      Acepto los términos
+    </label>
+    <!-- 
+      type="checkbox": Casilla de verificación
+      - Puede seleccionarse múltiples opciones
+    -->
+
+    <fieldset>
+      <legend>Género</legend>
+      <label>
+        <input type="radio" name="genero" value="masculino" checked>
+        Masculino
+      </label>
+      <label>
+        <input type="radio" name="genero" value="femenino">
+        Femenino
+      </label>
+    </fieldset>
+    <!-- 
+      type="radio": Botón de opción única
+      - name igual agrupa opciones
+      - checked: Seleccionado por defecto
+    -->
+
+    <label>
+      País:
+      <select name="pais">
+        <option value="mx">México</option>
+        <option value="es">España</option>
+      </select>
+    </label>
+    <!-- 
+      select: Lista desplegable
+      option: Elementos seleccionables
+    -->
+
+    <label>
+      Mensaje:
+      <textarea name="mensaje" rows="4" cols="50"></textarea>
+    </label>
+    <!-- 
+      textarea: Campo de texto multilínea
+      rows/cols: Tamaño visible inicial
+    -->
+
+    <button type="submit">Enviar</button>
+    <!-- 
+      Botón de envío del formulario
+      - type="submit": Envía el formulario
+    -->
+  </form>
+
+  <!-- ========= MULTIMEDIA ========= -->
+  <img src="imagen.jpg" alt="Descripción de la imagen" width="300">
+  <!-- 
+    Inserta una imagen 
+    - src: Ruta de la imagen
+    - alt: Texto alternativo (obligatorio para accesibilidad)
+    - width/height: Dimensiones (mejor usar CSS)
+  -->
+
+  <audio controls>
+    <source src="audio.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+  <!-- 
+    Reproductor de audio 
+    - controls: Muestra controles de reproducción
+    - source: Formatos alternativos
+  -->
+
+  <video width="320" height="240" controls>
+    <source src="video.mp4" type="video/mp4">
+    Tu navegador no soporta video.
+  </video>
+  <!-- 
+    Reproductor de video 
+    - Atributos útiles: autoplay, loop, muted
+  -->
+
+  <picture>
+    <source media="(min-width: 800px)" srcset="imagen-grande.jpg">
+    <source media="(min-width: 400px)" srcset="imagen-mediana.jpg">
+    <img src="imagen-pequeña.jpg" alt="Imagen responsive">
+  </picture>
+  <!-- 
+    Imágenes responsive 
+    - El navegador elige la mejor opción según condiciones
+  -->
+
+  <!-- ========= INCORPORACIÓN EXTERNA ========= -->
+  <iframe src="https://ejemplo.com" title="Ejemplo iframe"></iframe>
+  <!-- 
+    Marco interno para incrustar otro documento HTML 
+    - Atributos útiles: width, height, sandbox
+  -->
+
+  <embed type="application/pdf" src="documento.pdf" width="600" height="400">
+  <!-- 
+    Incrusta contenido externo (obsoleto en HTML5) 
+    - Alternativa moderna: iframe u object
+  -->
+
+  <object data="flash.swf" type="application/x-shockwave-flash">
+    <param name="quality" value="high">
+    Contenido alternativo
+  </object>
+  <!-- 
+    Contenedor genérico para recursos externos 
+    - param: Define parámetros para el objeto
+  -->
+
+  <!-- ========= ELEMENTOS INTERACTIVOS ========= -->
+  <details>
+    <summary>Ver más información</summary>
+    <p>Contenido detallado que se muestra al hacer clic.</p>
+  </details>
+  <!-- 
+    Widget desplegable 
+    - summary: Título/resumen clickeable
+  -->
+
+  <dialog open>
+    <p>Este es un diálogo modal</p>
+    <button onclick="this.parentNode.close()">Cerrar</button>
+  </dialog>
+  <!-- 
+    Cuadro de diálogo modal 
+    - open: Lo muestra inicialmente (quitar para ocultar)
+  -->
+
+  <!-- ========= ELEMENTOS OBSOLETOS (NO USAR) ========= -->
+  <!-- 
+    <marquee behavior="scroll" direction="left">Texto que se mueve</marquee>
+    <blink>Texto parpadeante</blink>
+    <center>Texto centrado</center>
+    <font color="red">Texto con color</font>
+  -->
+
+  <!-- ========= SVG Y MATHML ========= -->
+  <svg width="100" height="100">
+    <circle cx="50" cy="50" r="40" fill="red" />
+  </svg>
+  <!-- 
+    Gráficos vectoriales escalables 
+    - cx/cy: Centro del círculo
+    - r: Radio
+  -->
+
+  <math xmlns="http://www.w3.org/1998/Math/MathML">
+    <mrow>
+      <msup><mi>a</mi><mn>2</mn></msup>
+      <mo>+</mo>
+      <msup><mi>b</mi><mn>2</mn></msup>
+      <mo>=</mo>
+      <msup><mi>c</mi><mn>2</mn></msup>
+    </mrow>
+  </math>
+  <!-- 
+    Notación matemática 
+    - mrow: Agrupa elementos en fila
+    - msup: Superíndice
+  -->
+
+  <!-- ========= SCRIPTS ========= -->
+  <script src="app.js" defer></script>
+  <!-- 
+    Incluye JavaScript externo 
+    - defer: Ejecuta después de parsear el HTML
+    - async: Ejecuta asíncronamente (no garantiza orden)
+  -->
+
+  <template id="miTemplate">
+    <div class="item">
+      <h3></h3>
+      <p></p>
+    </div>
+  </template>
+  <!-- 
+    Plantilla HTML para clonar con JavaScript 
+    - No se renderiza hasta que se usa
+  -->
+
+  <canvas id="miCanvas" width="200" height="100"></canvas>
+  <!-- 
+    Área para dibujar con JavaScript 
+    - Usado para gráficos, animaciones, juegos
+  -->
+</body>
+</html>

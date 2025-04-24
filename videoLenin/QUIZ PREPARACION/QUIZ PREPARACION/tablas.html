@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Formularios y Tablas HTML/CSS</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            color: #0056b3; /* Azul oscuro */
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            text-align: center;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            border-left: 4px solid #007bff; /* Azul más claro */
+            padding-left: 10px;
+            margin-top: 40px;
+        }
+
+        section {
+            background-color: #fff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        code {
+            background-color: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        /* --- Estilos para Formularios --- */
+        form {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #555;
+            padding: 0 10px;
+        }
+
+        label {
+            display: block; /* Hace que cada label esté en su propia línea */
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #444;
+        }
+
+        /* Inputs generales, textareas, selects */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"],
+        input[type="date"],
+        input[type="tel"],
+        input[type="url"],
+        input[type="search"],
+        input[type="color"],
+        textarea,
+        select {
+            width: 95%; /* Ligeramente menos del 100% para evitar desbordes */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+            box-sizing: border-box; /* Incluye padding y border en el width */
+        }
+
+        textarea {
+            height: 100px; /* Altura inicial para textareas */
+            resize: vertical; /* Permitir redimensionar verticalmente */
+        }
+
+        /* Estilos específicos para Checkbox y Radio */
+        input[type="checkbox"],
+        input[type="radio"] {
+            margin-right: 8px;
+            vertical-align: middle; /* Alinear con el texto */
+        }
+
+        /* Contenedor para grupos de checkbox/radio */
+        .input-group {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px dashed #eee;
+            border-radius: 4px;
+        }
+        .input-group label {
+             display: inline-block; /* Permite que la label esté al lado */
+             font-weight: normal; /* Texto normal para opciones */
+             margin-right: 15px;
+             margin-bottom: 0;
+        }
+
+        /* Botones */
+        button,
+        input[type="submit"],
+        input[type="reset"],
+        input[type="button"] {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="reset"]:hover,
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="reset"] {
+            background-color: #6c757d; /* Gris */
+        }
+        input[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+
+        /* Estados de Foco */
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        /* --- Estilos para Tablas --- */
+        table {
+            width: 100%;
+            border-collapse: collapse; /* Une los bordes de las celdas */
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        caption {
+            caption-side: top; /* Posición del caption */
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+            text-align: left;
+        }
+
+        th, td {
+            border: 1px solid #ddd; /* Borde gris claro */
+            padding: 12px; /* Espaciado interno */
+            text-align: left; /* Alineación del texto */
+            vertical-align: top; /* Alinear contenido arriba */
+        }
+
+        th {
+            background-color: #e9ecef; /* Fondo gris claro para encabezados */
+            color: #495057; /* Color de texto oscuro para encabezados */
+            font-weight: bold;
+        }
+
+        /* Filas alternas (efecto cebra) para tbody */
+        tbody tr:nth-child(odd) {
+            background-color: #f8f9fa; /* Fondo muy claro para filas impares */
+        }
+
+        tbody tr:hover {
+            background-color: #e2e6ea; /* Resaltar fila al pasar el mouse */
+        }
+
+        /* Estilos específicos para ejemplos */
+        .table-responsive {
+            overflow-x: auto; /* Añade scroll horizontal si la tabla es muy ancha */
+        }
+
+        .highlight-col {
+            background-color: #fff3cd; /* Amarillo claro para destacar */
+        }
+
+        tfoot td {
+            font-weight: bold;
+            background-color: #e9ecef;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Biblioteca de Formularios y Tablas HTML/CSS</h1>
+
+    <section id="formularios">
+        <h2>Formularios Comunes</h2>
+
+        <h3>1. Formulario de Inicio de Sesión</h3>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Acceso de Usuario</legend>
+                <div>
+                    <label for="login-username">Nombre de Usuario:</label>
+                    <input type="text" id="login-username" name="username" placeholder="Escribe tu usuario" required>
+                </div>
+                <div>
+                    <label for="login-password">Contraseña:</label>
+                    <input type="password" id="login-password" name="password" placeholder="Introduce tu contraseña" required>
+                </div>
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" name="remember" value="yes"> Recordarme
+                    </label>
+                </div>
+                <div>
+                    <button type="submit">Iniciar Sesión</button>
+                    <input type="reset" value="Limpiar">
+                </div>
+            </fieldset>
+        </form>
+        <h3>2. Formulario de Registro</h3>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Datos Personales</legend>
+                <div>
+                    <label for="reg-name">Nombre Completo:</label>
+                    <input type="text" id="reg-name" name="fullname" required>
+                </div>
+                <div>
+                    <label for="reg-email">Correo Electrónico:</label>
+                    <input type="email" id="reg-email" name="email" required placeholder="ejemplo@dominio.com">
+                </div>
+                <div>
+                    <label for="reg-password">Crear Contraseña:</label>
+                    <input type="password" id="reg-password" name="password" required pattern=".{8,}" title="Mínimo 8 caracteres">
+                </div>
+                <div>
+                    <label for="reg-password-confirm">Confirmar Contraseña:</label>
+                    <input type="password" id="reg-password-confirm" name="password_confirm" required>
+                </div>
+                 <div>
+                    <label for="reg-birthdate">Fecha de Nacimiento:</label>
+                    <input type="date" id="reg-birthdate" name="birthdate">
+                </div>
+                <div>
+                    <label for="reg-phone">Teléfono (Opcional):</label>
+                    <input type="tel" id="reg-phone" name="phone" placeholder="+57 300 1234567">
+                </div>
+                 <div>
+                    <label for="reg-country">País:</label>
+                    <select id="reg-country" name="country">
+                        <option value="">-- Selecciona un país --</option>
+                        <option value="co">Colombia</option>
+                        <option value="mx">México</option>
+                        <option value="ar">Argentina</option>
+                        <option value="es">España</option>
+                        <option value="us">Estados Unidos</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias</legend>
+                 <div class="input-group">
+                    <p>¿Qué temas te interesan? (Puedes marcar varios)</p>
+                    <label>
+                        <input type="checkbox" name="interests" value="tech"> Tecnología
+                    </label>
+                    <label>
+                        <input type="checkbox" name="interests" value="sports"> Deportes
+                    </label>
+                     <label>
+                        <input type="checkbox" name="interests" value="music"> Música
+                    </label>
+                     <label>
+                        <input type="checkbox" name="interests" value="art"> Arte
+                    </label>
+                 </div>
+                 <div class="input-group">
+                    <p>¿Cómo prefieres recibir notificaciones?</p>
+                    <label>
+                        <input type="radio" name="notification_pref" value="email" checked> Por Correo Electrónico
+                    </label>
+                    <label>
+                        <input type="radio" name="notification_pref" value="sms"> Por SMS
+                    </label>
+                     <label>
+                        <input type="radio" name="notification_pref" value="none"> No recibir notificaciones
+                    </label>
+                 </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Términos y Condiciones</legend>
+                <div class="input-group">
+                     <label>
+                        <input type="checkbox" name="terms" value="accepted" required> Acepto los <a href="#">términos y condiciones</a>
+                    </label>
+                </div>
+                <div>
+                    <label for="reg-newsletter">
+                        <input type="checkbox" id="reg-newsletter" name="newsletter" value="yes" checked> Deseo suscribirme al boletín informativo.
+                    </label>
+                </div>
+            </fieldset>
+
+            <div>
+                <button type="submit">Registrarse</button>
+                <input type="reset" value="Borrar Todo">
+            </div>
+        </form>
+        <h3>3. Formulario de Contacto</h3>
+        <form action="#" method="post">
+             <fieldset>
+                 <legend>Envíanos un Mensaje</legend>
+                 <div>
+                     <label for="contact-name">Tu Nombre:</label>
+                     <input type="text" id="contact-name" name="contact_name" required>
+                 </div>
+                 <div>
+                     <label for="contact-email">Tu Correo Electrónico:</label>
+                     <input type="email" id="contact-email" name="contact_email" required>
+                 </div>
+                 <div>
+                     <label for="contact-subject">Asunto:</label>
+                     <select id="contact-subject" name="subject">
+                         <option value="consulta">Consulta General</option>
+                         <option value="soporte">Soporte Técnico</option>
+                         <option value="ventas">Ventas</option>
+                         <option value="otro">Otro</option>
+                     </select>
+                 </div>
+                 <div>
+                     <label for="contact-message">Mensaje:</label>
+                     <textarea id="contact-message" name="message" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                 </div>
+                 <div>
+                     <label for="contact-priority">Prioridad:</label>
+                     <input type="range" id="contact-priority" name="priority" min="1" max="5" step="1" value="3">
+                     <span>Baja</span> <span style="float:right;">Alta</span>
+                 </div>
+                  <div class="input-group">
+                     <label>
+                        <input type="checkbox" name="copy_me" value="yes"> Enviarme una copia a mi correo
+                     </label>
+                 </div>
+                  <div>
+                    <button type="submit">Enviar Mensaje</button>
+                 </div>
+             </fieldset>
+        </form>
+        <h3>4. Formulario de Búsqueda</h3>
+        <form action="#" method="get">
+            <div>
+                <label for="search-query">Buscar:</label>
+                <input type="search" id="search-query" name="q" placeholder="Buscar en el sitio...">
+            </div>
+            <div>
+                <button type="submit">Buscar</button>
+            </div>
+        </form>
+        <h3>5. Formulario con Varios Tipos de Input</h3>
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Configuraciones Variadas</legend>
+                <div>
+                    <label for="settings-number">Cantidad (1-100):</label>
+                    <input type="number" id="settings-number" name="quantity" min="1" max="100" step="1" value="10">
+                </div>
+                 <div>
+                    <label for="settings-url">Sitio Web:</label>
+                    <input type="url" id="settings-url" name="website" placeholder="https://www.ejemplo.com">
+                </div>
+                <div>
+                    <label for="settings-color">Color Favorito:</label>
+                    <input type="color" id="settings-color" name="favorite_color" value="#007bff">
+                </div>
+                 <div>
+                    <label for="settings-file">Subir Avatar (imagen):</label>
+                    <input type="file" id="settings-file" name="avatar" accept="image/png, image/jpeg">
+                </div>
+                 <div>
+                    <button type="submit">Guardar Configuración</button>
+                </div>
+            </fieldset>
+        </form>
+        </section>
+    <section id="tablas">
+        <h2>Tablas Comunes</h2>
+
+        <h3>1. Tabla Simple de Datos</h3>
+        <table>
+            <caption>Lista de Usuarios</caption>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Ana García</td>
+                    <td>ana.garcia@email.com</td>
+                    <td>Admin</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Luis Fernández</td>
+                    <td>luis.f@email.com</td>
+                    <td>Editor</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Marta López</td>
+                    <td>marta.l@email.com</td>
+                    <td>Usuario</td>
+                </tr>
+                 <tr>
+                    <td>4</td>
+                    <td>Carlos Ruiz</td>
+                    <td>carlos.r@email.com</td>
+                    <td>Usuario</td>
+                </tr>
+                 <tr>
+                    <td>5</td>
+                    <td>Elena Gómez</td>
+                    <td>elena.g@email.com</td>
+                    <td>Editor</td>
+                </tr>
+                <tr> <td>6</td> <td>David Sanz</td> <td>david.s@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>7</td> <td>Laura Gil</td> <td>laura.g@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>8</td> <td>Sergio Marín</td> <td>sergio.m@email.com</td> <td>Admin</td> </tr>
+                <tr> <td>9</td> <td>Patricia Díaz</td> <td>patricia.d@email.com</td> <td>Editor</td> </tr>
+                <tr> <td>10</td> <td>Javier Alonso</td> <td>javier.a@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>11</td> <td>Silvia Moreno</td> <td>silvia.m@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>12</td> <td>Rubén Castro</td> <td>ruben.c@email.com</td> <td>Editor</td> </tr>
+                <tr> <td>13</td> <td>Raquel Romero</td> <td>raquel.r@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>14</td> <td>Óscar Medina</td> <td>oscar.m@email.com</td> <td>Admin</td> </tr>
+                <tr> <td>15</td> <td>Natalia Vargas</td> <td>natalia.v@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>16</td> <td>Fernando Ortega</td> <td>fernando.o@email.com</td> <td>Editor</td> </tr>
+                <tr> <td>17</td> <td>Cristina Reyes</td> <td>cristina.r@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>18</td> <td>Adrián Santos</td> <td>adrian.s@email.com</td> <td>Usuario</td> </tr>
+                <tr> <td>19</td> <td>Irene Navarro</td> <td>irene.n@email.com</td> <td>Editor</td> </tr>
+                <tr> <td>20</td> <td>Mario Iglesias</td> <td>mario.i@email.com</td> <td>Usuario</td> </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total de Usuarios:</td>
+                    <td>20</td> </tr>
+            </tfoot>
+        </table>
+        <h3>2. Tabla con Celdas Combinadas (<code>colspan</code>)</h3>
+        <table>
+            <caption>Horario Semanal (Simplificado)</caption>
+            <thead>
+                <tr>
+                    <th>Hora</th>
+                    <th>Lunes</th>
+                    <th>Martes</th>
+                    <th>Miércoles</th>
+                    <th>Jueves</th>
+                    <th>Viernes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>09:00 - 11:00</th>
+                    <td>Matemáticas</td>
+                    <td>Lengua</td>
+                    <td>Matemáticas</td>
+                    <td>Ciencias</td>
+                    <td>Lengua</td>
+                </tr>
+                <tr>
+                    <th>11:00 - 11:30</th>
+                    <td colspan="5" style="text-align:center; background-color: #d1ecf1;">Descanso</td>
+                </tr>
+                <tr>
+                    <th>11:30 - 13:30</th>
+                    <td>Historia</td>
+                    <td colspan="2">Tecnología</td>
+                    <td>Geografía</td>
+                    <td>Arte</td>
+                </tr>
+                 <tr>
+                    <th>13:30 - 14:30</th>
+                    <td colspan="5" style="text-align:center; background-color: #fff3cd;">Comida</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3>3. Tabla con Celdas Combinadas (<code>rowspan</code>)</h3>
+         <table>
+             <caption>Ventas Trimestrales por Región</caption>
+             <thead>
+                 <tr>
+                     <th>Región</th>
+                     <th>Producto</th>
+                     <th>Trimestre 1</th>
+                     <th>Trimestre 2</th>
+                 </tr>
+             </thead>
+             <tbody>
+                 <tr>
+                     <th rowspan="3">Norte</th>
+                     <td>Producto A</td>
+                     <td>1500</td>
+                     <td>1700</td>
+                 </tr>
+                 <tr>
+                     <td>Producto B</td>
+                     <td>800</td>
+                     <td>950</td>
+                 </tr>
+                 <tr>
+                     <td>Producto C</td>
+                     <td>1200</td>
+                     <td>1100</td>
+                 </tr>
+                 <tr>
+                     <th rowspan="2">Sur</th>
+                     <td>Producto A</td>
+                     <td>2100</td>
+                     <td>2300</td>
+                 </tr>
+                 <tr>
+                     <td>Producto B</td>
+                     <td>1000</td>
+                     <td>1150</td>
+                 </tr>
+                  <tr>
+                     <th>Este</th>
+                     <td>Producto A</td>
+                     <td>900</td>
+                     <td>1050</td>
+                 </tr>
+             </tbody>
+             <tfoot>
+                <tr>
+                    <th colspan="2">Total General (Simplificado)</th>
+                    <td>7500</td> <td>8250</td> </tr>
+             </tfoot>
+         </table>
+        <h3>4. Tabla Compleja (Colspan y Rowspan)</h3>
+        <table>
+            <caption>Inventario Detallado</caption>
+            <thead>
+                <tr>
+                    <th rowspan="2">Categoría</th>
+                    <th rowspan="2">Producto</th>
+                    <th colspan="2">Disponibilidad</th>
+                    <th rowspan="2">Precio Unitario</th>
+                </tr>
+                <tr>
+                    <th>Almacén A</th>
+                    <th>Almacén B</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th rowspan="2">Electrónica</th>
+                    <td>Laptop Modelo X</td>
+                    <td>25</td>
+                    <td>15</td>
+                    <td>$1200</td>
+                </tr>
+                <tr>
+                    <td>Smartphone Modelo Y</td>
+                    <td>50</td>
+                    <td>30</td>
+                    <td>$800</td>
+                </tr>
+                <tr>
+                    <th rowspan="3">Ropa</th>
+                    <td>Camiseta Talla M</td>
+                    <td>150</td>
+                    <td>200</td>
+                    <td>$25</td>
+                </tr>
+                <tr>
+                    <td>Pantalón Talla 32</td>
+                    <td>80</td>
+                    <td>110</td>
+                    <td>$50</td>
+                </tr>
+                 <tr>
+                    <td>Chaqueta Invierno</td>
+                    <td>40</td>
+                    <td>35</td>
+                    <td>$150</td>
+                </tr>
+                 <tr>
+                    <th colspan="2">Subtotal Ropa</th>
+                    <td>270</td>
+                    <td>345</td>
+                    <td>-</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" style="text-align: right;"><strong>Total General Estimado:</strong></td>
+                    <td>(Calculado)</td>
+                </tr>
+            </tfoot>
+        </table>
+        <h3>5. Tabla con Scroll Horizontal (Responsiva)</h3>
+        <p>Esta tabla tendrá scroll horizontal en pantallas pequeñas si su contenido es muy ancho.</p>
+        <div class="table-responsive">
+            <table>
+                <caption>Datos Financieros Anuales (Ejemplo Largo)</caption>
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Enero</th>
+                        <th>Febrero</th>
+                        <th>Marzo</th>
+                        <th>Abril</th>
+                        <th>Mayo</th>
+                        <th>Junio</th>
+                        <th>Julio</th>
+                        <th>Agosto</th>
+                        <th>Septiembre</th>
+                        <th>Octubre</th>
+                        <th>Noviembre</th>
+                        <th>Diciembre</th>
+                        <th>Total Anual</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Ingresos Ventas</th>
+                        <td>5,000</td> <td>5,500</td> <td>6,000</td> <td>5,800</td> <td>6,200</td> <td>6,500</td>
+                        <td>6,300</td> <td>6,800</td> <td>7,000</td> <td>7,200</td> <td>7,500</td> <td>8,000</td>
+                        <td>77,800</td>
+                    </tr>
+                    <tr>
+                        <th>Ingresos Servicios</th>
+                        <td>2,000</td> <td>2,100</td> <td>2,200</td> <td>2,300</td> <td>2,400</td> <td>2,500</td>
+                        <td>2,600</td> <td>2,700</td> <td>2,800</td> <td>2,900</td> <td>3,000</td> <td>3,100</td>
+                        <td>30,600</td>
+                    </tr>
+                     <tr>
+                        <th>Costos Variables</th>
+                        <td>-1,500</td> <td>-1,600</td> <td>-1,700</td> <td>-1,650</td> <td>-1,750</td> <td>-1,800</td>
+                        <td>-1,780</td> <td>-1,850</td> <td>-1,900</td> <td>-1,950</td> <td>-2,000</td> <td>-2,100</td>
+                        <td>-21,580</td>
+                    </tr>
+                     <tr>
+                        <th>Costos Fijos</th>
+                        <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td>
+                        <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td> <td>-2,500</td>
+                        <td>-30,000</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Beneficio Neto</th>
+                        <td>3,000</td> <td>3,500</td> <td>4,000</td> <td>3,950</td> <td>4,350</td> <td>4,700</td>
+                        <td>4,620</td> <td>5,150</td> <td>5,400</td> <td>5,650</td> <td>6,000</td> <td>6,500</td>
+                        <td>56,820</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <h3>6. Tabla Adicional de Productos (Más Filas)</h3>
+        <table>
+            <caption>Listado Extenso de Productos</caption>
+            <thead>
+                <tr><th>SKU</th><th>Nombre Producto</th><th>Categoría</th><th>Stock</th><th>Precio</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>PROD-001</td><td>Teclado Mecánico RGB</td><td>Periféricos</td><td>120</td><td>$85.00</td></tr>
+                <tr><td>PROD-002</td><td>Mouse Gamer Óptico</td><td>Periféricos</td><td>250</td><td>$45.50</td></tr>
+                <tr><td>PROD-003</td><td>Monitor Curvo 27"</td><td>Monitores</td><td>50</td><td>$320.00</td></tr>
+                <tr><td>PROD-004</td><td>Silla Ergonómica Pro</td><td>Mobiliario</td><td>80</td><td>$210.00</td></tr>
+                <tr><td>PROD-005</td><td>Webcam HD 1080p</td><td>Accesorios</td><td>300</td><td>$60.00</td></tr>
+                <tr><td>PROD-006</td><td>Micrófono Condensador USB</td><td>Audio</td><td>90</td><td>$110.00</td></tr>
+                <tr><td>PROD-007</td><td>Auriculares Inalámbricos Noise Cancelling</td><td>Audio</td><td>150</td><td>$180.00</td></tr>
+                <tr><td>PROD-008</td><td>Disco Duro Externo SSD 1TB</td><td>Almacenamiento</td><td>180</td><td>$130.00</td></tr>
+                <tr><td>PROD-009</td><td>Memoria RAM DDR4 16GB</td><td>Componentes PC</td><td>220</td><td>$75.00</td></tr>
+                <tr><td>PROD-010</td><td>Tarjeta Gráfica RTX 4070</td><td>Componentes PC</td><td>30</td><td>$650.00</td></tr>
+                <tr><td>PROD-011</td><td>Laptop Ultrabook Slim</td><td>Portátiles</td><td>60</td><td>$950.00</td></tr>
+                <tr><td>PROD-012</td><td>Tablet Android 10"</td><td>Tablets</td><td>110</td><td>$280.00</td></tr>
+                <tr><td>PROD-013</td><td>Impresora Multifunción Láser</td><td>Impresoras</td><td>70</td><td>$190.00</td></tr>
+                <tr><td>PROD-014</td><td>Router WiFi 6 Mesh</td><td>Redes</td><td>100</td><td>$150.00</td></tr>
+                <tr><td>PROD-015</td><td>Proyector Portátil LED</td><td>Proyectores</td><td>40</td><td>$350.00</td></tr>
+                <tr><td>PROD-016</td><td>Smartwatch Deportivo GPS</td><td>Wearables</td><td>200</td><td>$220.00</td></tr>
+                <tr><td>PROD-017</td><td>Altavoz Bluetooth Portátil</td><td>Audio</td><td>400</td><td>$55.00</td></tr>
+                <tr><td>PROD-018</td><td>Power Bank 20000mAh</td><td>Accesorios</td><td>500</td><td>$40.00</td></tr>
+                <tr><td>PROD-019</td><td>Funda para Laptop 15"</td><td>Accesorios</td><td>350</td><td>$20.00</td></tr>
+                <tr><td>PROD-020</td><td>Base Refrigeradora para Laptop</td><td>Accesorios</td><td>130</td><td>$35.00</td></tr>
+                 <tr><td>PROD-021</td><td>Adaptador USB-C Hub</td><td>Accesorios</td><td>280</td><td>$50.00</td></tr>
+                 <tr><td>PROD-022</td><td>Webcam 4K Profesional</td><td>Accesorios</td><td>60</td><td>$150.00</td></tr>
+                 <tr><td>PROD-023</td><td>Monitor Ultrawide 34"</td><td>Monitores</td><td>35</td><td>$550.00</td></tr>
+                 <tr><td>PROD-024</td><td>Teclado Inalámbrico Compacto</td><td>Periféricos</td><td>190</td><td>$65.00</td></tr>
+                 <tr><td>PROD-025</td><td>Mouse Vertical Ergonómico</td><td>Periféricos</td><td>100</td><td>$55.00</td></tr>
+                 <tr><td>PROD-026</td><td>Lector de Tarjetas SD/MicroSD</td><td>Accesorios</td><td>450</td><td>$15.00</td></tr>
+                 <tr><td>PROD-027</td><td>Disco Duro Interno NVMe 2TB</td><td>Almacenamiento</td><td>90</td><td>$200.00</td></tr>
+                 <tr><td>PROD-028</td><td>Memoria RAM DDR5 32GB Kit</td><td>Componentes PC</td><td>120</td><td>$180.00</td></tr>
+                 <tr><td>PROD-029</td><td>Fuente de Poder 850W Gold</td><td>Componentes PC</td><td>80</td><td>$140.00</td></tr>
+                 <tr><td>PROD-030</td><td>Gabinete ATX Mid Tower</td><td>Componentes PC</td><td>100</td><td>$90.00</td></tr>
+            </tbody>
+            <tfoot>
+                <tr><td colspan="3" style="text-align: right;"><strong>Total Productos Listados:</strong></td><td>30</td><td>(Suma precios si aplica)</td></tr>
+            </tfoot>
+        </table>
+        </section>
+    <footer>
+        <p style="text-align:center; margin-top: 40px; color: #666;">Fin de los ejemplos - Código generado para taller.</p>
+    </footer>
+
+</body>
+</html>

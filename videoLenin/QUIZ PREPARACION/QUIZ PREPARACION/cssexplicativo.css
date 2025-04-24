@@ -1,0 +1,1439 @@
+/* ============================================= */
+/* Archivo CSS Explicativo Extenso               */
+/* ============================================= */
+/* Este archivo detalla numerosas propiedades CSS */
+/* organizadas por módulos principales.          */
+/* ============================================= */
+
+/* ============================================= */
+/* Propiedades de CSS Flexbox                    */
+/* ============================================= */
+
+/* --------------------------------------------- */
+/* Propiedades del Contenedor Flex               */
+/* --------------------------------------------- */
+.flex-container-ejemplo {
+    /* display: flex; */
+    /* Activa el contexto de formato Flexbox para los hijos directos (elementos flex). Los hijos se convierten en flex items. */
+    display: flex;
+  
+    /* display: inline-flex; */
+    /* Similar a 'flex', pero el contenedor se comporta como un elemento inline en lugar de block. */
+    /* display: inline-flex; */
+  
+    /* flex-direction: Define la dirección del eje principal (el eje a lo largo del cual se colocan los flex items). */
+    /* flex-direction: row; (default) Items se colocan horizontalmente, de izquierda a derecha. */
+    flex-direction: row;
+    /* flex-direction: row-reverse; Items se colocan horizontalmente, de derecha a izquierda. */
+    /* flex-direction: row-reverse; */
+    /* flex-direction: column; Items se colocan verticalmente, de arriba a abajo. */
+    /* flex-direction: column; */
+    /* flex-direction: column-reverse; Items se colocan verticalmente, de abajo a arriba. */
+    /* flex-direction: column-reverse; */
+  
+    /* flex-wrap: Controla si los flex items deben pasar a la siguiente línea si no caben en la línea actual. */
+    /* flex-wrap: nowrap; (default) Todos los items en una sola línea (pueden encogerse/desbordarse). */
+    flex-wrap: nowrap;
+    /* flex-wrap: wrap; Los items que no caben pasan a la línea siguiente. */
+    /* flex-wrap: wrap; */
+    /* flex-wrap: wrap-reverse; Los items que no caben pasan a la línea anterior (orden inverso). */
+    /* flex-wrap: wrap-reverse; */
+  
+    /* flex-flow: Shorthand (atajo) para 'flex-direction' y 'flex-wrap'. */
+    /* flex-flow: <flex-direction> <flex-wrap>; */
+    /* Ejemplo: flex-flow: column wrap; */
+    flex-flow: row nowrap;
+  
+    /* justify-content: Alinea los flex items a lo largo del eje principal. Distribuye el espacio sobrante. */
+    /* justify-content: flex-start; (default) Items agrupados al inicio del eje principal. */
+    justify-content: flex-start;
+    /* justify-content: flex-end; Items agrupados al final del eje principal. */
+    /* justify-content: flex-end; */
+    /* justify-content: center; Items centrados en el eje principal. */
+    /* justify-content: center; */
+    /* justify-content: space-between; Espacio distribuido equitativamente entre los items (primero al inicio, último al final). */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; Espacio distribuido equitativamente alrededor de los items (mitad de espacio en los extremos). */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; Espacio distribuido equitativamente entre todos los items y en los extremos. */
+    /* justify-content: space-evenly; */
+  
+    /* align-items: Alinea los flex items a lo largo del eje transversal (perpendicular al principal). */
+    /* align-items: stretch; (default) Los items se estiran para llenar la altura/anchura del contenedor en el eje transversal. */
+    align-items: stretch;
+    /* align-items: flex-start; Items alineados al inicio del eje transversal. */
+    /* align-items: flex-start; */
+    /* align-items: flex-end; Items alineados al final del eje transversal. */
+    /* align-items: flex-end; */
+    /* align-items: center; Items centrados en el eje transversal. */
+    /* align-items: center; */
+    /* align-items: baseline; Items alineados según su línea base de texto. */
+    /* align-items: baseline; */
+  
+    /* align-content: Alinea las líneas del contenedor flex cuando hay múltiples líneas (debido a flex-wrap: wrap). Similar a justify-content pero para el eje transversal. */
+    /* Solo tiene efecto si hay más de una línea de flex items. */
+    /* align-content: stretch; (default) Las líneas se estiran para ocupar el espacio disponible. */
+    align-content: stretch;
+    /* align-content: flex-start; Líneas agrupadas al inicio del eje transversal. */
+    /* align-content: flex-start; */
+    /* align-content: flex-end; Líneas agrupadas al final del eje transversal. */
+    /* align-content: flex-end; */
+    /* align-content: center; Líneas agrupadas en el centro del eje transversal. */
+    /* align-content: center; */
+    /* align-content: space-between; Espacio distribuido equitativamente entre las líneas. */
+    /* align-content: space-between; */
+    /* align-content: space-around; Espacio distribuido equitativamente alrededor de las líneas. */
+    /* align-content: space-around; */
+    /* align-content: space-evenly; Espacio distribuido uniformemente entre líneas y extremos. */
+    /* align-content: space-evenly; */
+  
+    /* gap, row-gap, column-gap: Define el espacio (canalón) entre flex items. */
+    /* gap: <row-gap> <column-gap>; (Shorthand) */
+    /* gap: 10px 20px; */
+    /* row-gap: Espacio entre filas (si flex-wrap: wrap y flex-direction: row) o columnas (si flex-direction: column). */
+    row-gap: 10px;
+    /* column-gap: Espacio entre columnas (si flex-direction: row) o filas (si flex-direction: column). */
+    column-gap: 15px;
+  }
+  
+  /* --------------------------------------------- */
+  /* Propiedades de los Items Flex (Hijos)         */
+  /* --------------------------------------------- */
+  .flex-item-ejemplo {
+    /* order: Controla el orden visual en que aparecen los flex items. Valor numérico entero. Default es 0. Menor valor aparece antes. */
+    order: 0;
+    /* order: -1; */ /* Aparecería antes que los items con order 0 */
+    /* order: 1; */  /* Aparecería después que los items con order 0 */
+  
+    /* flex-grow: Factor de crecimiento. Define la capacidad de un flex item para crecer si hay espacio extra disponible en el eje principal. Valor numérico no negativo. Default 0 (no crece). */
+    flex-grow: 0;
+    /* Si todos los items tienen flex-grow: 1, compartirán el espacio extra por igual. */
+    /* Si un item tiene flex-grow: 2 y otros tienen flex-grow: 1, el primero tomará el doble de espacio extra que los otros. */
+    /* flex-grow: 1; */
+  
+    /* flex-shrink: Factor de encogimiento. Define la capacidad de un flex item para encogerse si no hay suficiente espacio en el eje principal. Valor numérico no negativo. Default 1 (puede encogerse). */
+    flex-shrink: 1;
+    /* Si un item tiene flex-shrink: 0, no se encogerá por debajo de su flex-basis. */
+    /* flex-shrink: 0; */
+    /* Un valor mayor indica que encogerá más proporcionalmente. */
+    /* flex-shrink: 2; */
+  
+    /* flex-basis: Define el tamaño inicial (base) de un flex item a lo largo del eje principal antes de distribuir el espacio libre (según flex-grow o flex-shrink). */
+    /* flex-basis: auto; (default) El tamaño se basa en la propiedad width/height del item o en su contenido. */
+    flex-basis: auto;
+    /* flex-basis: <longitud>; (px, %, em, etc.) Define un tamaño base específico. */
+    /* flex-basis: 150px; */
+    /* flex-basis: 25%; */
+    /* flex-basis: content; El tamaño se basa en el contenido intrínseco del item. */
+    /* flex-basis: content; */
+  
+    /* flex: Shorthand para 'flex-grow', 'flex-shrink' y 'flex-basis'. */
+    /* flex: <flex-grow> <flex-shrink> <flex-basis>; */
+    /* Valores comunes: */
+    /* flex: 0 1 auto; (default) No crece, puede encogerse, tamaño base automático. */
+    flex: 0 1 auto;
+    /* flex: 1 1 auto; (o flex: auto) Crece y encoge según sea necesario, tamaño base automático. */
+    /* flex: auto; */
+    /* flex: 1 1 0; (o flex: 1) Crece y encoge, tamaño base 0 (útil para distribuir espacio equitativamente). */
+    /* flex: 1; */
+    /* flex: 0 0 auto; (o flex: none) No crece, no encoge, tamaño base automático (tamaño fijo). */
+    /* flex: none; */
+    /* flex: 2 1 100px; Crece el doble que otros con flex-grow:1, puede encogerse, base de 100px. */
+    /* flex: 2 1 100px; */
+  
+    /* align-self: Permite sobreescribir la propiedad 'align-items' del contenedor para un item flex individual. */
+    /* align-self: auto; (default) Hereda el valor de 'align-items' del contenedor. */
+    align-self: auto;
+    /* align-self: flex-start; Alinea este item al inicio del eje transversal. */
+    /* align-self: flex-start; */
+    /* align-self: flex-end; Alinea este item al final del eje transversal. */
+    /* align-self: flex-end; */
+    /* align-self: center; Centra este item en el eje transversal. */
+    /* align-self: center; */
+    /* align-self: baseline; Alinea este item según su línea base. */
+    /* align-self: baseline; */
+    /* align-self: stretch; Estira este item para llenar el contenedor en el eje transversal (si no tiene altura/anchura definida). */
+    /* align-self: stretch; */
+  }
+  
+  /* ============================================= */
+  /* Propiedades de CSS Grid                       */
+  /* ============================================= */
+  
+  /* --------------------------------------------- */
+  /* Propiedades del Contenedor Grid               */
+  /* --------------------------------------------- */
+  .grid-container-ejemplo {
+    /* display: grid; */
+    /* Activa el contexto de formato Grid para los hijos directos. Los hijos se convierten en grid items. */
+    display: grid;
+  
+    /* display: inline-grid; */
+    /* Similar a 'grid', pero el contenedor se comporta como un elemento inline. */
+    /* display: inline-grid; */
+  
+    /* grid-template-columns: Define las columnas de la cuadrícula (el track list de columnas). */
+    /* Valores: longitud (px, em), porcentaje (%), fr (unidad de fracción del espacio disponible), auto (tamaño del contenido), minmax(min, max), repeat(n, tamaño). */
+    grid-template-columns: 100px 1fr 2fr; /* Una columna fija, dos flexibles (la segunda ocupa el doble que la primera) */
+    /* grid-template-columns: repeat(3, 1fr); */ /* Tres columnas de igual fracción de espacio */
+    /* grid-template-columns: auto 1fr minmax(100px, auto); */ /* Columna auto, flexible, y una que mide mínimo 100px y máximo el contenido */
+  
+    /* grid-template-rows: Define las filas de la cuadrícula (el track list de filas). */
+    /* Mismos tipos de valores que grid-template-columns. */
+    grid-template-rows: auto 1fr 50px; /* Fila basada en contenido, fila flexible, fila fija */
+    /* grid-template-rows: repeat(auto-fill, minmax(150px, 1fr)); */ /* Tantas filas como quepan, mínimo 150px, crecen para llenar */
+  
+    /* grid-template-areas: Define áreas nombradas en la cuadrícula para posicionar items por nombre. */
+    /* Cada string representa una fila, los nombres definen las celdas que ocupa un área. '.' representa celda vacía. */
+    grid-template-areas:
+      "header header header"
+      "sidebar main main"
+      "footer footer footer";
+    /* Un item con 'grid-area: header;' ocupará las 3 celdas superiores. */
+  
+    /* grid-template: Shorthand para 'grid-template-rows', 'grid-template-columns' y 'grid-template-areas'. */
+    /* grid-template: "h h" 50px "f f" 100px / 1fr 1fr; */ /* Define áreas, filas y columnas */
+  
+    /* grid-column-gap (obsoleto, usar column-gap): Espacio entre columnas. */
+    /* grid-column-gap: 15px; */
+  
+    /* grid-row-gap (obsoleto, usar row-gap): Espacio entre filas. */
+    /* grid-row-gap: 10px; */
+  
+    /* grid-gap (obsoleto, usar gap): Shorthand para 'grid-row-gap' y 'grid-column-gap'. */
+    /* grid-gap: <row-gap> <column-gap>; */
+    /* grid-gap: 10px 15px; */
+    /* grid-gap: 10px; */ /* Aplica 10px a ambos */
+  
+    /* column-gap: Espacio (canalón) entre columnas grid. */
+    column-gap: 15px;
+  
+    /* row-gap: Espacio (canalón) entre filas grid. */
+    row-gap: 10px;
+  
+    /* gap: Shorthand moderno para 'row-gap' y 'column-gap'. */
+    /* gap: <row-gap> <column-gap>; */
+    gap: 10px 15px;
+    /* gap: 10px; */ /* Aplica 10px a ambos */
+  
+    /* justify-items: Alinea el contenido *dentro* de cada celda grid a lo largo del eje inline (horizontal por defecto). */
+    /* justify-items: stretch; (default) El contenido llena la celda horizontalmente. */
+    justify-items: stretch;
+    /* justify-items: start; Contenido alineado al inicio de la celda (izquierda). */
+    /* justify-items: start; */
+    /* justify-items: end; Contenido alineado al final de la celda (derecha). */
+    /* justify-items: end; */
+    /* justify-items: center; Contenido centrado horizontalmente en la celda. */
+    /* justify-items: center; */
+  
+    /* align-items: Alinea el contenido *dentro* de cada celda grid a lo largo del eje block (vertical por defecto). */
+    /* align-items: stretch; (default) El contenido llena la celda verticalmente. */
+    align-items: stretch;
+    /* align-items: start; Contenido alineado al inicio de la celda (arriba). */
+    /* align-items: start; */
+    /* align-items: end; Contenido alineado al final de la celda (abajo). */
+    /* align-items: end; */
+    /* align-items: center; Contenido centrado verticalmente en la celda. */
+    /* align-items: center; */
+    /* align-items: baseline; Contenido alineado por su línea base. */
+    /* align-items: baseline; */
+  
+    /* place-items: Shorthand para 'align-items' y 'justify-items'. */
+    /* place-items: <align-items> <justify-items>; */
+    /* place-items: center start; */ /* Centrado vertical, alineado a la izquierda */
+    /* place-items: center; */ /* Si solo un valor, aplica a ambos (center center) */
+    place-items: stretch stretch; /* Equivalente a los defaults */
+  
+    /* justify-content: Alinea la cuadrícula completa dentro del contenedor grid cuando el tamaño total de la grid es menor que el contenedor (a lo largo del eje inline). */
+    /* justify-content: start; (default si no hay overflow) Cuadrícula alineada al inicio. */
+    justify-content: start;
+    /* justify-content: end; Cuadrícula alineada al final. */
+    /* justify-content: end; */
+    /* justify-content: center; Cuadrícula centrada. */
+    /* justify-content: center; */
+    /* justify-content: stretch; Las columnas/filas auto/fr se estiran para llenar el contenedor (a menudo el comportamiento por defecto). */
+    /* justify-content: stretch; */
+    /* justify-content: space-between; Espacio extra distribuido entre las columnas/filas. */
+    /* justify-content: space-between; */
+    /* justify-content: space-around; Espacio extra distribuido alrededor de las columnas/filas. */
+    /* justify-content: space-around; */
+    /* justify-content: space-evenly; Espacio extra distribuido equitativamente entre y alrededor de las columnas/filas. */
+    /* justify-content: space-evenly; */
+  
+    /* align-content: Alinea la cuadrícula completa dentro del contenedor grid cuando el tamaño total de la grid es menor que el contenedor (a lo largo del eje block). */
+    /* Mismos valores que justify-content, pero aplicado verticalmente. */
+    /* align-content: start; (default si no hay overflow) Cuadrícula alineada arriba. */
+    align-content: start;
+    /* align-content: end; */
+    /* align-content: center; */
+    /* align-content: stretch; */
+    /* align-content: space-between; */
+    /* align-content: space-around; */
+    /* align-content: space-evenly; */
+  
+    /* place-content: Shorthand para 'align-content' y 'justify-content'. */
+    /* place-content: <align-content> <justify-content>; */
+    /* place-content: center space-between; */
+    place-content: start start; /* Equivalente a los defaults */
+  
+    /* grid-auto-columns: Define el tamaño de las columnas creadas implícitamente (cuando un item se coloca fuera de las columnas definidas explícitamente). */
+    grid-auto-columns: 100px; /* Las columnas implícitas medirán 100px */
+    /* grid-auto-columns: auto; */
+    /* grid-auto-columns: minmax(100px, auto); */
+  
+    /* grid-auto-rows: Define el tamaño de las filas creadas implícitamente. */
+    grid-auto-rows: auto; /* Las filas implícitas tendrán altura automática */
+    /* grid-auto-rows: 5em; */
+  
+    /* grid-auto-flow: Controla cómo se colocan los items que no tienen una posición explícita en la cuadrícula. */
+    /* grid-auto-flow: row; (default) Rellena las filas, añadiendo columnas si es necesario (si grid-auto-columns está definido). */
+    grid-auto-flow: row;
+    /* grid-auto-flow: column; Rellena las columnas, añadiendo filas si es necesario. */
+    /* grid-auto-flow: column; */
+    /* grid-auto-flow: dense; Intenta rellenar huecos en la cuadrícula con items más pequeños, potencialmente cambiando el orden visual. */
+    /* grid-auto-flow: row dense; */
+  }
+  
+  /* --------------------------------------------- */
+  /* Propiedades de los Items Grid (Hijos)         */
+  /* --------------------------------------------- */
+  .grid-item-ejemplo {
+    /* grid-column-start: Define la línea de inicio de la columna donde empieza el item. */
+    grid-column-start: 1;
+    /* Puede ser un número de línea, un nombre de línea, o 'span N' para ocupar N columnas. */
+    /* grid-column-start: span 2; */
+    /* grid-column-start: sidebar-start; */ /* Si hay líneas nombradas */
+  
+    /* grid-column-end: Define la línea de fin de la columna donde termina el item. */
+    grid-column-end: 3; /* Termina *antes* de la línea 3 (ocupa columnas 1 y 2) */
+    /* grid-column-end: span 2; */ /* Ocupa 2 columnas desde el inicio */
+    /* grid-column-end: main-end; */
+  
+    /* grid-column: Shorthand para 'grid-column-start' y 'grid-column-end'. */
+    /* grid-column: <start> / <end>; */
+    grid-column: 1 / 3; /* Ocupa desde la línea 1 hasta antes de la 3 */
+    /* grid-column: 2 / span 3; */ /* Empieza en línea 2, ocupa 3 columnas */
+    /* grid-column: 2; */ /* Si solo un valor, ocupa una celda en la columna 2 (equivale a 2 / 3) */
+    /* grid-column: sidebar-start / main-end; */
+  
+    /* grid-row-start: Define la línea de inicio de la fila donde empieza el item. */
+    grid-row-start: auto; /* El sistema lo coloca automáticamente */
+    /* grid-row-start: 2; */
+  
+    /* grid-row-end: Define la línea de fin de la fila donde termina el item. */
+    grid-row-end: auto;
+    /* grid-row-end: 4; */ /* Termina *antes* de la línea 4 */
+  
+    /* grid-row: Shorthand para 'grid-row-start' y 'grid-row-end'. */
+    /* grid-row: <start> / <end>; */
+    grid-row: 1 / 2; /* Ocupa la primera fila */
+    /* grid-row: span 2 / 5; */ /* Empieza 2 filas antes de la línea 5 (ocupa filas 3 y 4) */
+  
+    /* grid-area: Permite colocar un item usando un nombre definido en 'grid-template-areas' del contenedor, o como shorthand para row-start/col-start/row-end/col-end. */
+    /* grid-area: <nombre-area>; */
+    /* grid-area: main; */ /* Coloca el item en el área llamada 'main' */
+    /* grid-area: <row-start> / <col-start> / <row-end> / <col-end>; */
+    /* grid-area: 2 / 1 / 3 / 4; */ /* Fila 2, Col 1 hasta Fila 3, Col 4 */
+  
+    /* justify-self: Alinea un item individual *dentro* de su celda grid a lo largo del eje inline (sobrescribe justify-items del contenedor). */
+    /* justify-self: stretch; (default) */
+    justify-self: stretch;
+    /* justify-self: start; */
+    /* justify-self: end; */
+    /* justify-self: center; */
+  
+    /* align-self: Alinea un item individual *dentro* de su celda grid a lo largo del eje block (sobrescribe align-items del contenedor). */
+    /* align-self: stretch; (default) */
+    align-self: stretch;
+    /* align-self: start; */
+    /* align-self: end; */
+    /* align-self: center; */
+    /* align-self: baseline; */
+  
+    /* place-self: Shorthand para 'align-self' y 'justify-self'. */
+    /* place-self: <align-self> <justify-self>; */
+    /* place-self: center end; */ /* Centrado vertical, alineado a la derecha */
+    place-self: stretch stretch; /* Equivalente a los defaults */
+  }
+  
+  /* ============================================= */
+  /* Propiedades de CSS Position                   */
+  /* ============================================= */
+  
+  .position-ejemplo {
+    /* position: Define el método de posicionamiento de un elemento en el documento. */
+  
+    /* position: static; (default) */
+    /* El elemento sigue el flujo normal del documento. Las propiedades top, right, bottom, left, z-index no tienen efecto. */
+    position: static;
+  
+    /* position: relative; */
+    /* El elemento se posiciona relativo a su posición normal en el flujo. Se puede desplazar con top/right/bottom/left. */
+    /* El espacio original del elemento se conserva en el flujo (no afecta a otros elementos). */
+    /* Crea un nuevo contexto de apilamiento y sirve como referencia para hijos con position: absolute. */
+    /* position: relative; */
+  
+    /* position: absolute; */
+    /* El elemento se saca completamente del flujo normal del documento. */
+    /* Se posiciona relativo a su ancestro posicionado más cercano (cualquier position excepto static). */
+    /* Si no hay ancestro posicionado, se posiciona relativo al bloque contenedor inicial (normalmente <html>). */
+    /* Usa top/right/bottom/left para definir su ubicación. */
+    /* position: absolute; */
+  
+    /* position: fixed; */
+    /* El elemento se saca completamente del flujo normal. */
+    /* Se posiciona relativo al viewport (la ventana del navegador). */
+    /* No se mueve cuando se hace scroll en la página. */
+    /* Usa top/right/bottom/left para definir su ubicación. */
+    /* position: fixed; */
+  
+    /* position: sticky; */
+    /* Es un híbrido entre 'relative' y 'fixed'. */
+    /* Se comporta como 'relative' hasta que su contenedor alcanza un umbral especificado (definido por top/bottom/left/right) durante el scroll. */
+    /* A partir de ese umbral, se comporta como 'fixed' pero *dentro de los límites de su contenedor padre*. */
+    /* position: sticky; */
+    /* Necesita al menos un valor de top, right, bottom o left para funcionar. */
+    /* top: 0; */ /* Se pegará a la parte superior del viewport cuando se haga scroll hacia abajo, dentro de su padre */
+  
+    /* top: Define la distancia desde el borde superior del bloque de referencia (ancestro posicionado, viewport, o posición original relativa). */
+    /* Solo aplica a elementos con position: relative, absolute, fixed, sticky. */
+    top: 10px;
+    /* top: 5%; */
+    /* top: auto; (default) */
+  
+    /* right: Define la distancia desde el borde derecho del bloque de referencia. */
+    right: 20px;
+    /* right: auto; (default) */
+  
+    /* bottom: Define la distancia desde el borde inferior del bloque de referencia. */
+    bottom: 10px;
+    /* bottom: auto; (default) */
+  
+    /* left: Define la distancia desde el borde izquierdo del bloque de referencia. */
+    left: 20px;
+    /* left: auto; (default) */
+  
+    /* z-index: Controla el orden de apilamiento (superposición) de los elementos posicionados. */
+    /* Solo aplica a elementos con position diferente de 'static'. */
+    /* Un valor entero mayor indica que el elemento estará más al frente. */
+    /* Default es 'auto', que generalmente equivale a 0 en el contexto de apilamiento actual. */
+    z-index: 1;
+    /* z-index: -1; */ /* Detrás de elementos con z-index 0 o auto */
+    /* z-index: 999; */ /* Muy al frente */
+    /* z-index: auto; */
+  
+    /* clip: (Obsoleto, usar clip-path) Recorta un elemento posicionado absolutamente. Solo soporta formas rectangulares. */
+    /* clip: rect(10px, 50px, 50px, 10px); */ /* top, right, bottom, left */
+  
+    /* clip-path: Crea una región de recorte para ocultar partes de un elemento. Soporta varias formas (circle, ellipse, polygon, url()). */
+    clip-path: circle(50% at 50% 50%); /* Recorta en forma de círculo */
+    /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */ /* Recorta en forma de rombo */
+  }
+  
+  /* ============================================= */
+  /* Otras Propiedades de CSS Comunes              */
+  /* ============================================= */
+  
+  /* --------------------------------------------- */
+  /* Modelo de Caja (Box Model)                    */
+  /* --------------------------------------------- */
+  .box-model-ejemplo {
+    /* width: Define el ancho del área de contenido del elemento. */
+    width: 200px;
+    /* width: 50%; */ /* Relativo al ancho del contenedor padre */
+    /* width: auto; */ /* (default para block) El navegador calcula el ancho (normalmente ocupa todo el disponible) */
+  
+    /* height: Define la altura del área de contenido del elemento. */
+    height: 100px;
+    /* height: auto; */ /* (default) El navegador calcula la altura (basada en el contenido) */
+  
+    /* min-width: Ancho mínimo que puede tener el elemento. */
+    min-width: 150px;
+  
+    /* max-width: Ancho máximo que puede tener el elemento. */
+    max-width: 80%;
+  
+    /* min-height: Altura mínima que puede tener el elemento. */
+    min-height: 50px;
+  
+    /* max-height: Altura máxima que puede tener el elemento. */
+    max-height: 300px;
+  
+    /* padding: Espacio entre el contenido y el borde (relleno interno). Shorthand. */
+    /* padding: <all sides>; */
+    /* padding: 10px; */
+    /* padding: <top/bottom> <left/right>; */
+    /* padding: 10px 20px; */
+    /* padding: <top> <left/right> <bottom>; */
+    /* padding: 10px 20px 5px; */
+    /* padding: <top> <right> <bottom> <left>; */
+    padding: 10px 15px 10px 5px;
+  
+    /* padding-top: Relleno superior. */
+    padding-top: 10px;
+    /* padding-right: Relleno derecho. */
+    padding-right: 15px;
+    /* padding-bottom: Relleno inferior. */
+    padding-bottom: 10px;
+    /* padding-left: Relleno izquierdo. */
+    padding-left: 5px;
+  
+    /* margin: Espacio fuera del borde (margen externo). Separa elementos entre sí. Shorthand. */
+    /* Mismos formatos que padding. 'auto' puede usarse para centrar horizontalmente elementos block con width definido. */
+    /* margin: 10px; */ /* 10px en todos los lados */
+    /* margin: 10px auto; */ /* 10px arriba/abajo, centrado horizontalmente */
+    margin: 10px 20px 10px 5px; /* top right bottom left */
+  
+    /* margin-top: Margen superior. */
+    margin-top: 10px;
+    /* margin-right: Margen derecho. */
+    margin-right: 20px;
+    /* margin-bottom: Margen inferior. */
+    margin-bottom: 10px;
+    /* margin-left: Margen izquierdo. */
+    margin-left: 5px;
+  
+    /* border: Define el borde alrededor del padding y contenido. Shorthand. */
+    /* border: <border-width> <border-style> <border-color>; */
+    border: 1px solid #333;
+  
+    /* border-width: Grosor del borde. Shorthand para los 4 lados. */
+    border-width: 2px;
+    /* border-top-width, border-right-width, border-bottom-width, border-left-width */
+    border-left-width: 5px;
+  
+    /* border-style: Estilo del borde. Shorthand para los 4 lados. */
+    /* Valores: none, hidden, dotted, dashed, solid, double, groove, ridge, inset, outset */
+    border-style: dashed;
+    /* border-top-style, border-right-style, border-bottom-style, border-left-style */
+    border-bottom-style: double;
+  
+    /* border-color: Color del borde. Shorthand para los 4 lados. */
+    border-color: navy;
+    /* border-top-color, border-right-color, border-bottom-color, border-left-color */
+    border-right-color: transparent; /* Borde invisible */
+  
+    /* border-top, border-right, border-bottom, border-left: Shorthands para un lado específico. */
+    /* border-bottom: 3px dotted green; */
+  
+    /* border-radius: Redondea las esquinas del borde. Shorthand. */
+    /* border-radius: <all corners>; */
+    /* border-radius: 10px; */
+    /* border-radius: <top-left/bottom-right> <top-right/bottom-left>; */
+    /* border-radius: 10px 5px; */
+    /* border-radius: <top-left> <top-right/bottom-left> <bottom-right>; */
+    /* border-radius: 10px 5px 20px; */
+    /* border-radius: <top-left> <top-right> <bottom-right> <bottom-left>; */
+    border-radius: 10px 5px 20px 0;
+    /* También puede usar dos valores por esquina para elipses: horizontal / vertical */
+    /* border-top-left-radius, border-top-right-radius, border-bottom-right-radius, border-bottom-left-radius */
+    border-top-left-radius: 15px;
+  
+    /* box-sizing: Define cómo se calculan el width y height totales del elemento. */
+    /* box-sizing: content-box; (default) width/height solo aplican al contenido. Padding y border se suman al tamaño total. */
+    /* box-sizing: border-box; width/height incluyen el contenido, padding y border. Mucho más intuitivo para layouts. */
+    box-sizing: border-box;
+  
+    /* box-shadow: Añade una sombra al elemento. */
+    /* box-shadow: [inset] <offset-x> <offset-y> [blur-radius] [spread-radius] <color>; */
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.3); /* Sombra externa */
+    /* box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); */ /* Sombra interna */
+    /* Múltiples sombras separadas por coma */
+    /* box-shadow: 3px 3px red, -1em 0 0.4em olive; */
+  
+    /* outline: Dibuja una línea alrededor del elemento, fuera del borde. No ocupa espacio (no afecta layout). */
+    /* outline: <outline-width> <outline-style> <outline-color>; */
+    outline: 2px dashed blue;
+    /* outline-width, outline-style, outline-color */
+    outline-offset: 5px; /* Separa el outline del borde */
+  }
+  
+  /* --------------------------------------------- */
+  /* Tipografía (Texto y Fuentes)                  */
+  /* --------------------------------------------- */
+  .typography-ejemplo {
+    /* color: Define el color del texto. */
+    color: #222; /* Hexadecimal */
+    /* color: rgb(50, 50, 50); */ /* RGB */
+    /* color: rgba(50, 50, 50, 0.8); */ /* RGBA (con transparencia) */
+    /* color: hsl(120, 100%, 50%); */ /* HSL (Hue, Saturation, Lightness) */
+    /* color: hsla(120, 100%, 50%, 0.8); */ /* HSLA */
+    /* color: red; */ /* Nombre de color */
+    /* color: currentColor; */ /* Usa el color del texto del padre */
+  
+    /* font-family: Especifica la fuente (o lista de fuentes alternativas separadas por coma). */
+    font-family: "Helvetica Neue", Arial, sans-serif; /* Terminar con genérica */
+    /* font-family: Georgia, serif; */
+  
+    /* font-size: Tamaño del texto. */
+    font-size: 16px; /* Píxeles */
+    /* font-size: 1.2em; */ /* Relativo al tamaño de fuente del padre */
+    /* font-size: 1.2rem; */ /* Relativo al tamaño de fuente del elemento raíz (<html>) */
+    /* font-size: 12pt; */ /* Puntos (más común en impresión) */
+    /* font-size: large; */ /* Palabras clave (xx-small, x-small, small, medium, large, x-large, xx-large) */
+    /* font-size: 10vw; */ /* Relativo al ancho del viewport */
+  
+    /* font-weight: Grosor o peso de la fuente. */
+    font-weight: normal; /* (400) */
+    /* font-weight: bold; */ /* (700) */
+    /* font-weight: lighter; */ /* Más ligero que el padre */
+    /* font-weight: bolder; */ /* Más grueso que el padre */
+    /* font-weight: 100; */ /* Thin */
+    /* font-weight: 300; */ /* Light */
+    /* font-weight: 400; */ /* Normal/Regular */
+    /* font-weight: 500; */ /* Medium */
+    /* font-weight: 700; */ /* Bold */
+    /* font-weight: 900; */ /* Black/Heavy */
+  
+    /* font-style: Estilo de la fuente. */
+    font-style: normal;
+    /* font-style: italic; */ /* Usa la versión cursiva verdadera de la fuente si existe. */
+    /* font-style: oblique; */ /* Inclina la versión normal si no hay cursiva. */
+  
+    /* font-variant: Variantes de la fuente. */
+    /* font-variant: normal; */
+    /* font-variant: small-caps; */ /* Muestra minúsculas como mayúsculas pequeñas. */
+  
+    /* font-stretch: Condensación o expansión de la fuente (si la fuente lo soporta). */
+    /* font-stretch: normal; */
+    /* font-stretch: condensed; */
+    /* font-stretch: expanded; */
+    /* font-stretch: ultra-condensed; */ /* ... hasta ultra-expanded */
+  
+    /* font: Shorthand para varias propiedades de fuente. */
+    /* font: [font-style] [font-variant] [font-weight] [font-stretch] <font-size>[/<line-height>] <font-family>; */
+    /* ¡OJO! font-size y font-family son obligatorios. El orden importa. */
+    font: italic small-caps bold 1.2em/1.6 Arial, sans-serif;
+  
+    /* line-height: Altura de la línea de texto (espaciado vertical). */
+    line-height: 1.5; /* Múltiplo del font-size (recomendado) */
+    /* line-height: 24px; */ /* Longitud fija */
+    /* line-height: 150%; */ /* Porcentaje del font-size */
+    /* line-height: normal; */ /* (default) El navegador elige un valor razonable. */
+  
+    /* text-align: Alineación horizontal del texto y contenido inline. */
+    text-align: left; /* (default para LTR) */
+    /* text-align: right; */ /* (default para RTL) */
+    /* text-align: center; */
+    /* text-align: justify; */ /* Estira los espacios para que las líneas llenen el ancho (excepto la última). */
+    /* text-align: start; */ /* Alinea al inicio según la dirección del texto (left en LTR, right en RTL). */
+    /* text-align: end; */ /* Alinea al final según la dirección del texto. */
+  
+    /* text-decoration: Añade líneas decorativas al texto. Shorthand. */
+    /* text-decoration: <text-decoration-line> <text-decoration-style> <text-decoration-color> <text-decoration-thickness>; */
+    text-decoration: underline dotted blue 2px;
+  
+    /* text-decoration-line: Tipo de línea. */
+    /* text-decoration-line: none; */
+    /* text-decoration-line: underline; */
+    /* text-decoration-line: overline; */
+    /* text-decoration-line: line-through; */
+    /* Se pueden combinar: underline overline; */
+  
+    /* text-decoration-style: Estilo de la línea. */
+    /* text-decoration-style: solid; */
+    /* text-decoration-style: double; */
+    /* text-decoration-style: dotted; */
+    /* text-decoration-style: dashed; */
+    /* text-decoration-style: wavy; */
+  
+    /* text-decoration-color: Color de la línea. */
+    /* text-decoration-color: red; */
+  
+    /* text-decoration-thickness: Grosor de la línea. */
+    /* text-decoration-thickness: auto; */
+    /* text-decoration-thickness: 2px; */
+    /* text-decoration-thickness: 0.1em; */
+  
+    /* text-transform: Controla la capitalización del texto. */
+    text-transform: none; /* (default) */
+    /* text-transform: capitalize; */ /* Primera letra de cada palabra en mayúscula. */
+    /* text-transform: uppercase; */ /* Todo en mayúsculas. */
+    /* text-transform: lowercase; */ /* Todo en minúsculas. */
+  
+    /* text-indent: Indentación (sangría) de la primera línea del texto. */
+    text-indent: 2em;
+    /* text-indent: 30px; */
+  
+    /* letter-spacing: Espacio adicional entre caracteres. */
+    letter-spacing: 1px;
+    /* letter-spacing: 0.1em; */
+    /* letter-spacing: normal; */ /* (default) */
+  
+    /* word-spacing: Espacio adicional entre palabras. */
+    word-spacing: 4px;
+    /* word-spacing: 0.5em; */
+    /* word-spacing: normal; */ /* (default) */
+  
+    /* white-space: Controla cómo se manejan los espacios en blanco y saltos de línea dentro del elemento. */
+    /* white-space: normal; (default) Colapsa espacios múltiples, saltos de línea automáticos. */
+    white-space: normal;
+    /* white-space: nowrap; Colapsa espacios, pero no permite saltos de línea (texto en una sola línea). */
+    /* white-space: pre; Preserva espacios y saltos de línea (como la etiqueta <pre>). */
+    /* white-space: pre-wrap; Preserva espacios, permite saltos de línea automáticos y explícitos. */
+    /* white-space: pre-line; Colapsa espacios, permite saltos de línea automáticos y explícitos. */
+  
+    /* word-break: Controla cómo se parten las palabras largas que no caben. */
+    /* word-break: normal; (default) Comportamiento estándar de salto de línea. */
+    word-break: normal;
+    /* word-break: break-all; Permite romper la palabra en cualquier punto si es necesario. */
+    /* word-break: keep-all; No rompe palabras (usado en CJK - Chino/Japonés/Coreano). */
+    /* word-break: break-word; (obsoleto, ver overflow-wrap) */
+  
+    /* overflow-wrap (antes word-wrap): Permite que palabras largas indivisibles se rompan si desbordan el contenedor. */
+    /* overflow-wrap: normal; (default) No rompe palabras si no hay punto de ruptura natural. */
+    overflow-wrap: normal;
+    /* overflow-wrap: break-word; Rompe la palabra en un punto arbitrario si es necesario para evitar desbordamiento. */
+    /* overflow-wrap: anywhere; Similar a break-word pero más agresivo al calcular min-content. */
+  
+    /* text-shadow: Añade sombra al texto. */
+    /* text-shadow: <offset-x> <offset-y> [blur-radius] <color>; */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    /* Múltiples sombras separadas por coma */
+    /* text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue; */
+  
+    /* direction: Dirección del texto (para idiomas como árabe o hebreo). */
+    /* direction: ltr; */ /* Left-to-right (Izquierda a derecha) */
+    /* direction: rtl; */ /* Right-to-left (Derecha a izquierda) */
+  
+    /* unicode-bidi: Usado con 'direction' para controlar el algoritmo bidireccional de Unicode. */
+    /* unicode-bidi: normal; */
+    /* unicode-bidi: embed; */
+    /* unicode-bidi: bidi-override; */
+  
+    /* writing-mode: Define la dirección del flujo de texto (horizontal o vertical). */
+    /* writing-mode: horizontal-tb; (default) Horizontal, de arriba a abajo. */
+    writing-mode: horizontal-tb;
+    /* writing-mode: vertical-rl; Vertical, de derecha a izquierda. */
+    /* writing-mode: vertical-lr; Vertical, de izquierda a derecha. */
+  
+    /* text-orientation: Orientación de los caracteres en modo de escritura vertical. */
+    /* text-orientation: mixed; (default) Rota caracteres latinos 90 grados. */
+    /* text-orientation: upright; Mantiene caracteres latinos derechos. */
+    /* text-orientation: sideways; Rota todo 90 grados. */
+  }
+  
+  /* --------------------------------------------- */
+  /* Fondos (Backgrounds)                          */
+  /* --------------------------------------------- */
+  .background-ejemplo {
+    /* background-color: Color de fondo. */
+    background-color: #f0f0f0;
+    /* background-color: transparent; */ /* (default) Fondo transparente */
+  
+    /* background-image: Imagen(es) de fondo. */
+    background-image: url('images/pattern.png');
+    /* Múltiples imágenes separadas por coma (la primera está más al frente) */
+    /* background-image: url('images/foreground.svg'), url('images/background.jpg'); */
+    /* Gradientes también son imágenes de fondo */
+    /* background-image: linear-gradient(to right, red, blue); */
+    /* background-image: radial-gradient(circle, white, black); */
+    /* background-image: none; */ /* (default) Sin imagen de fondo */
+  
+    /* background-repeat: Cómo se repite la imagen de fondo. Aplica a cada imagen si hay múltiples. */
+    /* background-repeat: repeat; (default) Repite en ambas direcciones. */
+    background-repeat: repeat;
+    /* background-repeat: repeat-x; Repite solo horizontalmente. */
+    /* background-repeat: repeat-y; Repite solo verticalmente. */
+    /* background-repeat: no-repeat; No repite (muestra una sola vez). */
+    /* background-repeat: space; Repite espaciando las imágenes para llenar el área sin recortar. */
+    /* background-repeat: round; Repite escalando las imágenes para que quepan un número entero de veces. */
+    /* Para múltiples imágenes: background-repeat: no-repeat, repeat; */
+  
+    /* background-position: Posición inicial de la imagen de fondo. Aplica a cada imagen. */
+    /* background-position: <x-pos> <y-pos>; */
+    /* Palabras clave: left, center, right, top, bottom */
+    /* Longitudes: px, em, % */
+    background-position: center top; /* Centrado horizontal, arriba vertical */
+    /* background-position: 20px 50%; */ /* 20px desde la izq, 50% desde arriba */
+    /* background-position: right 10px bottom 20px; */ /* Palabra clave con offset */
+    /* Para múltiples imágenes: background-position: 0 0, center; */
+  
+    /* background-size: Tamaño de la imagen de fondo. Aplica a cada imagen. */
+    /* background-size: auto; (default) Tamaño intrínseco de la imagen. */
+    background-size: auto;
+    /* background-size: cover; Escala la imagen para cubrir toda el área (puede recortarse). */
+    /* background-size: cover; */
+    /* background-size: contain; Escala la imagen para que quepa completamente (puede dejar espacios). */
+    /* background-size: contain; */
+    /* background-size: <width> <height>; (auto, longitud, porcentaje) */
+    /* background-size: 50% auto; */ /* 50% del ancho del contenedor, altura automática */
+    /* background-size: 100px 80px; */ /* Tamaño fijo */
+    /* Para múltiples imágenes: background-size: 50px, cover; */
+  
+    /* background-attachment: Si la imagen de fondo se desplaza con el contenido o es fija al viewport. */
+    /* background-attachment: scroll; (default) La imagen se mueve junto con el elemento. */
+    background-attachment: scroll;
+    /* background-attachment: fixed; La imagen es fija respecto al viewport (efecto parallax). */
+    /* background-attachment: fixed; */
+    /* background-attachment: local; La imagen se mueve junto con el contenido *interno* del elemento si este tiene scroll. */
+    /* background-attachment: local; */
+    /* Para múltiples imágenes: background-attachment: fixed, scroll; */
+  
+    /* background-origin: Define el origen de la posición de la imagen (dónde empieza el 0% 0%). */
+    /* background-origin: padding-box; (default) Origen en el borde del padding. */
+    background-origin: padding-box;
+    /* background-origin: border-box; Origen en el borde del border. */
+    /* background-origin: border-box; */
+    /* background-origin: content-box; Origen en el borde del contenido. */
+    /* background-origin: content-box; */
+  
+    /* background-clip: Define hasta dónde se extiende el fondo (color e imagen). */
+    /* background-clip: border-box; (default) El fondo se extiende hasta el borde exterior del border. */
+    background-clip: border-box;
+    /* background-clip: padding-box; El fondo se extiende hasta el borde exterior del padding. */
+    /* background-clip: padding-box; */
+    /* background-clip: content-box; El fondo solo cubre el área de contenido. */
+    /* background-clip: content-box; */
+    /* background-clip: text; (Experimental) Recorta el fondo a la forma del texto (necesita color de texto transparente). */
+    /* background-clip: text; */
+    /* color: transparent; */
+    /* -webkit-background-clip: text; */ /* Prefijo para compatibilidad */
+  
+    /* background: Shorthand para todas las propiedades de background. */
+    /* Orden común recomendado: [background-color] [background-image] [background-repeat] [background-attachment] [background-position] / [background-size] [background-origin] [background-clip] */
+    /* No todos los valores son obligatorios. */
+    background: lightblue url('img.png') no-repeat fixed center / cover;
+  }
+  
+  /* --------------------------------------------- */
+  /* Transiciones (Transitions)                    */
+  /* --------------------------------------------- */
+  .transition-ejemplo {
+    /* transition-property: Qué propiedad(es) CSS deben transicionar. */
+    /* transition-property: all; (default) Transicionan todas las propiedades animables. */
+    transition-property: background-color, transform; /* Transicionan solo estas dos */
+    /* transition-property: none; Ninguna propiedad transiciona. */
+  
+    /* transition-duration: Duración de la transición. */
+    transition-duration: 0.3s; /* 0.3 segundos */
+    /* transition-duration: 500ms; */ /* 500 milisegundos */
+    /* Si hay múltiples propiedades en transition-property, se pueden dar múltiples duraciones separadas por coma. */
+    /* transition-duration: 0.5s, 1s; */
+  
+    /* transition-timing-function: Curva de aceleración de la transición (cómo progresa la animación). */
+    /* transition-timing-function: ease; (default) Inicio lento, acelera, final lento. */
+    transition-timing-function: ease;
+    /* transition-timing-function: linear; Velocidad constante. */
+    /* transition-timing-function: ease-in; Inicio lento. */
+    /* transition-timing-function: ease-out; Final lento. */
+    /* transition-timing-function: ease-in-out; Inicio y final lentos. */
+    /* transition-timing-function: cubic-bezier(n,n,n,n); Define una curva cúbica personalizada. */
+    /* transition-timing-function: steps(4, end); Animación por pasos. */
+    /* Para múltiples propiedades: transition-timing-function: ease-in, linear; */
+  
+    /* transition-delay: Retardo antes de que comience la transición. */
+    transition-delay: 0s; /* (default) Sin retardo. */
+    /* transition-delay: 1s; */ /* Empieza 1 segundo después del evento trigger. */
+    /* Para múltiples propiedades: transition-delay: 0s, 0.2s; */
+  
+    /* transition: Shorthand para las cuatro propiedades de transición. */
+    /* transition: [property] [duration] [timing-function] [delay]; */
+    /* El orden no es estricto, pero duration debe ir antes que delay si ambos son tiempos. */
+    transition: background-color 0.4s ease-out 0.1s;
+    /* Múltiples transiciones separadas por coma */
+    /* transition: background-color 0.4s ease-out, transform 0.3s linear 0.1s; */
+    /* transition: all 0.5s ease-in-out; */ /* Transición común para todo */
+  }
+  /* Se aplica la transición cuando la propiedad cambia, por ejemplo en :hover */
+  .transition-ejemplo:hover {
+    background-color: blue;
+    transform: scale(1.1);
+  }
+  
+  /* --------------------------------------------- */
+  /* Animaciones (@keyframes y animation)          */
+  /* --------------------------------------------- */
+  
+  /* @keyframes: Define los pasos (fotogramas clave) de una secuencia de animación. */
+  @keyframes miAnimacion {
+    /* from (equivale a 0%) */
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    /* 50% { ... } Se pueden añadir pasos intermedios */
+    50% {
+      opacity: 0.5;
+    }
+    /* to (equivale a 100%) */
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animation-ejemplo {
+    /* animation-name: Nombre de la animación definida con @keyframes. */
+    animation-name: miAnimacion;
+    /* animation-name: none; (default) */
+  
+    /* animation-duration: Duración de un ciclo de la animación. */
+    animation-duration: 2s;
+  
+    /* animation-timing-function: Curva de aceleración de la animación (igual que transition). */
+    animation-timing-function: ease-in-out;
+  
+    /* animation-delay: Retardo antes de que comience la animación. */
+    animation-delay: 0.5s;
+  
+    /* animation-iteration-count: Cuántas veces se repite la animación. */
+    animation-iteration-count: 1; /* (default) Una vez. */
+    /* animation-iteration-count: 3; */ /* Tres veces. */
+    /* animation-iteration-count: infinite; */ /* Se repite indefinidamente. */
+  
+    /* animation-direction: Dirección en que se reproduce la animación en ciclos sucesivos. */
+    /* animation-direction: normal; (default) Siempre de from a to. */
+    animation-direction: normal;
+    /* animation-direction: reverse; Siempre de to a from. */
+    /* animation-direction: alternate; Alterna: from->to, to->from, from->to... */
+    /* animation-direction: alternate-reverse; Alterna: to->from, from->to, to->from... */
+  
+    /* animation-fill-mode: Qué estilos se aplican al elemento antes/después de la animación. */
+    /* animation-fill-mode: none; (default) No aplica estilos fuera del tiempo de animación. */
+    animation-fill-mode: none;
+    /* animation-fill-mode: forwards; Mantiene los estilos del último fotograma clave (100% o 0% según direction) después de terminar. */
+    /* animation-fill-mode: backwards; Aplica los estilos del primer fotograma clave (0% o 100%) durante el delay. */
+    /* animation-fill-mode: both; Aplica 'forwards' y 'backwards'. */
+  
+    /* animation-play-state: Permite pausar y reanudar la animación. */
+    /* animation-play-state: running; (default) La animación se ejecuta. */
+    animation-play-state: running;
+    /* animation-play-state: paused; La animación está pausada. */
+  
+    /* animation: Shorthand para todas las propiedades de animación. */
+    /* animation: [name] [duration] [timing-function] [delay] [iteration-count] [direction] [fill-mode] [play-state]; */
+    /* Ejemplo completo: */
+    /* animation: miAnimacion 3s ease-in 1s infinite alternate forwards running; */
+    /* Ejemplo simple: */
+    /* animation: miAnimacion 2s infinite; */
+  }
+  
+  /* --------------------------------------------- */
+  /* Transformaciones (Transforms)                 */
+  /* --------------------------------------------- */
+  .transform-ejemplo {
+    /* transform: Aplica una transformación geométrica 2D o 3D al elemento. */
+    /* No afecta al flujo del layout (el espacio original se conserva). */
+  
+    /* Funciones 2D: */
+    /* transform: none; (default) */
+    /* transform: translate(tx, ty); Mueve el elemento horizontal (tx) y verticalmente (ty). */
+    /* transform: translate(50px, 20px); */
+    /* transform: translateX(50px); */ /* Solo horizontal */
+    /* transform: translateY(20px); */ /* Solo vertical */
+    /* transform: scale(sx, sy); Escala el elemento (sx horizontal, sy vertical). 1=normal, 0.5=mitad, 2=doble. */
+    /* transform: scale(1.2); */ /* Escala ambos ejes uniformemente */
+    /* transform: scaleX(1.5); */
+    /* transform: scaleY(0.8); */
+    /* transform: rotate(angle); Rota el elemento alrededor de su punto de origen. */
+    /* transform: rotate(45deg); */ /* Grados */
+    /* transform: rotate(0.5turn); */ /* Vueltas */
+    /* transform: skew(ax, ay); Sesga o inclina el elemento. */
+    /* transform: skewX(20deg); */
+    /* transform: skewY(10deg); */
+    /* transform: matrix(a, b, c, d, tx, ty); Transformación 2D compleja. */
+  
+    /* Funciones 3D: */
+    /* transform: translate3d(tx, ty, tz); Mueve en 3D. */
+    /* transform: translateZ(100px); */ /* Mueve hacia el espectador */
+    /* transform: scale3d(sx, sy, sz); Escala en 3D. */
+    /* transform: scaleZ(2); */
+    /* transform: rotate3d(x, y, z, angle); Rota alrededor de un vector [x, y, z]. */
+    /* transform: rotateX(45deg); */ /* Rota alrededor del eje X */
+    /* transform: rotateY(45deg); */
+    /* transform: rotateZ(45deg); */ /* Equivalente a rotate() 2D */
+    /* transform: perspective(length); Aplica perspectiva al elemento (normalmente se aplica al padre). */
+    /* transform: matrix3d(...); Transformación 3D compleja. */
+  
+    /* Se pueden combinar múltiples funciones separadas por espacio. Se aplican de derecha a izquierda. */
+    transform: translateX(50px) rotate(10deg) scale(0.9);
+  
+    /* transform-origin: Define el punto de origen (el centro) para las transformaciones (rotate, scale, skew). */
+    /* Default es '50% 50%' o 'center center'. */
+    /* transform-origin: <x-offset> <y-offset> [z-offset]; */
+    /* Palabras clave: top, bottom, left, right, center */
+    transform-origin: top left; /* Origen en la esquina superior izquierda */
+    /* transform-origin: 20px 50%; */
+    /* transform-origin: right bottom -50px; */ /* Incluye eje Z */
+  
+    /* transform-style: Define si los hijos de un elemento transformado se posicionan en el plano 3D del padre o se aplanan. */
+    /* transform-style: flat; (default) Los hijos no heredan el contexto 3D. */
+    /* transform-style: preserve-3d; Los hijos se posicionan en el espacio 3D. Necesario para anidar transformaciones 3D. */
+    /* Se aplica al elemento padre que tiene la transformación 3D. */
+  
+    /* perspective: Aplica perspectiva a los hijos con transformaciones 3D (define la "distancia" del espectador). */
+    /* Se aplica al elemento padre (contenedor) de los elementos que tendrán transformaciones 3D. */
+    /* perspective: 1000px; */ /* Valor común */
+    /* perspective: none; (default) */
+  
+    /* perspective-origin: Define el punto de fuga de la perspectiva (desde dónde mira el espectador). */
+    /* Se aplica al mismo elemento que 'perspective'. Default '50% 50%'. */
+    /* perspective-origin: center top; */
+  
+    /* backface-visibility: Define si la cara trasera de un elemento rotado en 3D es visible. */
+    /* backface-visibility: visible; (default) La cara trasera es visible (a menudo espejada). */
+    backface-visibility: visible;
+    /* backface-visibility: hidden; La cara trasera es invisible. */
+  }
+  
+  
+  /* --------------------------------------------- */
+  /* Filtros y Modos de Mezcla                     */
+  /* --------------------------------------------- */
+  .filter-blend-ejemplo {
+    /* filter: Aplica efectos gráficos como desenfoque, brillo, contraste, etc. */
+    /* filter: none; (default) */
+    /* filter: blur(px); Desenfoque gaussiano. */
+    /* filter: blur(5px); */
+    /* filter: brightness(%); Ajusta el brillo (100% normal, 0% negro, >100% más brillante). */
+    /* filter: brightness(150%); */
+    /* filter: contrast(%); Ajusta el contraste (100% normal). */
+    /* filter: contrast(200%); */
+    /* filter: grayscale(%); Convierte a escala de grises (100% completo). */
+    /* filter: grayscale(80%); */
+    /* filter: hue-rotate(deg); Rota los colores en la rueda de color. */
+    /* filter: hue-rotate(90deg); */
+    /* filter: invert(%); Invierte los colores (100% completo). */
+    /* filter: invert(100%); */
+    /* filter: opacity(%); Aplica transparencia (igual que 'opacity'). */
+    /* filter: opacity(50%); */
+    /* filter: saturate(%); Ajusta la saturación (100% normal). */
+    /* filter: saturate(180%); */
+    /* filter: sepia(%); Aplica tono sepia (100% completo). */
+    /* filter: sepia(75%); */
+    /* filter: drop-shadow(offset-x offset-y blur-radius color); Similar a box-shadow pero aplica a la forma real del contenido (incluyendo transparencia). */
+    /* filter: drop-shadow(2px 4px 6px black); */
+    /* filter: url(mi-filtro.svg#filtro-id); Aplica un filtro SVG. */
+  
+    /* Se pueden combinar múltiples filtros separados por espacio. */
+    filter: contrast(120%) blur(1px) saturate(150%);
+  
+    /* backdrop-filter: Aplica filtros gráficos al área *detrás* del elemento (efecto "cristal esmerilado"). */
+    /* Requiere que el elemento tenga alguna transparencia (e.g., background-color con alpha). */
+    /* backdrop-filter: none; (default) */
+    /* backdrop-filter: blur(10px); */
+    /* backdrop-filter: brightness(80%); */
+    /* Mismas funciones que 'filter'. */
+    /* background-color: rgba(255, 255, 255, 0.5); */ /* Ejemplo de fondo semitransparente */
+    /* backdrop-filter: blur(5px) saturate(120%); */
+  
+    /* mix-blend-mode: Define cómo el contenido de un elemento se mezcla con el contenido de su padre y hermanos que estén debajo. */
+    /* mix-blend-mode: normal; (default) Sin mezcla especial. */
+    mix-blend-mode: normal;
+    /* Modos comunes: multiply, screen, overlay, darken, lighten, color-dodge, color-burn, difference, exclusion, hue, saturation, color, luminosity */
+    /* mix-blend-mode: multiply; */ /* Multiplica colores, oscurece */
+    /* mix-blend-mode: screen; */ /* Efecto opuesto a multiply, aclara */
+    /* mix-blend-mode: overlay; */ /* Combina multiply y screen */
+  
+    /* background-blend-mode: Define cómo se mezclan las múltiples imágenes/gradientes de fondo *entre sí* y con el background-color del mismo elemento. */
+    /* Mismos valores que mix-blend-mode. */
+    /* background-image: url(imagen1.png), url(imagen2.jpg); */
+    /* background-color: blue; */
+    /* background-blend-mode: screen, overlay; */ /* El primer valor mezcla img1 sobre img2, el segundo mezcla el resultado sobre el color azul */
+    background-blend-mode: normal;
+  }
+  
+  /* --------------------------------------------- */
+  /* Listas (List Styling)                         */
+  /* --------------------------------------------- */
+  .lista-ejemplo { /* Aplicar a <ul> o <ol> */
+    /* list-style-type: Tipo de marcador para los items de la lista. */
+    /* Para <ul>: disc (default), circle, square, none */
+    list-style-type: square;
+    /* Para <ol>: decimal (default), decimal-leading-zero, lower-roman, upper-roman, lower-greek, upper-greek, lower-alpha, upper-alpha, none */
+    /* list-style-type: lower-roman; */
+  
+    /* list-style-position: Dónde se coloca el marcador respecto al contenido. */
+    /* list-style-position: outside; (default) Marcador fuera del flujo del texto. */
+    list-style-position: outside;
+    /* list-style-position: inside; Marcador dentro del flujo, como si fuera parte del texto. */
+    /* list-style-position: inside; */
+  
+    /* list-style-image: Usa una imagen como marcador. */
+    /* list-style-image: url('images/custom-bullet.png'); */
+    /* list-style-image: none; (default) */
+  
+    /* list-style: Shorthand para 'list-style-type', 'list-style-position', 'list-style-image'. */
+    list-style: circle inside url('bullet.gif');
+    /* list-style: none; */ /* Quita todos los estilos de marcador */
+  }
+  .lista-item-ejemplo { /* Aplicar a <li> */
+    /* Se pueden aplicar propiedades de padding, margin, etc. */
+    margin-bottom: 5px;
+  }
+  
+  /* --------------------------------------------- */
+  /* Tablas (Table Styling)                        */
+  /* --------------------------------------------- */
+  .tabla-ejemplo { /* Aplicar a <table> */
+    /* border-collapse: Controla si los bordes de las celdas se fusionan o están separados. */
+    /* border-collapse: separate; (default) Bordes separados, 'border-spacing' tiene efecto. */
+    border-collapse: separate;
+    /* border-collapse: collapse; Bordes fusionados en uno solo. 'border-spacing' no tiene efecto. */
+    /* border-collapse: collapse; */
+  
+    /* border-spacing: Distancia entre bordes de celdas adyacentes (solo si border-collapse: separate). */
+    /* border-spacing: <horizontal> <vertical>; */
+    border-spacing: 2px 5px;
+    /* border-spacing: 2px; */ /* Aplica a ambos */
+  
+    /* caption-side: Posición del <caption> de la tabla. */
+    /* caption-side: top; (default) */
+    caption-side: top;
+    /* caption-side: bottom; */
+  
+    /* empty-cells: Muestra u oculta bordes y fondo de celdas vacías (solo si border-collapse: separate). */
+    /* empty-cells: show; (default) Muestra bordes/fondo. */
+    empty-cells: show;
+    /* empty-cells: hide; Oculta bordes/fondo. */
+  
+    /* table-layout: Algoritmo usado para el layout de la tabla. */
+    /* table-layout: auto; (default) Ancho de columna basado en contenido. Puede ser lento. */
+    table-layout: auto;
+    /* table-layout: fixed; Ancho de columna basado en el ancho de la tabla y las columnas definidas (o la primera fila). Más rápido y predecible. */
+    /* table-layout: fixed; */
+    width: 100%; /* Necesario para que fixed funcione bien a menudo */
+  }
+  .celda-ejemplo { /* Aplicar a <td> o <th> */
+    /* vertical-align: Alineación vertical del contenido de la celda. */
+    /* vertical-align: baseline; (default) */
+    vertical-align: middle;
+    /* vertical-align: top; */
+    /* vertical-align: bottom; */
+  
+    /* text-align: Alineación horizontal (ver sección Tipografía). */
+    text-align: left; /* Default para <td> */
+    /* text-align: center; */ /* Default para <th> */
+  
+    padding: 8px; /* Añadir padding es común */
+    border: 1px solid #ccc; /* Bordes para celdas */
+  }
+  
+  /* --------------------------------------------- */
+  /* Control de Desbordamiento (Overflow)          */
+  /* --------------------------------------------- */
+  .overflow-ejemplo {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black; /* Para visualizar el contenedor */
+  
+    /* overflow: Controla qué pasa cuando el contenido excede las dimensiones del elemento. Shorthand para overflow-x y overflow-y. */
+    /* overflow: visible; (default) El contenido se desborda y es visible fuera del elemento. */
+    overflow: visible;
+    /* overflow: hidden; El contenido que se desborda se recorta y es invisible. */
+    /* overflow: hidden; */
+    /* overflow: scroll; Siempre muestra barras de scroll (horizontales y verticales), incluso si no son necesarias. */
+    /* overflow: scroll; */
+    /* overflow: auto; Muestra barras de scroll solo si el contenido se desborda. Es el más usado para permitir scroll. */
+    /* overflow: auto; */
+    /* overflow: clip; Similar a hidden pero más restrictivo, no permite scroll programático. */
+  
+    /* overflow-x: Controla el desbordamiento solo en el eje horizontal. */
+    /* overflow-x: visible; */
+    /* overflow-x: hidden; */
+    /* overflow-x: scroll; */
+    /* overflow-x: auto; */
+  
+    /* overflow-y: Controla el desbordamiento solo en el eje vertical. */
+    /* overflow-y: visible; */
+    /* overflow-y: hidden; */
+    /* overflow-y: scroll; */
+    /* overflow-y: auto; */
+  
+    /* text-overflow: Muestra puntos suspensivos (...) para indicar texto oculto que desborda. */
+    /* Requiere: overflow: hidden; y white-space: nowrap; */
+    /* text-overflow: clip; (default) Simplemente corta el texto. */
+    text-overflow: clip;
+    /* text-overflow: ellipsis; Muestra '...' */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */ /* Necesario para ellipsis */
+    /* overflow: hidden; */   /* Necesario para ellipsis */
+  }
+  
+  /* --------------------------------------------- */
+  /* Interfaz de Usuario (UI)                      */
+  /* --------------------------------------------- */
+  .ui-ejemplo {
+    /* cursor: Tipo de cursor del ratón que se muestra al pasar sobre el elemento. */
+    /* cursor: auto; (default) El navegador decide. */
+    cursor: auto;
+    /* cursor: default; Cursor de flecha estándar. */
+    /* cursor: pointer; Mano (indica un enlace o botón). */
+    /* cursor: pointer; */
+    /* cursor: text; Cursor de edición de texto (I-beam). */
+    /* cursor: text; */
+    /* cursor: move; Cursor de mover (flechas en cruz). */
+    /* cursor: move; */
+    /* cursor: grab; Mano abierta (indica que algo se puede agarrar). */
+    /* cursor: grab; */
+    /* cursor: grabbing; Mano cerrada (mientras se está agarrando). */
+    /* cursor: grabbing; */
+    /* cursor: not-allowed; Símbolo de prohibido. */
+    /* cursor: not-allowed; */
+    /* cursor: progress; Cursor de espera/progreso (rueda o reloj). */
+    /* cursor: progress; */
+    /* cursor: wait; Similar a progress. */
+    /* cursor: help; Cursor de ayuda (signo de interrogación). */
+    /* cursor: zoom-in; Lupa de acercar. */
+    /* cursor: zoom-out; Lupa de alejar. */
+    /* cursor: none; Oculta el cursor. */
+    /* cursor: url('custom.cur'), auto; Cursor personalizado (con fallback). */
+  
+    /* user-select: Controla si el usuario puede seleccionar el texto del elemento. */
+    /* user-select: auto; (default) El navegador decide (normalmente seleccionable). */
+    user-select: auto;
+    /* user-select: text; El texto es seleccionable. */
+    /* user-select: none; El texto no se puede seleccionar. */
+    /* user-select: none; */
+    /* user-select: all; Al hacer clic una vez, se selecciona todo el contenido del elemento. */
+  
+    /* appearance (o -webkit-appearance, -moz-appearance): Permite quitar o cambiar la apariencia nativa de elementos de formulario. */
+    /* appearance: none; Quita estilos nativos (útil para estilizar botones, selects, etc.). */
+    appearance: none;
+    /* -webkit-appearance: none; */ /* Prefijos comunes */
+    /* -moz-appearance: none; */
+    /* appearance: button; */ /* Hace que el elemento parezca un botón */
+  
+    /* resize: Permite al usuario redimensionar el elemento. */
+    /* Requiere overflow diferente de 'visible'. */
+    /* resize: none; (default) No redimensionable. */
+    resize: none;
+    /* resize: both; Redimensionable horizontal y verticalmente. */
+    /* resize: horizontal; Solo horizontal. */
+    /* resize: vertical; Solo vertical. */
+    /* overflow: auto; */ /* Necesario para que resize funcione */
+  
+    /* outline: (Ver Box Model) Define el contorno que aparece al enfocar elementos (importante para accesibilidad). */
+    /* outline: none; */ /* ¡CUIDADO! Quitar el outline sin dar alternativa visual al foco perjudica la accesibilidad. */
+    /* Si se quita, añadir estilos alternativos para :focus */
+    /* outline: 2px solid blue; */
+  
+    /* pointer-events: Controla si un elemento puede ser el objetivo de eventos del puntero (clics, hover). */
+    /* pointer-events: auto; (default) El elemento reacciona a eventos normalmente. */
+    pointer-events: auto;
+    /* pointer-events: none; El elemento ignora los eventos del puntero (como si no estuviera). Los eventos pasan a elementos debajo. */
+    /* pointer-events: none; */
+  
+    /* scroll-behavior: Define si el desplazamiento (scroll) dentro del contenedor es instantáneo o suave. */
+    /* Se aplica al contenedor que tiene el scroll. */
+    /* scroll-behavior: auto; (default) Desplazamiento instantáneo. */
+    scroll-behavior: auto;
+    /* scroll-behavior: smooth; Desplazamiento animado (suave). */
+    /* scroll-behavior: smooth; */
+  
+    /* accent-color: Permite cambiar el color de acento de algunos controles de formulario (checkbox, radio, range, progress). */
+    accent-color: dodgerblue;
+    /* accent-color: auto; (default) Usa el color del navegador/sistema. */
+  
+    /* caret-color: Cambia el color del cursor (caret) en inputs y textareas. */
+    /* caret-color: auto; (default) */
+    caret-color: red;
+  }
+  
+  /* --------------------------------------------- */
+  /* Pseudo-clases Comunes                         */
+  /* --------------------------------------------- */
+  
+  /* :hover - Se activa cuando el puntero del ratón está sobre el elemento. */
+  .pseudo-clase-ejemplo:hover {
+    background-color: lightyellow;
+  }
+  
+  /* :active - Se activa cuando el elemento está siendo activado por el usuario (ej: clic presionado en un botón/enlace). */
+  .pseudo-clase-ejemplo:active {
+    background-color: gold;
+    transform: scale(0.98);
+  }
+  
+  /* :focus - Se activa cuando el elemento tiene el foco (ej: un input seleccionado, un enlace navegado con Tab). */
+  .pseudo-clase-ejemplo:focus {
+    outline: 2px solid darkblue;
+    box-shadow: 0 0 5px darkblue;
+  }
+  
+  /* :focus-visible - Similar a :focus, pero solo se activa cuando el navegador determina que el foco debe ser visible (generalmente foco por teclado, no por clic). Mejor para accesibilidad que solo :focus. */
+  .pseudo-clase-ejemplo:focus-visible {
+    outline: 3px dotted tomato;
+  }
+  
+  /* :visited - Se aplica a enlaces (<a>) que ya han sido visitados por el usuario. */
+  a:visited {
+    color: purple;
+  }
+  
+  /* :link - Se aplica a enlaces (<a>) que no han sido visitados. */
+  a:link {
+    color: blue;
+  }
+  
+  /* :first-child - Selecciona el primer elemento hijo de su padre. */
+  li:first-child {
+    font-weight: bold;
+  }
+  
+  /* :last-child - Selecciona el último elemento hijo de su padre. */
+  li:last-child {
+    margin-bottom: 0;
+  }
+  
+  /* :nth-child(n) - Selecciona elementos hijos basados en su posición. */
+  /* li:nth-child(3) { color: green; } */ /* El tercer <li> */
+  /* li:nth-child(odd) { background-color: #eee; } */ /* Hijos impares (1, 3, 5...) */
+  /* li:nth-child(even) { background-color: #ddd; } */ /* Hijos pares (2, 4, 6...) */
+  /* li:nth-child(2n+1) { font-style: italic; } */ /* Fórmula: cada 2 empezando por el 1 (impares) */
+  /* li:nth-child(3n) { border-left: 3px solid red; } */ /* Cada tercer hijo (3, 6, 9...) */
+  
+  /* :nth-last-child(n) - Similar a nth-child, pero cuenta desde el final. */
+  /* li:nth-last-child(2) { text-decoration: underline; } */ /* El penúltimo <li> */
+  
+  /* :first-of-type - Selecciona el primer elemento de su tipo entre los hijos de su padre. */
+  p:first-of-type {
+    font-size: 1.1em;
+  }
+  
+  /* :last-of-type - Selecciona el último elemento de su tipo. */
+  p:last-of-type {
+    font-style: italic;
+  }
+  
+  /* :nth-of-type(n) - Selecciona elementos de su tipo basados en su posición entre hermanos del mismo tipo. */
+  img:nth-of-type(odd) {
+    border: 1px solid grey;
+  }
+  
+  /* :not(selector) - Selecciona elementos que NO coinciden con el selector interno. */
+  p:not(.importante) {
+    color: grey;
+  }
+  input:not([type="submit"]) {
+    border: 1px solid #ccc;
+  }
+  
+  /* :empty - Selecciona elementos que no tienen hijos (ni siquiera texto). */
+  div:empty {
+    border: 1px dashed lightgrey;
+    height: 20px; /* Para que sea visible */
+  }
+  
+  /* :checked - Selecciona checkboxes o radio buttons que están marcados. */
+  input[type="checkbox"]:checked + label {
+    text-decoration: line-through;
+  }
+  
+  /* :disabled - Selecciona elementos de formulario que están deshabilitados. */
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* :enabled - Selecciona elementos de formulario que están habilitados. */
+  input:enabled {
+    border-color: green;
+  }
+  
+  /* :required - Selecciona elementos de formulario que tienen el atributo 'required'. */
+  input:required {
+    border-left: 3px solid orange;
+  }
+  
+  /* :optional - Selecciona elementos de formulario que NO tienen el atributo 'required'. */
+  input:optional {
+    border-left: 3px solid lightgrey;
+  }
+  
+  /* :root - Selecciona el elemento raíz del documento (normalmente <html>). Útil para variables CSS globales. */
+  :root {
+    --color-primario: #3498db;
+    --fuente-base: 16px;
+  }
+  
+  
+  /* --------------------------------------------- */
+  /* Pseudo-elementos Comunes                      */
+  /* --------------------------------------------- */
+  
+  /* ::before - Inserta contenido generado *antes* del contenido del elemento. */
+  /* Requiere la propiedad 'content'. */
+  .pseudo-elemento-ejemplo::before {
+    content: "ℹ️ "; /* Puede ser texto, un contador, o una imagen (url()) */
+    color: blue;
+    font-weight: bold;
+  }
+  
+  /* ::after - Inserta contenido generado *después* del contenido del elemento. */
+  /* Requiere la propiedad 'content'. */
+  .pseudo-elemento-ejemplo::after {
+    content: ""; /* Vacío, útil para formas o clearfix */
+    display: block; /* Para darle dimensiones */
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    margin-left: 5px;
+    display: inline-block; /* Para que esté en línea */
+  }
+  
+  /* ::first-letter - Aplica estilos a la primera letra del elemento (si es block-level). */
+  p::first-letter {
+    font-size: 2em;
+    color: darkred;
+    float: left; /* Efecto letra capital */
+    margin-right: 0.1em;
+    line-height: 1;
+  }
+  
+  /* ::first-line - Aplica estilos a la primera línea del texto del elemento (si es block-level). */
+  p::first-line {
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  
+  /* ::marker - Aplica estilos al marcador (viñeta o número) de un item de lista (<li>). */
+  li::marker {
+    color: green;
+    font-size: 1.2em;
+    content: "✅ "; /* Puede cambiar el marcador */
+  }
+  
+  /* ::selection - Aplica estilos al texto que el usuario ha seleccionado. */
+  ::selection {
+    background-color: yellow;
+    color: black;
+  }
+  /* También con prefijo para compatibilidad */
+  ::-moz-selection {
+    background-color: yellow;
+    color: black;
+  }
+  
+  /* ::placeholder - Aplica estilos al texto placeholder de un input o textarea. */
+  input::placeholder {
+    color: lightgrey;
+    font-style: italic;
+    opacity: 1; /* Firefox necesita esto a veces */
+  }
+  /* También con prefijos */
+  ::-webkit-input-placeholder { /* Chrome, Safari, Edge, Opera */
+    color: lightgrey;
+    font-style: italic;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: lightgrey;
+    font-style: italic;
+    opacity: 1;
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: lightgrey;
+    font-style: italic;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: lightgrey;
+    font-style: italic;
+    opacity: 1;
+  }
+  
+  
+  /* ============================================= */
+  /* Fin del Archivo CSS Explicativo               */
+  /* ============================================= */

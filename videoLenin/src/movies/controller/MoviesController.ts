@@ -11,7 +11,7 @@ export default class MoviesController {
     console.log('MoviesController.init()')
     await this.model.init()
     this.view.init()
-    this.view.render()
+    await this.view.render()
   }
 
   readonly searchMovies = async (search: string): Promise<void> => {
@@ -35,6 +35,14 @@ export default class MoviesController {
     if (current > 1) {
       this.model.setPage(current - 1)
     }
+  }
+
+  readonly getPaginatorHTML = (): HTMLElement => {
+    return this.view.getPaginatorHTML()
+  }
+
+  readonly getMoviesHTML = (): HTMLElement => {
+    return this.view.getMoviesHTML()
   }
   
 

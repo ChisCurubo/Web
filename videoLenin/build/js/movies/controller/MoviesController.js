@@ -9,7 +9,7 @@ export default class MoviesController {
         console.log('MoviesController.init()');
         await this.model.init();
         this.view.init();
-        this.view.render();
+        await this.view.render();
     };
     searchMovies = async (search) => {
         await this.model.searchMovies(search);
@@ -29,5 +29,11 @@ export default class MoviesController {
         if (current > 1) {
             this.model.setPage(current - 1);
         }
+    };
+    getPaginatorHTML = () => {
+        return this.view.getPaginatorHTML();
+    };
+    getMoviesHTML = () => {
+        return this.view.getMoviesHTML();
     };
 }

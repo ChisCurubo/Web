@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitrina de Productos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .product-card .price {
+            font-size: 18px;
+            font-weight: bold;
+            color: #b2b300;
+        }
+
+        .add-to-cart {
+            background-color: #efa229;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .heart-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: red;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .product-card:hover .add-to-cart,
+        .product-card:hover .heart-icon {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <!-- Producto 1 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/z8YiJcELWz5r77jJB1NRplu-TpPqzorbvd23X9YNzsk.jpg" alt="Parches de Oro de 24 kt. Rejuvenecedores para Contorno de Ojos">
+            <p>Parches de Oro de 24 kt. Rejuvenecedores para Contorno de Ojos</p>
+            <p class="price">11,50 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+            <h1>prueba</h1>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/iBS7sEsLyjm4eKO9CQ1aP4Zhdl170C7nR5YLvwGYGRw.jpg" alt="Parches Iluminadores">
+            <p>Parches Iluminadores</p>
+            <p class="price">15,50 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/1eVJLXcoGq0Csrc9fxlK8iAxGy84gYkLDJIPkh-0uwU.jpg" alt="Parches Supertox">
+            <p>Parches Supertox</p>
+            <p class="price">15,50 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+        </div>
+
+        <!-- Producto 4 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/UZmp3K13zKhgrSTvFQML8IRr6CkD9LTp-XOSYA7C3-U.jpg" alt="6 Discos Desmaquillantes">
+            <p>6 Discos Desmaquillantes</p>
+            <p class="price">15,50 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+        </div>
+
+        <!-- Producto 5 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/2aJkTG_B0gd65-fh3TmHqqHpYGv4waFySrJ2mEFRHH0.jpg" alt="Aceite antiestrías">
+            <p>Aceite antiestrías</p>
+            <p class="price">33,00 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+        </div>
+
+        <!-- Producto 6 -->
+        <div class="product-card">
+            <img src="https://storage.googleapis.com/a1aa/image/AYAYTuFD91U-IhirbwLwl1ZGjXlhxVKTnYfoGKbWKDI.jpg" alt="Aceite antinflamatorio">
+            <p>Aceite antinflamatorio</p>
+            <p class="price">15,50 €</p>
+            <button class="add-to-cart">Añadir al carrito</button>
+            <span class="heart-icon">❤️</span>
+        </div>
+    </div>
+</body>
+</html>
