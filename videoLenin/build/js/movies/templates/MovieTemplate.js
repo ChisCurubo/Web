@@ -38,6 +38,15 @@ export default class MovieTemplate {
         }));
         return (await moviesTemplates).join('');
     };
+    renderButton = async (currentPage, totalPages) => {
+        return `
+          <div class="pagination">
+            <button id="prev-button"><span>&larr;</span></button>
+            <span class="page-info">${currentPage} / ${totalPages}</span>
+            <button id="next-button"><span>&rarr;</span></button>
+          </div>
+        `;
+    };
     formatMoney = (price) => {
         const formater = new Intl.NumberFormat('en-US', {
             style: 'currency',

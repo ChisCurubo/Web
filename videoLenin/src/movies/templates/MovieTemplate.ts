@@ -41,15 +41,16 @@ export default class MovieTemplate{
         return (await moviesTemplates).join('')
     }
 
-    readonly  renderButton = async() =>{
-        const moviesTemplates = Promise.all( this.movies.map( async (movie:Movie) => {
-            return `
-            <div
-            ` 
-
-        }))
-        return (await moviesTemplates).join('')
+    readonly renderButton = async (currentPage: number, totalPages: number): Promise<string> => {
+        return `
+          <div class="pagination">
+            <button id="prev-button"><span>&larr;</span></button>
+            <span class="page-info">${currentPage} / ${totalPages}</span>
+            <button id="next-button"><span>&rarr;</span></button>
+          </div>
+        `
     }
+      
 
     private readonly formatMoney = (price:number):string =>{
         const formater =  new Intl.NumberFormat('en-US', {

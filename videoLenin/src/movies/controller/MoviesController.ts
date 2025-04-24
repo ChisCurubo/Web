@@ -18,4 +18,24 @@ export default class MoviesController {
     await this.model.searchMovies(search)
   }
 
+  readonly getGridSize = (): number => {
+    return this.model.getSizeGrid()
+  }
+
+  readonly nextPage = (): void => {
+    const totalPages = this.model.getSizeGrid()
+    const current = this.model.getCurrentPage()
+    if (current < totalPages) {
+      this.model.setPage(current + 1)
+    }
+  }
+  
+  readonly previousPage = (): void => {
+    const current = this.model.getCurrentPage()
+    if (current > 1) {
+      this.model.setPage(current - 1)
+    }
+  }
+  
+
 }

@@ -20,6 +20,12 @@ export default class Movies {
     getMoviesModel = () => {
         return this.model;
     };
+    getToNextPage = () => {
+        this.controller.nextPage();
+    };
+    getToPreviousPage = () => {
+        this.controller.previousPage();
+    };
     searchMovies = async (search) => {
         await this.controller.searchMovies(search);
     };

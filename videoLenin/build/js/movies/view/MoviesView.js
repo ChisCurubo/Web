@@ -16,12 +16,25 @@ export default class MoviesView extends Observer {
         this.render();
     };
     render = async () => {
-        const moviesData = this.subject.getMoviesData();
-        console.log("Rendering movies:", moviesData);
+        const movieModel = this.subject;
+        const moviesData = movieModel.getMoviesData();
         const templates = new MovieTemplate(moviesData);
-        this.moviesHTML.innerHTML = await templates.render();
+        const gridMovies = await templates.render();
+        const button = await templates.renderButton(movieModel.getCurrentPage(), movieModel.getSizeGrid());
+        this.moviesHTML.innerHTML = gridMovies + button;
+        this.assingEvent(movieModel);
     };
     getMoviesHTML = () => {
         return this.moviesHTML;
+    };
+    assingEvent = (modelMovie) => {
+        const prevBtn = document.querySelector('#prev-button');
+        const nextBtn = document.querySelector('#next-button');
+        prevBtn?.addEventListener('click', () => {
+            modelMovie.previousPage();
+        });
+        nextBtn?.addEventListener('click', () => {
+            modelMovie.nextPage();
+        });
     };
 }

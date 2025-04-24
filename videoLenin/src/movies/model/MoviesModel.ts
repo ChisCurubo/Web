@@ -7,6 +7,8 @@ import MoviesView from "../view/MoviesView.js"
 export default class MoviesModel extends Subject<MoviesView> {
   private  moviesData : Movie[] = []
   private filteredMovies: Movie[] = []
+  private readonly gridSize: number = 16
+  private currentPage: number = 1
 
   constructor(){
     super()
@@ -20,8 +22,11 @@ export default class MoviesModel extends Subject<MoviesView> {
   }
 
   readonly getMoviesData = (): Movie[] => {
-    return this.filteredMovies
+    const start = (this.currentPage - 1) * this.gridSize
+    const end = this.currentPage * this.gridSize
+    return this.filteredMovies.slice(start, end)
   }
+  
 
   readonly loadMoviesData = async (): Promise<Movie[]> =>{
     const res = await fetch('./database/movies-2020s.json')
@@ -52,7 +57,41 @@ export default class MoviesModel extends Subject<MoviesView> {
     }
     this.notifyAll()
     }
-  
+
+    readonly getSizeGrid= (): number => {
+      const size = this.filteredMovies.length
+      if (size === 0) return 0
+      const total = Math.ceil(size / this.gridSize)
+      return total
+    }
+
+
+    readonly nextPage = (): void => {
+      const totalPages = this.getSizeGrid()
+      if (this.currentPage < totalPages) {
+        this.setPage(this.currentPage + 1)
+      }
+    }
+
+    readonly previousPage = (): void => {
+      if (this.currentPage > 1) {
+        this.setPage(this.currentPage - 1)
+      }
+    }
+
+
+    readonly setPage = (page: number): void => {
+      this.currentPage = page
+      this.notifyAll()
+    }
+    
+    readonly getCurrentPage = (): number => {
+      return this.currentPage
+    }
+    
+
+    
+    
   
 
 

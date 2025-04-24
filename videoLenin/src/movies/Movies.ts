@@ -25,6 +25,15 @@ export default class Movies {
     return this.model
   }
 
+  readonly getToNextPage = (): void => {
+    this.controller.nextPage()
+  }
+  
+  readonly getToPreviousPage = (): void => {
+    this.controller.previousPage()
+  }
+  
+
   readonly searchMovies = async (search: string): Promise<void> => {
     await this.controller.searchMovies(search)
   }

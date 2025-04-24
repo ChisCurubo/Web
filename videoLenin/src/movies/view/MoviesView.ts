@@ -19,15 +19,39 @@ export default class MoviesView extends Observer<MoviesModel> {
     console.log("Movies View updated")
     this.render()
   }
+
   readonly render = async (): Promise<void> => {
-    const moviesData = (this.subject as MoviesModel).getMoviesData() 
-    console.log("Rendering movies:", moviesData)
+    const movieModel = this.subject as MoviesModel
+    const moviesData = movieModel.getMoviesData()
     const templates = new MovieTemplate(moviesData)
-    this.moviesHTML.innerHTML = await templates.render()
+    const gridMovies = await templates.render()
+    const button = await templates.renderButton(movieModel.getCurrentPage(), movieModel.getSizeGrid())
+
+    this.moviesHTML.innerHTML = gridMovies + button
+
+    this.assingEvent(movieModel)
   }
+  
 
   
   readonly getMoviesHTML=(): HTMLElement=>{
     return this.moviesHTML
   }
+
+
+  private readonly assingEvent = ( modelMovie : MoviesModel): void => {
+    const prevBtn = document.querySelector('#prev-button')
+    const nextBtn = document.querySelector('#next-button')
+  
+    prevBtn?.addEventListener('click', () => {
+      modelMovie.previousPage()
+    })
+  
+    nextBtn?.addEventListener('click', () => {
+      modelMovie.nextPage()
+    })
+  }
+  
+
+
 }
